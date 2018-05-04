@@ -33,37 +33,37 @@ def vis(w,h):
     ########################################################PSUB########################################################
     #SEGMENTED CONTROL
     vis['pseg_control_h'] = 30
-    vis['pseg_control_w'] = vis['psub_w'] - 10
-    vis['pseg_control_x'] = 5
+    vis['pseg_control_w'] = vis['psub_w']
+    vis['pseg_control_x'] = vis['x_margin']
     vis['pseg_control_y'] = vis['y_margin']
 
     #LABELS
     vis['ptitle_h'] = 20
     vis['ptitle_w'] = vis['psub_w']
     vis['ptitle_x'] = 0
-    vis['ptitle_y'] = 40
+    vis['ptitle_y'] = 20
 
     #subtitles 10 percent
     vis['psubtitle_title_h'] = 20
     vis['psubtitle_title_w'] = vis['psub_w']/2
     vis['psubtitle_title_x'] = 0
-    vis['psubtitle_title_y'] = 60
+    vis['psubtitle_title_y'] = 40
 
     vis['psubtitle_value_h'] = 20
     vis['psubtitle_value_w'] = vis['psub_w']/2
     vis['psubtitle_value_x'] = vis['psub_w']/2
-    vis['psubtitle_value_y'] = 60
+    vis['psubtitle_value_y'] = 40
 
     #box titles
     vis['box_titles_h'] = 32
     vis['box_titles_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_titles_x'] = 1 #this is later changed dynamically
-    vis['box_titles_y'] = 80
+    vis['box_titles_y'] = 60
 
     vis['box_values_h'] = 80
     vis['box_values_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_values_x'] = 1 #this is later changed dynamically
-    vis['box_values_y'] = 110
+    vis['box_values_y'] = 90
 
     #Bottom Labels
     vis['ptotal_title_h'] = 32

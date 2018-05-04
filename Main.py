@@ -41,40 +41,40 @@ def vis(w,h):
     vis['ptitle_h'] = 20
     vis['ptitle_w'] = vis['psub_w']
     vis['ptitle_x'] = 0
-    vis['ptitle_y'] = 20
+    vis['ptitle_y'] = 0
 
     #subtitles 10 percent
     vis['psubtitle_title_h'] = 20
     vis['psubtitle_title_w'] = vis['psub_w']/2
     vis['psubtitle_title_x'] = 0
-    vis['psubtitle_title_y'] = 40
+    vis['psubtitle_title_y'] = 20
 
     vis['psubtitle_value_h'] = 20
     vis['psubtitle_value_w'] = vis['psub_w']/2
     vis['psubtitle_value_x'] = vis['psub_w']/2
-    vis['psubtitle_value_y'] = 40
+    vis['psubtitle_value_y'] = 20
 
     #box titles
     vis['box_titles_h'] = 32
     vis['box_titles_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_titles_x'] = 1 #this is later changed dynamically
-    vis['box_titles_y'] = 60
+    vis['box_titles_y'] = 40
 
     vis['box_values_h'] = 80
     vis['box_values_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_values_x'] = 1 #this is later changed dynamically
-    vis['box_values_y'] = 90
+    vis['box_values_y'] = 70
 
     #Bottom Labels
     vis['ptotal_title_h'] = 32
     vis['ptotal_title_w'] = vis['psub_w']/5
     vis['ptotal_title_x'] = 0
-    vis['ptotal_title_y'] = 190
+    vis['ptotal_title_y'] = 170
 
     vis['ptotal_values_h'] = 32
     vis['ptotal_values_w'] = vis['psub_w'] #this is later changed dynamically
     vis['ptotal_values_x'] = 1 #this is later changed dynamically
-    vis['ptotal_values_y'] = 190
+    vis['ptotal_values_y'] = 170
 
     ########################################################CSUB########################################################
 

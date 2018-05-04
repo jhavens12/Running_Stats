@@ -35,9 +35,9 @@ def vis(w,h):
     vis['psub_title_y'] = 40
 
     #SEGMENTED CONTROL
-    vis['pseg_control_h'] = 20
-    vis['pseg_control_w'] = vis['psub_w']
-    vis['pseg_control_x'] = 0
+    vis['pseg_control_h'] = 30
+    vis['pseg_control_w'] = vis['psub_w'] - 10
+    vis['pseg_control_x'] = 5
     vis['pseg_control_y'] = 5
 
     return vis

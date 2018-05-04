@@ -83,6 +83,7 @@ vis = vis(w,h)
 
 box_titles = ['Date','Distance','Pace','Duration','Elevation']
 box_values = ['Sun Apr 29','3.34','9:14','0:34:14','155.55']
+total_values = ['13.02','8:49','9:34','0:21:00','1000.89']
 
 #SUBVIEWS
 psubview = ui.View(frame=(vis['psub_x'], vis['psub_y'], vis['psub_w'], vis['psub_h']), background_color = 'black')
@@ -147,5 +148,17 @@ ptotal_title.text = "ptotals"
 ptotal_title.alignment = 1 #1 is center
 psubview.add_subview(ptotal_title)
 
+for n,label in enumerate(total_values):
+    n = n+1 #account for first box being the static label
+    count = len(total_values)
+    vis['ptotal_values_w'] = vis['psub_w']/count #divide width by number of labels
+    vis['ptotal_values_x'] = vis['ptotal_values_w'] * n #first label at 0, second label at width*1
+    label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['ptotal_values_x'], vis['ptotal_values_y'], vis['ptotal_values_w'], vis['ptotal_values_h']) )
+    label_title.text = label
+    label_title.alignment = 1
+    label_title.font =  ('<system>',10)
+    label_title.border_color = 'black'
+    label_title.border_width = 1
+    psubview.add_subview(label_title)
 ######
 view.present(style='sheet', hide_title_bar=True)

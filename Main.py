@@ -86,7 +86,7 @@ def vis(w,h):
 
     #subtitles 10 percent
     vis['csubtitle1_title_h'] = 20
-    vis['csubtitle1_title_w'] = vis['psub_w']/2
+    vis['csubtitle1_title_w'] = vis['psub_w']/4
     vis['csubtitle1_title_x'] = 0 #first
     vis['csubtitle1_title_y'] = 20
 
@@ -104,6 +104,7 @@ def vis(w,h):
     vis['csubtitle2_value_w'] = vis['psub_w']/4
     vis['csubtitle2_value_x'] = (vis['psub_w']/4) * 3 #fourth
     vis['csubtitle2_value_y'] = 20
+
 
     return vis
 
@@ -204,48 +205,48 @@ csubview.add_subview(ctitle)
 
 #subtitles
 csubtitle1_title = ui.Label(name = 'csubtitle1_title', bg_color ='gray', frame = (vis['csubtitle1_title_x'], vis['csubtitle1_title_y'], vis['csubtitle1_title_w'], vis['csubtitle1_title_h']))
-csubtitle1_title.text = "subtitle title"
+csubtitle1_title.text = "sub1 t"
 csubtitle1_title.alignment = 1 #1 is center
 csubview.add_subview(csubtitle1_title)
 
 csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='pink', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
-csubtitle1_value.text = "subtitle value"
+csubtitle1_value.text = "sub1 v"
 csubtitle1_value.alignment = 1 #1 is center
 csubview.add_subview(csubtitle1_value)
 
 csubtitle2_title = ui.Label(name = 'csubtitle2_title', bg_color ='gray', frame = (vis['csubtitle2_title_x'], vis['csubtitle2_title_y'], vis['csubtitle2_title_w'], vis['csubtitle2_title_h']))
-csubtitle2_title.text = "subtitle title"
+csubtitle2_title.text = "sub2 t"
 csubtitle2_title.alignment = 1 #1 is center
 csubview.add_subview(csubtitle2_title)
 
 csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='pink', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
-csubtitle2_value.text = "subtitle value"
+csubtitle2_value.text = "sub2 v"
 csubtitle2_value.alignment = 1 #1 is center
 csubview.add_subview(csubtitle2_value)
 
-# #box titles
-# for n,label in enumerate(box_titles):
-#     count = len(box_titles)
-#     vis['box_titles_w'] = vis['csub_w']/count #divide width by number of labels
-#     vis['box_titles_x'] = vis['box_titles_w'] * n #first label at 0, second label at width*1
-#     label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
-#     label_title.text = label
-#     label_title.alignment = 1
-#     label_title.font =  ('<system>',14)
-#     label_title.border_color = 'black'
-#     label_title.border_width = 1
-#     csubview.add_subview(label_title)
-#
-# for n,label in enumerate(box_values):
-#     count = len(box_values)
-#     vis['box_values_w'] = vis['csub_w']/count #divide width by number of labels
-#     vis['box_values_x'] = vis['box_values_w'] * n #first label at 0, second label at width*1
-#     label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
-#     label_title.text = label
-#     label_title.alignment = 1
-#     label_title.font =  ('<system>',10)
-#     label_title.border_color = 'black'
-#     label_title.border_width = 1
-#     csubview.add_subview(label_title)
+#box titles
+for n,label in enumerate(box_titles):
+    count = len(box_titles)
+    vis['box_titles_w'] = vis['csub_w']/count #divide width by number of labels
+    vis['box_titles_x'] = vis['box_titles_w'] * n #first label at 0, second label at width*1
+    label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
+    label_title.text = label
+    label_title.alignment = 1
+    label_title.font =  ('<system>',14)
+    label_title.border_color = 'black'
+    label_title.border_width = 1
+    csubview.add_subview(label_title)
+
+for n,label in enumerate(box_values):
+    count = len(box_values)
+    vis['box_values_w'] = vis['csub_w']/count #divide width by number of labels
+    vis['box_values_x'] = vis['box_values_w'] * n #first label at 0, second label at width*1
+    label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
+    label_title.text = label
+    label_title.alignment = 1
+    label_title.font =  ('<system>',10)
+    label_title.border_color = 'black'
+    label_title.border_width = 1
+    csubview.add_subview(label_title)
 
 view.present(style='sheet', hide_title_bar=True)

@@ -36,58 +36,29 @@ def vis(w,h):
     vis['pseg_control_y'] = 5
 
     #LABELS
-    vis['psub_title_h'] = 20
-    vis['psub_title_w'] = vis['psub_w']
-    vis['psub_title_x'] = 0
-    vis['psub_title_y'] = 40
+    vis['ptitle_h'] = 20
+    vis['ptitle_w'] = vis['psub_w']
+    vis['ptitle_x'] = 0
+    vis['ptitle_y'] = 40
 
+    #subtitles 10 percent
+    vis['psubtitle_title_h'] = 20
+    vis['psubtitle_title_w'] = vis['psub_w']/2
+    vis['psubtitle_title_x'] = 0
+    vis['psubtitle_title_y'] = 40
+
+    vis['psubtitle_value_h'] = 20
+    vis['psubtitle_value_w'] = vis['psub_w']/2
+    vis['psubtitle_value_x'] = vis['psub_w']/2
+    vis['psubtitle_value_y'] = 40
+
+    #box titles
     vis['box_titles_h'] = 32
-    vis['box_titles_w'] = vis['psub_w']
-    vis['box_titles_x'] = 1 #filler
-    vis['box_titles_y'] = 60
-
-    # BOX TITLES
-    vis['psub_date_h'] = 20
-    vis['psub_date_w'] = vis['psub_w']
-    vis['psub_date_x'] = 0
-    vis['psub_date_y'] = 40
-
-    vis['psub_distance_h'] = 20
-    vis['psub_distance_w'] = vis['psub_w']
-    vis['psub_distance_x'] = 0
-    vis['psub_distance_y'] = 40
-
-    vis['psub_pace_h'] = 20
-    vis['psub_pace_w'] = vis['psub_w']
-    vis['psub_pace_x'] = 0
-    vis['psub_pace_y'] = 40
-
-    vis['psub_duration_h'] = 20
-    vis['psub_duration_w'] = vis['psub_w']
-    vis['psub_duration_x'] = 0
-    vis['psub_duration_y'] = 40
-
-    vis['psub_elevation_h'] = 20
-    vis['psub_elevation_w'] = vis['psub_w']
-    vis['psub_elevation_x'] = 0
-    vis['psub_elevation_y'] = 40
-
-    vis['psub_total_h'] = 20
-    vis['psub_total_w'] = vis['psub_w']
-    vis['psub_total_x'] = 0
-    vis['psub_total_y'] = 40
-
-
+    vis['box_titles_w'] = vis['psub_w'] #this is later changed dynamically
+    vis['box_titles_x'] = 1 #this is later changed dynamically
+    vis['box_titles_y'] = 80
 
     ########################################################CSUB########################################################
-#date
-#distance
-#pace
-#duration
-#elevation
-#total/avg
-#10percent
-
 
     return vis
 
@@ -109,13 +80,24 @@ pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_cont
 pseg_control.segments = ("Week 1","Week 2","Week 3")
 #SegmentedControl.action
 #SegmentedControl.selected_index
+psubview.add_subview(pseg_control)
 
-ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['psub_title_x'], vis['psub_title_y'], vis['psub_title_w'], vis['psub_title_h']))
+ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['ptitle_x'], vis['ptitle_y'], vis['ptitle_w'], vis['ptitle_h']))
 ptitle.text = "ptitle"
 ptitle.alignment = 1 #1 is center
+psubview.add_subview(ptitle)
+
+psubtitle_title = ui.Label(name = 'psubtitle_title', bg_color ='gray', frame = (vis['psubtitle_title_x'], vis['psubtitle_title_y'], vis['psubtitle_title_w'], vis['psubtitle_title_h']))
+psubtitle_title.text = "subtitle title"
+psubtitle_title.alignment = 1 #1 is center
+psubview.add_subview(psubtitle_title)
+
+psubtitle_value = ui.Label(name = 'psubtitle_value', bg_color ='pink', frame = (vis['psubtitle_value_x'], vis['psubtitle_value_y'], vis['psubtitle_value_w'], vis['psubtitle_value_h']))
+psubtitle_value.text = "subtitle value"
+psubtitle_value.alignment = 1 #1 is center
+psubview.add_subview(psubtitle_value)
 
 for n,label in enumerate(box_titles):
-
     count = len(box_titles)
     vis['box_titles_w'] = vis['psub_w']/count #divide width by number of labels
     vis['box_titles_x'] = vis['box_titles_w'] * n #first label at 0, second label at width*1
@@ -128,8 +110,8 @@ for n,label in enumerate(box_titles):
     label_title.border_width = 1
     psubview.add_subview(label_title)
 
-psubview.add_subview(ptitle)
-psubview.add_subview(pseg_control)
+
+
 
 
 ######

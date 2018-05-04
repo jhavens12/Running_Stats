@@ -124,6 +124,8 @@ for n,label in enumerate(box_titles):
     label_title.text = label
     label_title.alignment = 1
     label_title.font =  ('<system>',10)
+    label_title.border_color = 'black'
+    label_title.border_width = 1
     psubview.add_subview(label_title)
 
 psubview.add_subview(ptitle)

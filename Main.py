@@ -29,7 +29,7 @@ def vis(w,h):
     vis['fsub_y'] = vis['csub_y'] + vis['csub_h'] + (vis['y_margin']/2) #y margin, height of psub, y margin
 
     #LABELS
-    vis['psub_title_h'] = 15
+    vis['psub_title_h'] = 20
     vis['psub_title_w'] = vis['psub_w']
     vis['psub_title_x'] = 0
     vis['psub_title_y'] = 0
@@ -47,9 +47,9 @@ view.add_subview(csubview)
 view.add_subview(fsubview)
 
 #LABELS
-title
 ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['psub_title_x'], vis['psub_title_y'], vis['psub_title_w'], vis['psub_title_h']))
 ptitle.text = "ptitle"
+ptitle.alignment = 1 #1 is center
 
 psubview.add_subview(ptitle)
 

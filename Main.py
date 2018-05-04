@@ -250,7 +250,7 @@ for n,label in enumerate(box_values):
     csubview.add_subview(label_title)
 
 #total title/labels
-ctotal_title = ui.Label(name = 'ctotal_title', bg_color ='pink', frame = (vis['ctotal_title_x'], vis['ctotal_title_y'], vis['ctotal_title_w'], vis['ctotal_title_h']))
+ctotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['ptotal_title_x'], vis['ptotal_title_y'], vis['ptotal_title_w'], vis['ptotal_title_h']))
 ctotal_title.text = "ctotals"
 ctotal_title.alignment = 1 #1 is center
 csubview.add_subview(ctotal_title)
@@ -258,9 +258,9 @@ csubview.add_subview(ctotal_title)
 for n,label in enumerate(total_values):
     n = n+1 #account for first box being the static label
     count = len(total_values)
-    vis['ctotal_values_w'] = vis['csub_w']/(count+1) #divide width by number of labels
-    vis['ctotal_values_x'] = vis['ctotal_values_w'] * n #first label at 0, second label at width*1
-    label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['ctotal_values_x'], vis['ctotal_values_y'], vis['ctotal_values_w'], vis['ctotal_values_h']) )
+    vis['ptotal_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
+    vis['ptotal_values_x'] = vis['ptotal_values_w'] * n #first label at 0, second label at width*1
+    label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['ptotal_values_x'], vis['ptotal_values_y'], vis['ptotal_values_w'], vis['ptotal_values_h']) )
     label_title.text = label
     label_title.alignment = 1
     label_title.font =  ('<system>',10)

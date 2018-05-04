@@ -1,4 +1,4 @@
-c#import get_data
+#import get_data
 import ui
 from pprint import pprint
 import datetime
@@ -66,15 +66,15 @@ def vis(w,h):
     vis['box_values_y'] = 70
 
     #Bottom Labels
-    vis['ptotal_title_h'] = 32
-    vis['ptotal_title_w'] = vis['psub_w']/5
-    vis['ptotal_title_x'] = 0
-    vis['ptotal_title_y'] = 150
+    vis['total_title_h'] = 32
+    vis['total_title_w'] = vis['psub_w']/5
+    vis['total_title_x'] = 0
+    vis['total_title_y'] = 150
 
-    vis['ptotal_values_h'] = 32
-    vis['ptotal_values_w'] = vis['psub_w'] #this is later changed dynamically
-    vis['ptotal_values_x'] = 1 #this is later changed dynamically
-    vis['ptotal_values_y'] = 150
+    vis['total_values_h'] = 32
+    vis['total_values_w'] = vis['psub_w'] #this is later changed dynamically
+    vis['total_values_x'] = 1 #this is later changed dynamically
+    vis['total_values_y'] = 150
 
     ########################################################cSUB########################################################
 
@@ -173,7 +173,7 @@ for n,label in enumerate(box_values):
     psubview.add_subview(label_title)
 
 #total title/labels
-ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['ptotal_title_x'], vis['ptotal_title_y'], vis['ptotal_title_w'], vis['ptotal_title_h']))
+ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
 ptotal_title.text = "ptotals"
 ptotal_title.alignment = 1 #1 is center
 psubview.add_subview(ptotal_title)
@@ -181,9 +181,9 @@ psubview.add_subview(ptotal_title)
 for n,label in enumerate(total_values):
     n = n+1 #account for first box being the static label
     count = len(total_values)
-    vis['ptotal_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
-    vis['ptotal_values_x'] = vis['ptotal_values_w'] * n #first label at 0, second label at width*1
-    label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['ptotal_values_x'], vis['ptotal_values_y'], vis['ptotal_values_w'], vis['ptotal_values_h']) )
+    vis['total_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
+    vis['total_values_x'] = vis['total_values_w'] * n #first label at 0, second label at width*1
+    label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
     label_title.text = label
     label_title.alignment = 1
     label_title.font =  ('<system>',10)
@@ -250,7 +250,7 @@ for n,label in enumerate(box_values):
     csubview.add_subview(label_title)
 
 #total title/labels
-ctotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['ptotal_title_x'], vis['ptotal_title_y'], vis['ptotal_title_w'], vis['ptotal_title_h']))
+ctotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
 ctotal_title.text = "ctotals"
 ctotal_title.alignment = 1 #1 is center
 csubview.add_subview(ctotal_title)
@@ -258,9 +258,9 @@ csubview.add_subview(ctotal_title)
 for n,label in enumerate(total_values):
     n = n+1 #account for first box being the static label
     count = len(total_values)
-    vis['ptotal_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
-    vis['ptotal_values_x'] = vis['ptotal_values_w'] * n #first label at 0, second label at width*1
-    label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['ptotal_values_x'], vis['ptotal_values_y'], vis['ptotal_values_w'], vis['ptotal_values_h']) )
+    vis['total_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
+    vis['total_values_x'] = vis['total_values_w'] * n #first label at 0, second label at width*1
+    label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
     label_title.text = label
     label_title.alignment = 1
     label_title.font =  ('<system>',10)

@@ -15,7 +15,7 @@ def vis(w,h):
     vis['y_margin'] = 20
 
     #SUBVIEWS
-    vis['psub_h'] = h*.33
+    vis['psub_h'] = (h*.33) - 30
     vis['psub_w'] = w - (vis['x_margin']*2) #sets width for all subviews
     vis['psub_x'] = vis['x_margin']
     vis['psub_y'] = vis['y_margin'] + 30
@@ -69,12 +69,12 @@ def vis(w,h):
     vis['ptotal_title_h'] = 32
     vis['ptotal_title_w'] = vis['psub_w']/5
     vis['ptotal_title_x'] = 0
-    vis['ptotal_title_y'] = 170
+    vis['ptotal_title_y'] = 150
 
     vis['ptotal_values_h'] = 32
     vis['ptotal_values_w'] = vis['psub_w'] #this is later changed dynamically
     vis['ptotal_values_x'] = 1 #this is later changed dynamically
-    vis['ptotal_values_y'] = 170
+    vis['ptotal_values_y'] = 150
 
     ########################################################CSUB########################################################
 

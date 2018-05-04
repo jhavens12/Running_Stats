@@ -15,7 +15,7 @@ def vis(w,h):
     vis['y_margin'] = 20
 
     #SUBVIEWS
-    vis['psub_h'] = (h*.33) - 30
+    vis['psub_h'] = (h*.33) - 20
     vis['psub_w'] = w - (vis['x_margin']*2) #sets width for all subviews
     vis['psub_x'] = vis['x_margin']
     vis['psub_y'] = vis['y_margin'] + 30
@@ -23,7 +23,7 @@ def vis(w,h):
     vis['csub_h'] = h*.33
     vis['csub_w'] = vis['psub_w']
     vis['csub_x'] = vis['x_margin']
-    vis['csub_y'] = vis['y_margin'] + vis['psub_h'] + (vis['y_margin']/2) #y margin, height of psub, y margin
+    vis['csub_y'] = vis['psub_y'] + vis['psub_h'] + (vis['y_margin']/2) #y margin, height of psub, y margin
 
     vis['fsub_h'] = h*.26
     vis['fsub_w'] = vis['psub_w']

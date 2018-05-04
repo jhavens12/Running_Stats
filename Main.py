@@ -1,6 +1,5 @@
-import get_data
+#import get_data
 import ui
-import build
 from pprint import pprint
 import datetime
 
@@ -11,7 +10,7 @@ view = ui.View(bg_color = 'white', frame = (0,0,w,h)) #main view
 def vis(w,h):
     vis = {}
     vis['x_margin'] = 15
-    vis['y_margin'] = 10
+    vis['y_margin'] = 20
 
     vis['psub_h'] = h*.33
     vis['psub_w'] = w - (vis['x_margin']*2)
@@ -21,7 +20,12 @@ def vis(w,h):
     vis['csub_h'] = h*.33
     vis['csub_w'] = w-(vis['x_margin']*2)
     vis['csub_x'] = vis['x_margin']
-    vis['csub_y'] = vis['y_margin'] + vis['psub_h'] + vis['y_margin'] #y margin, height of psub, y margin
+    vis['csub_y'] = vis['y_margin'] + vis['psub_h'] + (vis['y_margin']/2) #y margin, height of psub, y margin
+
+    vis['fsub_h'] = h*.2
+    vis['fsub_w'] = w-(vis['x_margin']*2)
+    vis['fsub_x'] = vis['x_margin']
+    vis['fsub_y'] = vis['csub_y'] + vis['csub_h'] + (vis['y_margin']/2) #y margin, height of psub, y margin
 
     return vis
 

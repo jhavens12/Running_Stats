@@ -32,7 +32,13 @@ def vis(w,h):
     vis['psub_title_h'] = 20
     vis['psub_title_w'] = vis['psub_w']
     vis['psub_title_x'] = 0
-    vis['psub_title_y'] = 0
+    vis['psub_title_y'] = 40
+
+    #SEGMENTED CONTROL
+    vis['pseg_control_h'] = 20
+    vis['pseg_control_w'] = vis['psub_w']
+    vis['pseg_control_x'] = 0
+    vis['pseg_control_y'] = 5
 
     return vis
 
@@ -51,6 +57,13 @@ ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['psub_title_
 ptitle.text = "ptitle"
 ptitle.alignment = 1 #1 is center
 
+#SEGMENTED CONTROL
+pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
+pseg_control.segments = ("Week 1","Week 2","Week 3")
+#SegmentedControl.action
+#SegmentedControl.selected_index
+
 psubview.add_subview(ptitle)
+psubview.add_subview(pseg_control)
 
 view.present(style='sheet', hide_title_bar=True)

@@ -87,22 +87,22 @@ def vis(w,h):
     #subtitles 10 percent
     vis['csubtitle1_title_h'] = 20
     vis['csubtitle1_title_w'] = vis['psub_w']/2
-    vis['csubtitle1_title_x'] = 0
+    vis['csubtitle1_title_x'] = 0 #first
     vis['csubtitle1_title_y'] = 20
 
     vis['csubtitle1_value_h'] = 20
     vis['csubtitle1_value_w'] = vis['psub_w']/4
-    vis['csubtitle1_value_x'] = vis['psub_w']/4
+    vis['csubtitle1_value_x'] = vis['psub_w']/4 #second
     vis['csubtitle1_value_y'] = 20
 
     vis['csubtitle2_title_h'] = 20
     vis['csubtitle2_title_w'] = vis['psub_w']/4
-    vis['csubtitle2_title_x'] = 0
+    vis['csubtitle2_title_x'] = (vis['psub_w']/4) * 2 #third
     vis['csubtitle2_title_y'] = 20
 
     vis['csubtitle2_value_h'] = 20
     vis['csubtitle2_value_w'] = vis['psub_w']/4
-    vis['csubtitle2_value_x'] = vis['psub_w']/4
+    vis['csubtitle2_value_x'] = (vis['psub_w']/4) * 3 #fourth
     vis['csubtitle2_value_y'] = 20
 
     return vis

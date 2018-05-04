@@ -1,4 +1,4 @@
-#import get_data
+c#import get_data
 import ui
 from pprint import pprint
 import datetime
@@ -242,6 +242,25 @@ for n,label in enumerate(box_values):
     vis['box_values_w'] = vis['csub_w']/count #divide width by number of labels
     vis['box_values_x'] = vis['box_values_w'] * n #first label at 0, second label at width*1
     label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
+    label_title.text = label
+    label_title.alignment = 1
+    label_title.font =  ('<system>',10)
+    label_title.border_color = 'black'
+    label_title.border_width = 1
+    csubview.add_subview(label_title)
+
+#total title/labels
+ctotal_title = ui.Label(name = 'ctotal_title', bg_color ='pink', frame = (vis['ctotal_title_x'], vis['ctotal_title_y'], vis['ctotal_title_w'], vis['ctotal_title_h']))
+ctotal_title.text = "ctotals"
+ctotal_title.alignment = 1 #1 is center
+csubview.add_subview(ctotal_title)
+
+for n,label in enumerate(total_values):
+    n = n+1 #account for first box being the static label
+    count = len(total_values)
+    vis['ctotal_values_w'] = vis['csub_w']/(count+1) #divide width by number of labels
+    vis['ctotal_values_x'] = vis['ctotal_values_w'] * n #first label at 0, second label at width*1
+    label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['ctotal_values_x'], vis['ctotal_values_y'], vis['ctotal_values_w'], vis['ctotal_values_h']) )
     label_title.text = label
     label_title.alignment = 1
     label_title.font =  ('<system>',10)

@@ -204,23 +204,23 @@ csubview.add_subview(ctitle)
 
 #subtitles
 csubtitle1_title = ui.Label(name = 'csubtitle1_title', bg_color ='gray', frame = (vis['csubtitle1_title_x'], vis['csubtitle1_title_y'], vis['csubtitle1_title_w'], vis['csubtitle1_title_h']))
-csubtitle_title.text = "subtitle title"
-csubtitle_title.alignment = 1 #1 is center
+csubtitle1_title.text = "subtitle title"
+csubtitle1_title.alignment = 1 #1 is center
 csubview.add_subview(csubtitle1_title)
 
 csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='pink', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
-csubtitle_value.text = "subtitle value"
-csubtitle_value.alignment = 1 #1 is center
+csubtitle1_value.text = "subtitle value"
+csubtitle1_value.alignment = 1 #1 is center
 csubview.add_subview(csubtitle1_value)
 
 csubtitle2_title = ui.Label(name = 'csubtitle2_title', bg_color ='gray', frame = (vis['csubtitle2_title_x'], vis['csubtitle2_title_y'], vis['csubtitle2_title_w'], vis['csubtitle2_title_h']))
-csubtitle_title.text = "subtitle title"
-csubtitle_title.alignment = 1 #1 is center
+csubtitle2_title.text = "subtitle title"
+csubtitle2_title.alignment = 1 #1 is center
 csubview.add_subview(csubtitle2_title)
 
 csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='pink', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
-csubtitle_value.text = "subtitle value"
-csubtitle_value.alignment = 1 #1 is center
+csubtitle2_value.text = "subtitle value"
+csubtitle2_value.alignment = 1 #1 is center
 csubview.add_subview(csubtitle2_value)
 
 # #box titles

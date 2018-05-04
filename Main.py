@@ -94,7 +94,7 @@ def vis(w,h):
 vis = vis(w,h)
 
 
-box_titles = ['Date','Distance','Pace','Duration','Elevation','Total/AVG']
+box_titles = ['Date','Distance','Pace','Duration','Elevation']
 
 #SUBVIEWS
 psubview = ui.View(frame=(vis['psub_x'], vis['psub_y'], vis['psub_w'], vis['psub_h']), background_color = 'black')
@@ -123,6 +123,7 @@ for n,label in enumerate(box_titles):
     label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
     label_title.text = label
     label_title.alignment = 1
+    label_title.font =  ('<system>',10)
     psubview.add_subview(label_title)
 
 psubview.add_subview(ptitle)

@@ -61,10 +61,18 @@ def vis(w,h):
     vis['box_values_h'] = 80
     vis['box_values_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_values_x'] = 1 #this is later changed dynamically
-    vis['box_values_y'] = 100
+    vis['box_values_y'] = 110
 
-    #title/avg label
-    #vis['ptotal_title']
+    #Bottom Labels
+    vis['ptotal_title_h'] = 32
+    vis['ptotal_title_w'] = vis['psub_w']/5
+    vis['ptotal_title_x'] = 0
+    vis['ptotal_title_y'] = 190
+
+    vis['ptotal_values_h'] = 32
+    vis['ptotal_values_w'] = vis['psub_w'] #this is later changed dynamically
+    vis['ptotal_values_x'] = 1 #this is later changed dynamically
+    vis['ptotal_values_y'] = 190
 
     ########################################################CSUB########################################################
 
@@ -133,7 +141,11 @@ for n,label in enumerate(box_values):
     label_title.border_width = 1
     psubview.add_subview(label_title)
 
-
+#total title/labels
+ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['ptotal_title_x'], vis['ptotal_title_y'], vis['ptotal_title_w'], vis['ptotal_title_h']))
+ptotal_title.text = "ptotals"
+ptotal_title.alignment = 1 #1 is center
+psubview.add_subview(ptotal_title)
 
 ######
 view.present(style='sheet', hide_title_bar=True)

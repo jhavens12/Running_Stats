@@ -37,9 +37,12 @@ psubview = ui.View(frame=(vis['psub_x'], vis['psub_y'], vis['psub_w'], vis['psub
 #current subview
 csubview = ui.View(frame=(vis['csub_x'], vis['csub_y'], vis['csub_w'], vis['csub_h']), background_color = 'blue')
 
+fsubview = ui.View(frame=(vis['fsub_x'], vis['fsub_y'], vis['fsub_w'], vis['fsub_h']), background_color = 'red')
+
 
 view.add_subview(psubview)
 view.add_subview(csubview)
+view.add_subview(fsubview)
 
 
 view.present(style='sheet', hide_title_bar=True)

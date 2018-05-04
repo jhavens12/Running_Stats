@@ -49,6 +49,8 @@ view.add_subview(fsubview)
 #LABELS
 title
 ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['psub_title_x'], vis['psub_title_y'], vis['psub_title_w'], vis['psub_title_h']))
-label.text = "ptitle"
+ptitle.text = "ptitle"
+
+psubview.add_subview(ptitle)
 
 view.present(style='sheet', hide_title_bar=True)

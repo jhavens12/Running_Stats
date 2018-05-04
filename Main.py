@@ -3,6 +3,8 @@ import ui
 from pprint import pprint
 import datetime
 
+#fix bottom line of pview - doesn't like up with end of labels
+
 
 w,h = ui.get_screen_size()
 view = ui.View(bg_color = 'white', frame = (0,0,w,h)) #main view
@@ -16,7 +18,7 @@ def vis(w,h):
     vis['psub_h'] = h*.33
     vis['psub_w'] = w - (vis['x_margin']*2) #sets width for all subviews
     vis['psub_x'] = vis['x_margin']
-    vis['psub_y'] = vis['y_margin']
+    vis['psub_y'] = vis['y_margin'] + 30
 
     vis['csub_h'] = h*.33
     vis['csub_w'] = vis['psub_w']
@@ -33,7 +35,7 @@ def vis(w,h):
     vis['pseg_control_h'] = 30
     vis['pseg_control_w'] = vis['psub_w'] - 10
     vis['pseg_control_x'] = 5
-    vis['pseg_control_y'] = 5
+    vis['pseg_control_y'] = vis['y_margin']
 
     #LABELS
     vis['ptitle_h'] = 20
@@ -98,7 +100,7 @@ pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_cont
 pseg_control.segments = ("Week 1","Week 2","Week 3")
 #SegmentedControl.action
 #SegmentedControl.selected_index
-psubview.add_subview(pseg_control)
+view.add_subview(pseg_control)
 
 #title
 ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['ptitle_x'], vis['ptitle_y'], vis['ptitle_w'], vis['ptitle_h']))

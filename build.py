@@ -99,12 +99,14 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     current_miles = current_info['current_miles']
     current_week_count = current_info['current_week_count']
 
-    main_dict['remaining_miles'] = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles)))
+    remaining_miles = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles)))
+    main_dict['remaining_miles'] = remaining_miles
     if float(runs_per_week)-float(current_week_count) != 0:
         miles_per_run_remaining = float(remaining_miles)/(runs_per_week-float(current_week_count))
         main_dict['remaining_per_run'] = format_text(miles_per_run_remaining)
     else:
         main_dict['remaining_per_run'] = "0"
+    #
 
     return main_dict
 
@@ -123,7 +125,7 @@ def current_period():
     mile_list = []
     for i in dict_2:
         mile_list.append(float(dict_2[i]['distance_miles']))
-    current_miles = int("{0:.2f}".format(sum(mile_list)))
+    current_miles = "{0:.2f}".format(sum(mile_list))
     main_dict['current_miles'] = current_miles #USED FOR CALCULATIONS
     current_run_title_label = []
     for i in list(sorted(dict_2)):

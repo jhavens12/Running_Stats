@@ -168,7 +168,7 @@ def generate_segmented_controls(view):
     #seg control top of page
     pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
     pseg_control.segments = ("Week 1","Week 2","Week 3","Week 4","Best Week")
-    SegmentedControl.action = pseg_select
+    pseg_control.action = pseg_select
     #SegmentedControl.selected_index
     view.add_subview(pseg_control)
 

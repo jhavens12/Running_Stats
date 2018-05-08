@@ -20,7 +20,7 @@ def vis(w,h):
     vis['psub_x'] = vis['x_margin']
     vis['psub_y'] = vis['y_margin'] + 30
 
-    vis['csub_h'] = h*.33
+    vis['csub_h'] = 184 #h*.33
     vis['csub_w'] = vis['psub_w']
     vis['csub_x'] = vis['x_margin']
     vis['csub_y'] = vis['psub_y'] + vis['psub_h'] + (vis['y_margin']/2) #y margin, height of psub, y margin

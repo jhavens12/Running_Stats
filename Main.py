@@ -148,7 +148,7 @@ view.add_subview(fsubview)
 
 #seg control
 pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
-pseg_control.segments = ("Week 1","Week 2","Week 3")
+pseg_control.segments = ("Week 1","Week 2","Week 3","Week 4","Best Week")
 #SegmentedControl.action
 #SegmentedControl.selected_index
 view.add_subview(pseg_control)
@@ -315,9 +315,9 @@ fbox_values = ['A','B','C','D','E','F','G']
 
 #box titles
 for n,label in enumerate(fbox_titles):
-    count = len(fbox_titles)
+    #count = len(fbox_titles)
     #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
-    vis['fbox_titles_y'] = (vis['fbox_titles_y'] * n) + vis['fbox_titles_h'] #first label at 0, second label at width*1 #account for title
+    vis['fbox_titles_y'] = (vis['fbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
     label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['fbox_titles_x'], vis['fbox_titles_y'], vis['fbox_titles_w'], vis['fbox_titles_h']) )
     label_title.text = label
     label_title.alignment = 1
@@ -327,9 +327,9 @@ for n,label in enumerate(fbox_titles):
     fsubview.add_subview(label_title)
 
 for n,label in enumerate(fbox_values):
-    count = len(fbox_values)
+    #count = len(fbox_values)
     #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
-    vis['fbox_values_y'] = (vis['fbox_values_y'] * n) + vis['fbox_titles_h'] #first label at 0, second label at width*1
+    vis['fbox_values_y'] = (vis['fbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
     label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['fbox_values_x'], vis['fbox_values_y'], vis['fbox_values_w'], vis['fbox_values_h']) )
     label_title.text = label
     label_title.alignment = 1

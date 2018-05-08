@@ -2,6 +2,7 @@
 import ui
 from pprint import pprint
 import datetime
+import build
 
 w,h = ui.get_screen_size()
 view = ui.View(bg_color = 'white', frame = (0,0,w,h)) #main view

@@ -153,50 +153,61 @@ view.add_subview(fsubview)
 def generate_segmented_controls(view):
     def pseg_select(sender):
         if sender.selected_index == 0:
-            print("week 1")
+            print("pseg week 1")
             #period(master_dict,0,1)
         if sender.selected_index == 1:
-            print("week 2")
+            print("pseg week 2")
             #period(master_dict,1,2)
         if sender.selected_index == 2:
-            print("week 3")
+            print("pseg week 3")
             #period(master_dict,2,3)
         elif sender.selected_index == 3:
-            print("week 4")
+            print("pseg week 4")
             #period(master_dict,3,4)
+
+    def fseg_select(sender):
+        if sender.selected_index == 0:
+            print("fseg monthly")
+            #period(master_dict,0,1)
+        elif sender.selected_index == 1:
+            print("fseg yearly")
+            #period(master_dict,1,2)
 
     #seg control top of page
     pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
     pseg_control.segments = ("Week 1","Week 2","Week 3","Week 4","Best Week")
     pseg_control.action = pseg_select
-    #SegmentedControl.selected_index
     view.add_subview(pseg_control)
 
     #seg control bottom of page
     fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
     fseg_control.segments = ("Monthly","Yearly")
-    #SegmentedControl.action
-    #SegmentedControl.selected_index
+    fseg_control.action = fseg_select
     view.add_subview(fseg_control)
 
+pseg_info = {'title':'Title', 'subtitle_title':'Subtitle', 'subtitle_value':'Subtitle Value'}
 
 
-def generate_psubview(psubview):
+def generate_psubview(psubview,pseg_info): #give the subview and list of information and this generates the rest, adds to subview given
+
+    box_titles = ['Date','Distance','Pace','Duration','Elevation']
+    box_values = ['Sun Apr 29','3.34','9:14','0:34:14','155.55']
+    total_values = ['13.02','8:49','0:21:00','1000.89']
 
     #title
     ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['ptitle_x'], vis['ptitle_y'], vis['ptitle_w'], vis['ptitle_h']))
-    ptitle.text = "ptitle"
+    ptitle.text = pseg_info['title']
     ptitle.alignment = 1 #1 is center
     psubview.add_subview(ptitle)
 
     #subtitles
     psubtitle_title = ui.Label(name = 'psubtitle_title', bg_color ='gray', frame = (vis['psubtitle_title_x'], vis['psubtitle_title_y'], vis['psubtitle_title_w'], vis['psubtitle_title_h']))
-    psubtitle_title.text = "subtitle title"
+    psubtitle_title.text = pseg_info['subtitle_title']
     psubtitle_title.alignment = 1 #1 is center
     psubview.add_subview(psubtitle_title)
 
     psubtitle_value = ui.Label(name = 'psubtitle_value', bg_color ='pink', frame = (vis['psubtitle_value_x'], vis['psubtitle_value_y'], vis['psubtitle_value_w'], vis['psubtitle_value_h']))
-    psubtitle_value.text = "subtitle value"
+    psubtitle_value.text = pseg_info['subtitle_value']
     psubtitle_value.alignment = 1 #1 is center
     psubview.add_subview(psubtitle_value)
 

@@ -24,7 +24,7 @@ def scribble(past_ten_percent,past_miles,runs_per_week,current_miles,current_wee
     else:
         mpr = "0"
 
-    return remaining_miles,mpr
+    return remaining_miles
 
 def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 1 for last week
 
@@ -104,8 +104,11 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     main_dict['total_values'].append(str(current_elevation_total))
 
     #remaining
-    miles_remain,mpr = scribble(past_ten_percent,past_miles,runs_per_week,current_info['current_miles'],current_info['current_week_count'])
-    main_dict['remaining_miles'] = miles_remain
+    current_miles = current_info['current_miles']
+    current_week_count = current_info['current_week_count']
+    #miles_remain,mpr = scribble(past_ten_percent,past_miles,runs_per_week,current_info['current_miles'],current_info['current_week_count'])
+    mr, mpr = scribble(past_ten_percent, past_miles, runs_per_week, current_miles, current_week_count)
+    main_dict['remaining_miles'] = mr
     main_dict['remaining_per_run'] = mpr
 
     return main_dict

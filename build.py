@@ -15,7 +15,7 @@ runs_per_week = 3
 
 master_dict = get_data.my_filtered_activities()
 
-def period(Sunday,Monday): #given master dict copy, and then 0 and 1 for last week
+def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 1 for last week
 
     main_dict = {} #main dictionary to add values to and then return
     dict_1 = master_dict.copy() #create dictionary to manipulate
@@ -93,24 +93,23 @@ def period(Sunday,Monday): #given master dict copy, and then 0 and 1 for last we
     main_dict['total_values'].append(str(current_elevation_total))
 
     #remaining
-    #remaining(past_ten_percent,past_miles,runs_per_week)
-    #main_dict['remaining_miles']
-    #main_dict['remaining_per_run']
+    remaining_miles, mpr = remaining(past_ten_percent,past_miles,runs_per_week,current_info['current_miles'],current_info['current_week_count'])
+    main_dict['remaining_miles'] = remaining_miles
+    main_dict['remaining_per_run'] = mpr
 
     return main_dict
 
-def remaining(past_ten_percent,past_miles,runs_per_week):
+def remaining(past_ten_percent,past_miles,runs_per_week,current_miles,current_week_count):
     remaining_miles = ("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles)))
 
-    label40= v['label40']
-    label40.text = str(remaining_miles)
+    remaining_miles = str(remaining_miles)
 
-    label41= v['label41']
     if float(runs_per_week)-float(current_week_count) != 0:
         miles_per_run_remaining = float(remaining_miles)/(runs_per_week-float(current_week_count))
-        label41.text = format_text(miles_per_run_remaining)
+        mpr = format_text(miles_per_run_remaining)
     else:
-        label41.text = "0"
+        mpr = "0"
+    return remaining_miles,mpr
 
 def current_period():
     main_dict = {}
@@ -125,11 +124,13 @@ def current_period():
             del dict_2[key]
 
     current_week_count = calc.activity_count(dict_2)
+    main_dict['current_week_count'] = current_week_count #USED FOR CALCULATIONS
+
     mile_list = []
     for i in dict_2:
         mile_list.append(float(dict_2[i]['distance_miles']))
     current_miles = "{0:.2f}".format(sum(mile_list))
-
+    main_dict['current_miles'] = current_miles #USED FOR CALCULATIONS
     current_run_title_label = []
     for i in list(sorted(dict_2)):
         current_run_title_label.append(dict_2[i]['weekday_short_date'])
@@ -166,7 +167,7 @@ def current_period():
         current_elevation_list.append(float(dict_2[i]['total_elevation_feet']))
     current_elevation_total = sum(current_elevation_list)
 
-    main_dict['Title'] = (get_time.weekday(get_time.LM(0)) + " " + str(get_time.LM(0).day) + " - " + get_time.weekday(get_time.now()) + " " + str(get_time.now().day))
+    main_dict['title'] = (get_time.weekday(get_time.LM(0)) + " " + str(get_time.LM(0).day) + " - " + get_time.weekday(get_time.now()) + " " + str(get_time.now().day))
     main_dict['subtitle1_title'] = "Remaining:"
     main_dict['subtitle2_title'] = "Per Run:"
     main_dict['subtitle1_value'] = "0"

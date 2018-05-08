@@ -155,20 +155,20 @@ def generate_segmented_controls(view):
     def pseg_select(sender):
         if sender.selected_index == 0:
             print("pseg week 1")
-            pseg_info = build.period(0,1)
-            generate_psubview(psubview,pseg_info)
+            pseg_info = build.period(0,1,current_info)
+            generate_psubview(psubview,csubview,pseg_info)
         if sender.selected_index == 1:
             print("pseg week 2")
-            pseg_info = build.period(1,2)
-            generate_psubview(psubview,pseg_info)
+            pseg_info = build.period(1,2,current_info)
+            generate_psubview(psubview,csubview,pseg_info)
         if sender.selected_index == 2:
             print("pseg week 3")
-            pseg_info = build.period(2,3)
-            generate_psubview(psubview,pseg_info)
+            pseg_info = build.period(2,3,current_info)
+            generate_psubview(psubview,csubview,pseg_info)
         elif sender.selected_index == 3:
             print("pseg week 4")
-            pseg_info = build.period(3,4)
-            generate_psubview(psubview,pseg_info)
+            pseg_info = build.period(3,4,current_info)
+            generate_psubview(psubview,csubview,pseg_info)
 
     def fseg_select(sender):
         if sender.selected_index == 0:
@@ -197,10 +197,9 @@ def generate_segmented_controls(view):
 # pseg_info['box_values'] = ['Mon Apr 27\nSun Apr 29','3.34','9:14','0:34:14','155.55']
 # pseg_info['total_values'] = ['13.02','8:49','0:21:00','1000.89']
 
-pseg_info = build.period(0,1)
 
 
-def generate_psubview(psubview,pseg_info): #give the subview and list of information and this generates the rest, adds to subview given
+def generate_psubview(psubview,csubview,pseg_info): #give the subview and list of information and this generates the rest, adds to subview given
 
     #title
     ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['ptitle_x'], vis['ptitle_y'], vis['ptitle_w'], vis['ptitle_h']))
@@ -266,10 +265,18 @@ def generate_psubview(psubview,pseg_info): #give the subview and list of informa
         label_title.border_width = 1
         psubview.add_subview(label_title)
 
+    #remaining - MODIFY CSUBVIEW HERE
+    csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='pink', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
+    csubtitle1_value.text = pseg_info['remaining_miles']
+    csubtitle1_value.alignment = 1 #1 is center
+    csubview.add_subview(csubtitle1_value)
+
+    csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='pink', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
+    csubtitle2_value.text = pseg_info['remaining_per_run']
+    csubtitle2_value.alignment = 1 #1 is center
+    csubview.add_subview(csubtitle2_value)
+
 def generate_csubview(csubview,cseg_info):
-    box_titles = ['Date','Distance','Pace','Duration','Elevation']
-    box_values = ['Sun Apr 29','3.34','9:14','0:34:14','155.55']
-    total_values = ['13.02','8:49','0:21:00','1000.89']
 
     #Title
     ctitle = ui.Label(name = 'ctitle', bg_color ='yellow', frame = (vis['ctitle_x'], vis['ctitle_y'], vis['ctitle_w'], vis['ctitle_h']))
@@ -283,20 +290,22 @@ def generate_csubview(csubview,cseg_info):
     csubtitle1_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle1_title)
 
-    csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='pink', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
-    csubtitle1_value.text = cseg_info['subtitle1_value']
-    csubtitle1_value.alignment = 1 #1 is center
-    csubview.add_subview(csubtitle1_value)
+    #moved to above
+    # csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='pink', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
+    # csubtitle1_value.text = cseg_info['subtitle1_value']
+    # csubtitle1_value.alignment = 1 #1 is center
+    # csubview.add_subview(csubtitle1_value)
 
     csubtitle2_title = ui.Label(name = 'csubtitle2_title', bg_color ='gray', frame = (vis['csubtitle2_title_x'], vis['csubtitle2_title_y'], vis['csubtitle2_title_w'], vis['csubtitle2_title_h']))
     csubtitle2_title.text = cseg_info['subtitle2_title']
     csubtitle2_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_title)
 
-    csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='pink', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
-    csubtitle2_value.text = cseg_info['subtitle2_value']
-    csubtitle2_value.alignment = 1 #1 is center
-    csubview.add_subview(csubtitle2_value)
+    #moved to above
+    # csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='pink', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
+    # csubtitle2_value.text = cseg_info['subtitle2_value']
+    # csubtitle2_value.alignment = 1 #1 is center
+    # csubview.add_subview(csubtitle2_value)
 
     #box titles
     for n,label in enumerate(cseg_info['box_titles']):
@@ -406,10 +415,15 @@ def generate_fsubview(fsubview):
         fsubview.add_subview(label_title)
 
 
-
 ##### run on open
-generate_segmented_controls(view) #build segmented controls
-generate_csubview(csubview,build.current_period()) #build csubview
+global current_info #so this doesn't need to be passed into functions everywhere
+current_info = build.current_period #get current info
+pseg_info = build.period(0,1,current_info) #build pseg, give current_info
 
+generate_segmented_controls(view) #build segmented controls
+
+
+generate_csubview(csubview,current_info) #build csubview
+generate_psubview(psubview,csubview,pseg_info) #generate first pview
 
 view.present(style='sheet', hide_title_bar=True)

@@ -9,7 +9,7 @@ view = ui.View(bg_color = 'white', frame = (0,0,w,h)) #main view
 
 def vis(w,h):
     vis = {}
-    vis['x_margin'] = 15
+    vis['x_margin'] = 5
     vis['y_margin'] = 20
 
     #SUBVIEWS

@@ -93,22 +93,21 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     main_dict['total_values'].append(str(current_elevation_total))
 
     #remaining
-    remaining_miles, mpr = remaining(past_ten_percent,past_miles,runs_per_week,current_info['current_miles'],current_info['current_week_count'])
+    remaining_miles,mpr = get_remaining(past_ten_percent,past_miles,runs_per_week,current_info['current_miles'],current_info['current_week_count'])
     main_dict['remaining_miles'] = remaining_miles
     main_dict['remaining_per_run'] = mpr
 
     return main_dict
 
-def remaining(past_ten_percent,past_miles,runs_per_week,current_miles,current_week_count):
-    remaining_miles = ("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles)))
-
-    remaining_miles = str(remaining_miles)
+def get_remaining(past_ten_percent,past_miles,runs_per_week,current_miles,current_week_count):
+    remaining_miles = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles)))
 
     if float(runs_per_week)-float(current_week_count) != 0:
         miles_per_run_remaining = float(remaining_miles)/(runs_per_week-float(current_week_count))
         mpr = format_text(miles_per_run_remaining)
     else:
         mpr = "0"
+
     return remaining_miles,mpr
 
 def current_period():

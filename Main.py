@@ -163,10 +163,12 @@ def generate_segmented_controls(view):
             generate_psubview(psubview,pseg_info)
         if sender.selected_index == 2:
             print("pseg week 3")
-            #period(master_dict,2,3)
+            pseg_info = build.period(2,3)
+            generate_psubview(psubview,pseg_info)
         elif sender.selected_index == 3:
             print("pseg week 4")
-            #period(master_dict,3,4)
+            pseg_info = build.period(3,4)
+            generate_psubview(psubview,pseg_info)
 
     def fseg_select(sender):
         if sender.selected_index == 0:
@@ -180,12 +182,14 @@ def generate_segmented_controls(view):
     pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
     pseg_control.segments = ("Week 1","Week 2","Week 3","Week 4","Best Week")
     pseg_control.action = pseg_select
+    pseg_control.selected_index = 0
     view.add_subview(pseg_control)
 
     #seg control bottom of page
     fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
     fseg_control.segments = ("Monthly","Yearly")
     fseg_control.action = fseg_select
+    fseg_control.selected_index = 0
     view.add_subview(fseg_control)
 
 # pseg_info = {'title':'Title', 'subtitle_title':'Subtitle', 'subtitle_value':'Subtitle Value', 'ptotals':'Total/AVG'}
@@ -262,41 +266,41 @@ def generate_psubview(psubview,pseg_info): #give the subview and list of informa
         label_title.border_width = 1
         psubview.add_subview(label_title)
 
-def generate_csubview(csubview):
+def generate_csubview(csubview,cseg_info):
     box_titles = ['Date','Distance','Pace','Duration','Elevation']
     box_values = ['Sun Apr 29','3.34','9:14','0:34:14','155.55']
     total_values = ['13.02','8:49','0:21:00','1000.89']
 
     #Title
     ctitle = ui.Label(name = 'ctitle', bg_color ='yellow', frame = (vis['ctitle_x'], vis['ctitle_y'], vis['ctitle_w'], vis['ctitle_h']))
-    ctitle.text = "ctitle"
+    ctitle.text = cseg_info['title']
     ctitle.alignment = 1 #1 is center
     csubview.add_subview(ctitle)
 
     #subtitles
     csubtitle1_title = ui.Label(name = 'csubtitle1_title', bg_color ='gray', frame = (vis['csubtitle1_title_x'], vis['csubtitle1_title_y'], vis['csubtitle1_title_w'], vis['csubtitle1_title_h']))
-    csubtitle1_title.text = "sub1 t"
+    csubtitle1_title.text = cseg_info['subtitle1_title']
     csubtitle1_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle1_title)
 
     csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='pink', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
-    csubtitle1_value.text = "sub1 v"
+    csubtitle1_value.text = cseg_info['subtitle1_value']
     csubtitle1_value.alignment = 1 #1 is center
     csubview.add_subview(csubtitle1_value)
 
     csubtitle2_title = ui.Label(name = 'csubtitle2_title', bg_color ='gray', frame = (vis['csubtitle2_title_x'], vis['csubtitle2_title_y'], vis['csubtitle2_title_w'], vis['csubtitle2_title_h']))
-    csubtitle2_title.text = "sub2 t"
+    csubtitle2_title.text = cseg_info['subtitle2_title']
     csubtitle2_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_title)
 
     csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='pink', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
-    csubtitle2_value.text = "sub2 v"
+    csubtitle2_value.text = cseg_info['subtitle2_value']
     csubtitle2_value.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_value)
 
     #box titles
-    for n,label in enumerate(box_titles):
-        count = len(box_titles)
+    for n,label in enumerate(cseg_info['box_titles']):
+        count = len(cseg_info['box_titles'])
         vis['box_titles_w'] = vis['csub_w']/count #divide width by number of labels
         vis['box_titles_x'] = vis['box_titles_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
@@ -307,8 +311,8 @@ def generate_csubview(csubview):
         label_title.border_width = 1
         csubview.add_subview(label_title)
 
-    for n,label in enumerate(box_values):
-        count = len(box_values)
+    for n,label in enumerate(cseg_info['box_values']):
+        count = len(cseg_info['box_values'])
         vis['box_values_w'] = vis['csub_w']/count #divide width by number of labels
         vis['box_values_x'] = vis['box_values_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
@@ -321,13 +325,13 @@ def generate_csubview(csubview):
 
     #total title/labels
     ctotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
-    ctotal_title.text = "ctotals"
+    ctotal_title.text = cseg_info['total_title']
     ctotal_title.alignment = 1 #1 is center
     csubview.add_subview(ctotal_title)
 
-    for n,label in enumerate(total_values):
+    for n,label in enumerate(cseg_info['total_values']):
         n = n+1 #account for first box being the static label
-        count = len(total_values)
+        count = len(cseg_info['total_values'])
         vis['total_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
         vis['total_values_x'] = vis['total_values_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
@@ -403,8 +407,9 @@ def generate_fsubview(fsubview):
 
 
 
-#####
-generate_segmented_controls(view)
+##### run on open
+generate_segmented_controls(view) #build segmented controls
+generate_csubview(csubview,build.current_peroid()) #build csubview
 
 
 view.present(style='sheet', hide_title_bar=True)

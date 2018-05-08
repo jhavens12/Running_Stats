@@ -208,12 +208,12 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     for n,label in enumerate(pseg_info['box_titles']): #enumerate over list
         count = len(pseg_info['box_titles'])
         if n == 0:
-            first_box_w = 30
+            first_box_w = 120
             vis['box_titles_w'] = first_box_w
             vis['box_titles_x'] = 0
         else:
             vis['box_titles_w'] = (vis['psub_w']-first_box_w)/count #divide width by number of labels
-            vis['box_titles_x'] = (vis['box_titles_w'] * n) + first_box_w#first label at 0, second label at width*1
+            vis['box_titles_x'] = (vis['box_titles_w'] * (n-1)) + first_box_w#first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
         label_title.number_of_lines = 0
         label_title.text = label #since list, label is the value

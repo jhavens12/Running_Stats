@@ -124,7 +124,7 @@ def vis(w,h):
 
     vis['fbox_values_h'] = vis['fbox_titles_h']
     vis['fbox_values_w'] = (vis['psub_w']/2) * .25
-    vis['fbox_values_x'] = vis['psub_w']/4
+    vis['fbox_values_x'] = vis['fbox_titles_w']
     vis['fbox_values_y'] = 1 #this needs to be changed
 
     #box titles RIGHT

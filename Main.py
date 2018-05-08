@@ -28,7 +28,7 @@ def vis(w,h):
     vis['fsub_h'] = h*.26
     vis['fsub_w'] = vis['psub_w']
     vis['fsub_x'] = vis['x_margin']
-    vis['fsub_y'] = vis['csub_y'] + vis['csub_h'] + (vis['y_margin']/2) #y margin, height of psub, y margin
+    vis['fsub_y'] = vis['csub_y'] + vis['csub_h'] + (vis['y_margin']/2) +30 #y margin, height of psub, y margin #add segcontrol height
 
     ########################################################PSUB########################################################
     #SEGMENTED CONTROL

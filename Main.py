@@ -66,7 +66,7 @@ def vis(w,h):
 
     #Bottom Labels
     vis['total_title_h'] = 32
-    vis['total_title_w'] = vis['psub_w']/5
+    vis['total_title_w'] = vis['first_box_width']
     vis['total_title_x'] = 0
     vis['total_title_y'] = 150
 
@@ -254,7 +254,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     for n,label in enumerate(pseg_info['total_values']):
         n = n+1 #account for first box being the static label
         count = len(pseg_info['total_values'])
-        vis['total_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
+        vis['total_values_w'] = (vis['psub_w']-vis['total_title_w'])/(count+1) #divide width by number of labels
         vis['total_values_x'] = vis['total_values_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label

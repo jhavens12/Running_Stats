@@ -416,6 +416,6 @@ generate_segmented_controls(view) #build segmented controls
 
 generate_csubview(csubview,current_info) #build csubview
 generate_psubview(psubview,csubview,pseg_info) #generate first pview
-generate_fsubview(fsubview,build.monthly())
+generate_fsubview(fsubview,build.monthly(4))
 
 view.present(style='sheet', hide_title_bar=True)

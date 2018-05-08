@@ -25,7 +25,7 @@ def vis(w,h):
     vis['csub_x'] = vis['x_margin']
     vis['csub_y'] = vis['psub_y'] + vis['psub_h'] + (vis['y_margin']/2) #y margin, height of psub, y margin
 
-    vis['fsub_h'] = h*.26
+    vis['fsub_h'] = h*.29
     vis['fsub_w'] = vis['psub_w']
     vis['fsub_x'] = vis['x_margin']
     vis['fsub_y'] = vis['csub_y'] + vis['csub_h'] + (vis['y_margin']/2) +30 #y margin, height of psub, y margin #add segcontrol height
@@ -112,6 +112,22 @@ def vis(w,h):
     vis['fseg_control_x'] = vis['x_margin']
     vis['fseg_control_y'] = (vis['y_margin']/2) + vis['csub_h'] + vis['csub_y'] #margin plus the view above position and height
 
+    #LABELS
+    vis['ftitle_h'] = 20
+    vis['ftitle_w'] = vis['psub_w']
+    vis['ftitle_x'] = 0
+    vis['ftitle_y'] = 0
+
+    #box titles
+    vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
+    vis['fbox_titles_w'] = vis['psub_w']/4
+    vis['fbox_titles_x'] = 0
+    vis['fbox_titles_y'] = 1 #this needs to be changed
+
+    vis['fbox_values_h'] = vis['fbox_titles_h']
+    vis['fbox_values_w'] = vis['psub_w']/4 #this is later changed dynamically
+    vis['fbox_values_x'] = (vis['psub_w']/4) #this is later changed dynamically
+    vis['fbox_values_y'] = 1 #this needs to be changed
 
     return vis
 
@@ -287,5 +303,58 @@ fseg_control.segments = ("Monthly","Yearly")
 #SegmentedControl.action
 #SegmentedControl.selected_index
 view.add_subview(fseg_control)
+
+#title
+ftitle = ui.Label(name = 'ftitle', bg_color ='yellow', frame = (vis['ftitle_x'], vis['ftitle_y'], vis['ftitle_w'], vis['ftitle_h']))
+ftitle.text = "ftitle"
+ftitle.alignment = 1 #1 is center
+fsubview.add_subview(ftitle)
+
+fbox_titles = list(range(1,8))
+fbox_values = list(range(1,8))
+
+#box titles
+for n,label in enumerate(fbox_titles):
+    count = len(fbox_titles)
+    #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
+    vis['fbox_titles_y'] = (vis['fbox_titles_y'] * n) + vis['fbox_titles_h'] #first label at 0, second label at width*1 #account for title
+    label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['fbox_titles_x'], vis['fbox_titles_y'], vis['fbox_titles_w'], vis['fbox_titles_h']) )
+    label_title.text = label
+    label_title.alignment = 1
+    label_title.font =  ('<system>',14)
+    label_title.border_color = 'black'
+    label_title.border_width = 1
+    fsubview.add_subview(label_title)
+
+for n,label in enumerate(fbox_values):
+    count = len(fbox_values)
+    #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
+    vis['fbox_values_x'] = (vis['fbox_values_w'] * n) + vis['fbox_titles_h'] #first label at 0, second label at width*1
+    label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['fbox_values_x'], vis['fbox_values_y'], vis['fbox_values_w'], vis['fbox_values_h']) )
+    label_title.text = label
+    label_title.alignment = 1
+    label_title.font =  ('<system>',10)
+    label_title.border_color = 'black'
+    label_title.border_width = 1
+    fsubview.add_subview(label_title)
+
+
+
+
+    #box titles
+    vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
+    vis['fbox_titles_w'] = vis['psub_w']/4
+    vis['fbox_titles_x'] = 0
+    vis['fbox_titles_y'] = 1 #this needs to be changed
+
+    vis['fbox_values_h'] = vis['fbox_titles_h']
+    vis['fbox_values_w'] = vis['psub_w']/4 #this is later changed dynamically
+    vis['fbox_values_x'] = (vis['psub_w']/4) #this is later changed dynamically
+    vis['fbox_values_y'] = 1 #this needs to be changed
+
+
+
+
+
 
 view.present(style='sheet', hide_title_bar=True)

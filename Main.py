@@ -329,7 +329,7 @@ for n,label in enumerate(fbox_titles):
 for n,label in enumerate(fbox_values):
     count = len(fbox_values)
     #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
-    vis['fbox_values_x'] = (vis['fbox_values_w'] * n) + vis['fbox_titles_h'] #first label at 0, second label at width*1
+    vis['fbox_values_y'] = (vis['fbox_values_y'] * n) + vis['fbox_titles_h'] #first label at 0, second label at width*1
     label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['fbox_values_x'], vis['fbox_values_y'], vis['fbox_values_w'], vis['fbox_values_h']) )
     label_title.text = label
     label_title.alignment = 1

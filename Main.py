@@ -155,7 +155,7 @@ def generate_segmented_controls(view):
     def pseg_select(sender):
         if sender.selected_index == 0:
             print("pseg week 1")
-            pseg_info = build.period(0,1,current_info)
+            pseg_info = build.period(0,1,current_info) #build pseg info, give current stats to find remaining_miles and MPR
             generate_psubview(psubview,csubview,pseg_info)
         if sender.selected_index == 1:
             print("pseg week 2")
@@ -191,13 +191,6 @@ def generate_segmented_controls(view):
     fseg_control.action = fseg_select
     fseg_control.selected_index = 0
     view.add_subview(fseg_control)
-
-# pseg_info = {'title':'Title', 'subtitle_title':'Subtitle', 'subtitle_value':'Subtitle Value', 'ptotals':'Total/AVG'}
-# pseg_info['box_titles'] = ['Date','Distance','Pace','Duration','Elevation']
-# pseg_info['box_values'] = ['Mon Apr 27\nSun Apr 29','3.34','9:14','0:34:14','155.55']
-# pseg_info['total_values'] = ['13.02','8:49','0:21:00','1000.89']
-
-
 
 def generate_psubview(psubview,csubview,pseg_info): #give the subview and list of information and this generates the rest, adds to subview given
 
@@ -351,21 +344,21 @@ def generate_csubview(csubview,cseg_info):
         label_title.border_width = 1
         csubview.add_subview(label_title)
 
-def generate_fsubview(fsubview):
+def generate_fsubview(fsubview,fseg_info):
     #title
     ftitle = ui.Label(name = 'ftitle', bg_color ='yellow', frame = (vis['ftitle_x'], vis['ftitle_y'], vis['ftitle_w'], vis['ftitle_h']))
     ftitle.text = "ftitle"
     ftitle.alignment = 1 #1 is center
     fsubview.add_subview(ftitle)
 
-    fbox_titles = ['1','2','3','4','5','6','7']
-    fbox_values = ['A','B','C','D','E','F','G']
+    # fbox_titles = ['1','2','3','4','5','6','7']
+    # fbox_values = ['A','B','C','D','E','F','G']
 
     fbox_titles2 = ['8','9','10','11','12','13','14']
     fbox_values2 = ['H','I','J','K','L','M','N']
 
     #box titles LEFT
-    for n,label in enumerate(fbox_titles):
+    for n,label in enumerate(fseg_info['fbox_titles']):
         #count = len(fbox_titles)
         #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
         vis['fbox_titles_y'] = (vis['fbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
@@ -377,7 +370,7 @@ def generate_fsubview(fsubview):
         label_title.border_width = 1
         fsubview.add_subview(label_title)
 
-    for n,label in enumerate(fbox_values):
+    for n,label in enumerate(fseg_info['fbox_values']):
         #count = len(fbox_values)
         #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
         vis['fbox_values_y'] = (vis['fbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
@@ -389,41 +382,40 @@ def generate_fsubview(fsubview):
         label_title.border_width = 1
         fsubview.add_subview(label_title)
 
-    #box titles RIGHT
-    for n,label in enumerate(fbox_titles2):
-        #count = len(fbox_titles)
-        #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
-        vis['frbox_titles_y'] = (vis['frbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
-        label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['frbox_titles_x'], vis['frbox_titles_y'], vis['frbox_titles_w'], vis['frbox_titles_h']) )
-        label_title.text = label
-        label_title.alignment = 1
-        label_title.font =  ('<system>',14)
-        label_title.border_color = 'black'
-        label_title.border_width = 1
-        fsubview.add_subview(label_title)
-
-    for n,label in enumerate(fbox_values2):
-        #count = len(fbox_values)
-        #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
-        vis['frbox_values_y'] = (vis['frbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
-        label_title = ui.Label(name = label, bg_color = 'pink', frame = (vis['frbox_values_x'], vis['frbox_values_y'], vis['frbox_values_w'], vis['frbox_values_h']) )
-        label_title.text = label
-        label_title.alignment = 1
-        label_title.font =  ('<system>',10)
-        label_title.border_color = 'black'
-        label_title.border_width = 1
-        fsubview.add_subview(label_title)
-
+    # #box titles RIGHT
+    # for n,label in enumerate(fbox_titles2):
+    #     #count = len(fbox_titles)
+    #     #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
+    #     vis['frbox_titles_y'] = (vis['frbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
+    #     label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['frbox_titles_x'], vis['frbox_titles_y'], vis['frbox_titles_w'], vis['frbox_titles_h']) )
+    #     label_title.text = label
+    #     label_title.alignment = 1
+    #     label_title.font =  ('<system>',14)
+    #     label_title.border_color = 'black'
+    #     label_title.border_width = 1
+    #     fsubview.add_subview(label_title)
+    #
+    # for n,label in enumerate(fbox_values2):
+    #     #count = len(fbox_values)
+    #     #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
+    #     vis['frbox_values_y'] = (vis['frbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
+    #     label_title = ui.Label(name = label, bg_color = 'pink', frame = (vis['frbox_values_x'], vis['frbox_values_y'], vis['frbox_values_w'], vis['frbox_values_h']) )
+    #     label_title.text = label
+    #     label_title.alignment = 1
+    #     label_title.font =  ('<system>',10)
+    #     label_title.border_color = 'black'
+    #     label_title.border_width = 1
+    #     fsubview.add_subview(label_title)
 
 ##### run on open
 global current_info #so this doesn't need to be passed into functions everywhere
-current_info = build.current_period() #get current info
-pseg_info = build.period(0,1,current_info) #build pseg, give current_info
+current_info = build.current_period() #get current info, finds out current miles ran this week for pseg calculations
+pseg_info = build.period(0,1,current_info) #build pseg, give current_info for initial run
 
 generate_segmented_controls(view) #build segmented controls
 
-
 generate_csubview(csubview,current_info) #build csubview
 generate_psubview(psubview,csubview,pseg_info) #generate first pview
+generate_fsubview(fsubview,build.monthly())
 
 view.present(style='sheet', hide_title_bar=True)

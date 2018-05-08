@@ -11,7 +11,7 @@ import datetime #recently added
 import math #recently added
 
 
-runs_per_week = 3
+runs_per_week = 4
 
 master_dict = get_data.my_filtered_activities()
 
@@ -184,5 +184,67 @@ def current_period():
     main_dict['total_values'].append(str(current_pace_average))
     main_dict['total_values'].append(str(current_duration_total))
     main_dict['total_values'].append(str("{0:.2f}".format(current_elevation_total)))
+
+    return main_dict
+
+def monthly(runs_per_week):
+
+    main_dict = {}
+    main_dict['fbox_titles'] = []
+    main_dict['fbox_values'] = []
+
+    this_month_full = calc.monthly_daily_totals(master_dict.copy(),0,'distance_miles')
+    last_month_full = calc.monthly_daily_totals(master_dict.copy(),1,'distance_miles')
+    this_month = MTD(master_dict.copy(),0)
+    last_month = MTD(master_dict.copy(),1)
+    month_difference = this_month - last_month
+    now = datetime.datetime.now()
+    past = datetime.datetime(now.year, now.month - (0-1), 1) - (datetime.timedelta(days=1))
+    LOM = datetime.datetime(past.year, past.month, past.day, hour=23, minute=59, second=59)
+    days_remaining = LOM.day - now.day
+    #runs_per_week = 3
+    runs_remain = math.ceil(days_remaining*(runs_per_week/7))
+    monthly_dict = calc.monthly_stats(master_dict.copy())
+    max_miles = 0
+    for month in monthly_dict:
+        if monthly_dict[month]['miles_ran'] > max_miles:
+            max_miles = int(monthly_dict[month]['miles_ran'])
+            most_miles_month = month
+
+    #LABELS
+    main_dict['fbox_titles'].append("This Month")
+    main_dict['fbox_titles'].append("Run Count")
+    main_dict['fbox_titles'].append("Last Month")
+    main_dict['fbox_titles'].append("Run Count")
+    main_dict['fbox_titles'].append("Difference")
+    main_dict['fbox_titles'].append("Runs Remain")
+    main_dict['fbox_titles'].append("MPR Last Month")
+
+    #DATA
+    main_dict['fbox_values'].append(format_text(this_month))
+    main_dict['fbox_values'].append(format_text(len(this_month_full)))
+    main_dict['fbox_values'].append(format_text(last_month))
+    main_dict['fbox_values'].append(format_text(len(last_month_full)))
+    main_dict['fbox_values'].append(format_text(month_difference))
+    main_dict['fbox_values'].append(format_text(runs_remain))
+    main_dict['fbox_values'].append(format_text(abs(month_difference/runs_remain)))
+
+    # #
+    # main_dict['fbox_titles'].append("50 Miles Goal")
+    # main_dict['fbox_titles'].append("MPR to 50M")
+    # main_dict['fbox_titles'].append("")
+    # main_dict['fbox_titles'].append("Month Record")
+    # main_dict['fbox_titles'].append("MPR to Record")
+    # main_dict['fbox_titles'].append("")
+    # main_dict['fbox_titles'].append("")
+    #
+    # #
+    # main_dict['fbox_values'].append(format_text(this_month-50))
+    # main_dict['fbox_values'].append(format_text((50-this_month)/runs_remain))
+    # main_dict['fbox_values'].append("")
+    # main_dict['fbox_values'].append(max_miles)
+    # main_dict['fbox_values'].append(format_text((max_miles-this_month)/runs_remain))
+    # main_dict['fbox_values'].append("")
+    # main_dict['fbox_values'].append("")
 
     return main_dict

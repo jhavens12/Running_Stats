@@ -105,6 +105,13 @@ def vis(w,h):
     vis['csubtitle2_value_x'] = (vis['psub_w']/4) * 3 #fourth
     vis['csubtitle2_value_y'] = 20
 
+    ########################################################FSUB########################################################
+    #SEGMENTED CONTROL
+    vis['fseg_control_h'] = 30
+    vis['fseg_control_w'] = vis['psub_w']
+    vis['fseg_control_x'] = vis['x_margin']
+    vis['fseg_control_y'] = vis['y_margin'] + vis['csub_h'] + vis['csub_y'] #margin plus the view above position and height
+
 
     return vis
 
@@ -267,5 +274,18 @@ for n,label in enumerate(total_values):
     label_title.border_color = 'black'
     label_title.border_width = 1
     csubview.add_subview(label_title)
+
+########################################################FSUB########################################################
+########################################################FSUB########################################################
+########################################################FSUB########################################################
+########################################################FSUB########################################################
+########################################################FSUB########################################################
+
+#seg control
+fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
+fseg_control.segments = ("Monthly,"Yearly")
+#SegmentedControl.action
+#SegmentedControl.selected_index
+view.add_subview(fseg_control)
 
 view.present(style='sheet', hide_title_bar=True)

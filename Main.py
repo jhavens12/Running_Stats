@@ -155,10 +155,12 @@ def generate_segmented_controls(view):
     def pseg_select(sender):
         if sender.selected_index == 0:
             print("pseg week 1")
-            #period(master_dict,0,1)
+            pseg_info = build.period(0,1)
+            generate_psubview(psubview,pseg_info)
         if sender.selected_index == 1:
             print("pseg week 2")
-            #period(master_dict,1,2)
+            pseg_info = build.period(1,2)
+            generate_psubview(psubview,pseg_info)
         if sender.selected_index == 2:
             print("pseg week 3")
             #period(master_dict,2,3)
@@ -403,6 +405,6 @@ def generate_fsubview(fsubview):
 
 #####
 generate_segmented_controls(view)
-generate_psubview(psubview,pseg_info)
+
 
 view.present(style='sheet', hide_title_bar=True)

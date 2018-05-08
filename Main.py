@@ -186,11 +186,12 @@ def generate_segmented_controls(view):
     view.add_subview(fseg_control)
 
 pseg_info = {'title':'Title', 'subtitle_title':'Subtitle', 'subtitle_value':'Subtitle Value'}
+pseg_info['box_titles'] = ['Date','Distance','Pace','Duration','Elevation']
 
 
 def generate_psubview(psubview,pseg_info): #give the subview and list of information and this generates the rest, adds to subview given
 
-    box_titles = ['Date','Distance','Pace','Duration','Elevation']
+    #box_titles = ['Date','Distance','Pace','Duration','Elevation']
     box_values = ['Sun Apr 29','3.34','9:14','0:34:14','155.55']
     total_values = ['13.02','8:49','0:21:00','1000.89']
 
@@ -212,12 +213,12 @@ def generate_psubview(psubview,pseg_info): #give the subview and list of informa
     psubview.add_subview(psubtitle_value)
 
     #box titles
-    for n,label in enumerate(box_titles):
-        count = len(box_titles)
+    for n,label in enumerate(pseg_info['box_titles']): #enumerate over list
+        count = len(pseg_info['box_titles'])
         vis['box_titles_w'] = vis['psub_w']/count #divide width by number of labels
         vis['box_titles_x'] = vis['box_titles_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
-        label_title.text = label
+        label_title.text = label #since list, label is the value
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
@@ -398,5 +399,6 @@ def generate_fsubview(fsubview):
 
 #####
 generate_segmented_controls(view)
+generate_psubview(psubview,pseg_info)
 
 view.present(style='sheet', hide_title_bar=True)

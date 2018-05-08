@@ -252,10 +252,10 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
 
     #total value
     for n,label in enumerate(pseg_info['total_values']):
-        n = n+1 #account for first box being the static label
+        #n = n+1 #account for first box being the static label
         count = len(pseg_info['total_values'])
-        vis['total_values_w'] = (vis['psub_w']-vis['total_title_w'])/(count+1) #divide width by number of labels
-        vis['total_values_x'] = vis['total_values_w'] * n #first label at 0, second label at width*1
+        vis['total_values_w'] = (vis['psub_w']-vis['total_title_w'])/(count)
+        vis['total_values_x'] = vis['total_values_w'] + (vis['total_values_w'] * n)
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1

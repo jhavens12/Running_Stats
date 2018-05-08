@@ -342,15 +342,15 @@ for n,label in enumerate(fbox_values):
 
 
     #box titles
-    vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
-    vis['fbox_titles_w'] = vis['psub_w']/4
-    vis['fbox_titles_x'] = 0
-    vis['fbox_titles_y'] = 1 #this needs to be changed
-
-    vis['fbox_values_h'] = vis['fbox_titles_h']
-    vis['fbox_values_w'] = vis['psub_w']/4 #this is later changed dynamically
-    vis['fbox_values_x'] = (vis['psub_w']/4) #this is later changed dynamically
-    vis['fbox_values_y'] = 1 #this needs to be changed
+    # vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
+    # vis['fbox_titles_w'] = vis['psub_w']/4
+    # vis['fbox_titles_x'] = 0
+    # vis['fbox_titles_y'] = 1 #this needs to be changed
+    #
+    # vis['fbox_values_h'] = vis['fbox_titles_h']
+    # vis['fbox_values_w'] = vis['psub_w']/4 #this is later changed dynamically
+    # vis['fbox_values_x'] = (vis['psub_w']/4) #this is later changed dynamically
+    # vis['fbox_values_y'] = 1 #this needs to be changed
 
 
 

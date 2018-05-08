@@ -310,8 +310,8 @@ ftitle.text = "ftitle"
 ftitle.alignment = 1 #1 is center
 fsubview.add_subview(ftitle)
 
-fbox_titles = list(range(1,8))
-fbox_values = list(range(1,8))
+fbox_titles = ['1','2','3','4','5','6','7']
+fbox_values = ['1','2','3','4','5','6','7']
 
 #box titles
 for n,label in enumerate(fbox_titles):

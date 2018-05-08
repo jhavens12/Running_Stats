@@ -199,6 +199,8 @@ def monthly(runs_per_week):
     main_dict = {}
     main_dict['flbox_titles'] = []
     main_dict['flbox_values'] = []
+    main_dict['frbox_titles'] = []
+    main_dict['frbox_values'] = []
 
     this_month_full = calc.monthly_daily_totals(master_dict.copy(),0,'distance_miles')
     last_month_full = calc.monthly_daily_totals(master_dict.copy(),1,'distance_miles')

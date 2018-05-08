@@ -15,6 +15,9 @@ runs_per_week = 3
 
 master_dict = get_data.my_filtered_activities()
 
+def format_text(x):
+    return str("{0:.2f}".format(x))
+
 def scribble(past_ten_percent,past_miles,runs_per_week,current_miles,current_week_count):
     remaining_miles = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles)))
 
@@ -103,13 +106,16 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     main_dict['total_values'].append(str(current_duration_total))
     main_dict['total_values'].append(str(current_elevation_total))
 
-    #remaining
+    #calculate remaining
     current_miles = current_info['current_miles']
     current_week_count = current_info['current_week_count']
-    #miles_remain,mpr = scribble(past_ten_percent,past_miles,runs_per_week,current_info['current_miles'],current_info['current_week_count'])
-    mr, mpr = scribble(past_ten_percent, past_miles, runs_per_week, current_miles, current_week_count)
-    main_dict['remaining_miles'] = mr
-    main_dict['remaining_per_run'] = mpr
+
+    main_dict['remaining_miles'] = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles)))
+    if float(runs_per_week)-float(current_week_count) != 0:
+        miles_per_run_remaining = float(remaining_miles)/(runs_per_week-float(current_week_count))
+        main_dict['remaining_per_run'] = format_text(miles_per_run_remaining)
+    else:
+        main_dict['remaining_per_run'] = "0"
 
     return main_dict
 

@@ -185,10 +185,12 @@ def generate_segmented_controls(view):
     fseg_control.action = fseg_select
     view.add_subview(fseg_control)
 
-pseg_info = {'title':'Title', 'subtitle_title':'Subtitle', 'subtitle_value':'Subtitle Value', 'ptotals':'Total/AVG'}
-pseg_info['box_titles'] = ['Date','Distance','Pace','Duration','Elevation']
-pseg_info['box_values'] = ['Mon Apr 27\nSun Apr 29','3.34','9:14','0:34:14','155.55']
-pseg_info['total_values'] = ['13.02','8:49','0:21:00','1000.89']
+# pseg_info = {'title':'Title', 'subtitle_title':'Subtitle', 'subtitle_value':'Subtitle Value', 'ptotals':'Total/AVG'}
+# pseg_info['box_titles'] = ['Date','Distance','Pace','Duration','Elevation']
+# pseg_info['box_values'] = ['Mon Apr 27\nSun Apr 29','3.34','9:14','0:34:14','155.55']
+# pseg_info['total_values'] = ['13.02','8:49','0:21:00','1000.89']
+
+pseg_info = build.period(0,1)
 
 
 def generate_psubview(psubview,pseg_info): #give the subview and list of information and this generates the rest, adds to subview given
@@ -237,8 +239,9 @@ def generate_psubview(psubview,pseg_info): #give the subview and list of informa
 
     #total title/labels
     ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
-    ptotal_title.text = pseg_info['ptotals']
+    ptotal_title.text = pseg_info['total_title']
     ptotal_title.alignment = 1 #1 is center
+    ptotal_title.font =  ('<system>',10)
     psubview.add_subview(ptotal_title)
 
     for n,label in enumerate(pseg_info['total_values']):
@@ -249,7 +252,7 @@ def generate_psubview(psubview,pseg_info): #give the subview and list of informa
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',10)
+        label_title.font =  ('<system>',12)
         label_title.border_color = 'black'
         label_title.border_width = 1
         psubview.add_subview(label_title)

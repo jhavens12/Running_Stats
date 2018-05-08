@@ -358,7 +358,7 @@ def generate_fsubview(fsubview,fseg_info):
     fbox_values2 = ['H','I','J','K','L','M','N']
 
     #box titles LEFT
-    for n,label in enumerate(fseg_info['fbox_titles']):
+    for n,label in enumerate(fseg_info['flbox_titles']):
         #count = len(fbox_titles)
         #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
         vis['fbox_titles_y'] = (vis['fbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
@@ -370,7 +370,7 @@ def generate_fsubview(fsubview,fseg_info):
         label_title.border_width = 1
         fsubview.add_subview(label_title)
 
-    for n,label in enumerate(fseg_info['fbox_values']):
+    for n,label in enumerate(fseg_info['flbox_values']):
         #count = len(fbox_values)
         #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
         vis['fbox_values_y'] = (vis['fbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
@@ -383,29 +383,29 @@ def generate_fsubview(fsubview,fseg_info):
         fsubview.add_subview(label_title)
 
     # #box titles RIGHT
-    # for n,label in enumerate(fbox_titles2):
-    #     #count = len(fbox_titles)
-    #     #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
-    #     vis['frbox_titles_y'] = (vis['frbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
-    #     label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['frbox_titles_x'], vis['frbox_titles_y'], vis['frbox_titles_w'], vis['frbox_titles_h']) )
-    #     label_title.text = label
-    #     label_title.alignment = 1
-    #     label_title.font =  ('<system>',14)
-    #     label_title.border_color = 'black'
-    #     label_title.border_width = 1
-    #     fsubview.add_subview(label_title)
-    #
-    # for n,label in enumerate(fbox_values2):
-    #     #count = len(fbox_values)
-    #     #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
-    #     vis['frbox_values_y'] = (vis['frbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
-    #     label_title = ui.Label(name = label, bg_color = 'pink', frame = (vis['frbox_values_x'], vis['frbox_values_y'], vis['frbox_values_w'], vis['frbox_values_h']) )
-    #     label_title.text = label
-    #     label_title.alignment = 1
-    #     label_title.font =  ('<system>',10)
-    #     label_title.border_color = 'black'
-    #     label_title.border_width = 1
-    #     fsubview.add_subview(label_title)
+    for n,label in enumerate(fseg_info['frbox_titles']):
+        #count = len(fbox_titles)
+        #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
+        vis['frbox_titles_y'] = (vis['frbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
+        label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['frbox_titles_x'], vis['frbox_titles_y'], vis['frbox_titles_w'], vis['frbox_titles_h']) )
+        label_title.text = label
+        label_title.alignment = 1
+        label_title.font =  ('<system>',14)
+        label_title.border_color = 'black'
+        label_title.border_width = 1
+        fsubview.add_subview(label_title)
+
+    for n,label in enumerate(fseg_info['frbox_values']):
+        #count = len(fbox_values)
+        #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
+        vis['frbox_values_y'] = (vis['frbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
+        label_title = ui.Label(name = label, bg_color = 'pink', frame = (vis['frbox_values_x'], vis['frbox_values_y'], vis['frbox_values_w'], vis['frbox_values_h']) )
+        label_title.text = label
+        label_title.alignment = 1
+        label_title.font =  ('<system>',10)
+        label_title.border_color = 'black'
+        label_title.border_width = 1
+        fsubview.add_subview(label_title)
 
 ##### run on open
 global current_info #so this doesn't need to be passed into functions everywhere

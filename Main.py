@@ -118,12 +118,12 @@ def vis(w,h):
 
     #box titles LEFT
     vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
-    vis['fbox_titles_w'] = vis['psub_w']/4
+    vis['fbox_titles_w'] = (vis['psub_w']/2) * .75
     vis['fbox_titles_x'] = 0
     vis['fbox_titles_y'] = 1 #this needs to be changed
 
     vis['fbox_values_h'] = vis['fbox_titles_h']
-    vis['fbox_values_w'] = vis['psub_w']/4
+    vis['fbox_values_w'] = (vis['psub_w']/2) * .25
     vis['fbox_values_x'] = vis['psub_w']/4
     vis['fbox_values_y'] = 1 #this needs to be changed
 
@@ -350,12 +350,6 @@ def generate_fsubview(fsubview,fseg_info):
     ftitle.text = "ftitle"
     ftitle.alignment = 1 #1 is center
     fsubview.add_subview(ftitle)
-
-    # fbox_titles = ['1','2','3','4','5','6','7']
-    # fbox_values = ['A','B','C','D','E','F','G']
-
-    fbox_titles2 = ['8','9','10','11','12','13','14']
-    fbox_values2 = ['H','I','J','K','L','M','N']
 
     #box titles LEFT
     for n,label in enumerate(fseg_info['flbox_titles']):

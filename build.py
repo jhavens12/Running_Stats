@@ -220,6 +220,8 @@ def monthly(runs_per_week):
             max_miles = int(monthly_dict[month]['miles_ran'])
             most_miles_month = month
 
+
+    main_dict['title'] = "MONTH"
     #LABELS
     main_dict['flbox_titles'].append("This Month")
     main_dict['flbox_titles'].append("Run Count")
@@ -253,6 +255,93 @@ def monthly(runs_per_week):
     main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append(str(max_miles))
     main_dict['frbox_values'].append(format_text((max_miles-this_month)/runs_remain))
+    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("")
+
+    return main_dict
+
+def yearly(runs_per_week):
+    main_dict = {}
+    main_dict['flbox_titles'] = []
+    main_dict['flbox_values'] = []
+    main_dict['frbox_titles'] = []
+    main_dict['frbox_values'] = []
+    #this year
+    now = datetime.datetime.now()
+    past = datetime.datetime(now.year, now.month - (0-1), 1) - (datetime.timedelta(days=1))
+    LOM = datetime.datetime(past.year, past.month, past.day, hour=23, minute=59, second=59)
+    end_of_year = datetime.datetime(now.year, 12, 31)
+    days_remaining = LOM.day - now.day
+    #runs_per_week = 3
+
+    ytd_dict = master_dict.copy()
+    for key in list(ytd_dict):
+        if key < get_time.FOY():
+            del ytd_dict[key]
+    ytd_miles = []
+    for run in ytd_dict:
+        ytd_miles.append(float(ytd_dict[run]['distance_miles']))
+    miles_this_year = sum(ytd_miles)
+
+    #last year
+    timestamp = datetime.datetime.now()
+    past_ytd_dict = master_dict.copy()
+    for key in list(past_ytd_dict):
+        if key < get_time.PFOY():
+            del past_ytd_dict[key]
+        if key > datetime.datetime(timestamp.year - 1, timestamp.month, timestamp.day): #get date this time last year
+            del past_ytd_dict[key]
+    pytd_miles = []
+    for run in past_ytd_dict:
+        pytd_miles.append(float(past_ytd_dict[run]['distance_miles']))
+    miles_last_year_this_time = sum(pytd_miles)
+
+    goal_2018 = 600
+    MPD = goal_2018/365 #miels per day starting 1/1
+    day_of_year = now.timetuple().tm_yday #numerical value of day in the year
+    #day_of_year = LOM.timetuple().tm_yday #found the day of the last of month for some reason, changed to above
+    target_miles = MPD*day_of_year #what my current target_miles should be - NOT year long goal
+    remaining_ytd_miles = miles_this_year - target_miles #why is this named like this?
+    days_remaining_in_year = (end_of_year - now).days
+    print("Days remaining in year: "+str(days_remaining_in_year))
+
+    #new 3.6.18
+    goal_miles_left_in_year = goal_2018 - miles_this_year #reverse of remaining_ytd_miles for some reason
+    goal_miles_per_day_now = goal_miles_left_in_year/days_remaining_in_year
+    goal_miles_per_week_now = goal_miles_per_day_now*7
+    goal_miles_per_run_now = goal_miles_per_week_now/runs_per_week
+
+    main_dict['title'] = "YEAR"
+
+    main_dict['flbox_titles'].append("YTD Miles")
+    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("Last YTD by now")
+    main_dict['flbox_titles'].append("Difference")
+    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("")
+
+    main_dict['flbox_values'].append(format_text(miles_this_year)
+    main_dict['flbox_values'].append("")
+    main_dict['flbox_values'].append(format_text(miles_last_year_this_time)
+    main_dict['flbox_values'].append(format_text(miles_this_year-miles_last_year_this_time)
+    main_dict['flbox_values'].append("")
+    main_dict['flbox_values'].append("")
+    main_dict['flbox_values'].append("")
+
+    main_dict['frbox_titles'].append("18 Goal by today")
+    main_dict['frbox_titles'].append("Difference")
+    main_dict['frbox_titles'].append("Miles Per Day")
+    main_dict['frbox_titles'].append("Miles Per Week")
+    main_dict['frbox_titles'].append("Miles Per Run")
+    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
+
+    main_dict['frbox_values'].append(format_text(target_miles)
+    main_dict['frbox_values'].append(format_text(remaining_ytd_miles)
+    main_dict['frbox_values'].append(format_text(goal_miles_per_day_now)
+    main_dict['frbox_values'].append(format_text(goal_miles_per_week_now)
+    main_dict['frbox_values'].append(format_text(goal_miles_per_run_now)
     main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append("")
 

@@ -173,10 +173,10 @@ def generate_segmented_controls(view):
     def fseg_select(sender):
         if sender.selected_index == 0:
             print("fseg monthly")
-            #period(master_dict,0,1)
+            generate_fsubview(fsubview,build.monthly(4))
         elif sender.selected_index == 1:
             print("fseg yearly")
-            #period(master_dict,1,2)
+            generate_fsubview(fsubview,build.yearly(4))
 
     #seg control top of page
     pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
@@ -347,7 +347,7 @@ def generate_csubview(csubview,cseg_info):
 def generate_fsubview(fsubview,fseg_info):
     #title
     ftitle = ui.Label(name = 'ftitle', bg_color ='yellow', frame = (vis['ftitle_x'], vis['ftitle_y'], vis['ftitle_w'], vis['ftitle_h']))
-    ftitle.text = "ftitle"
+    ftitle.text = cseg_info['title']
     ftitle.alignment = 1 #1 is center
     fsubview.add_subview(ftitle)
 

@@ -417,7 +417,7 @@ def generate_fsubview(fsubview):
 
 ##### run on open
 global current_info #so this doesn't need to be passed into functions everywhere
-current_info = build.current_period #get current info
+current_info = build.current_period() #get current info
 pseg_info = build.period(0,1,current_info) #build pseg, give current_info
 
 generate_segmented_controls(view) #build segmented controls

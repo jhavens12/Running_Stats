@@ -94,8 +94,8 @@ def period(Sunday,Monday): #given master dict copy, and then 0 and 1 for last we
 
     #remaining
     #remaining(past_ten_percent,past_miles,runs_per_week)
-    main_dict['remaining_miles']
-    main_dict['remaining_per_run']
+    #main_dict['remaining_miles']
+    #main_dict['remaining_per_run']
 
     return main_dict
 
@@ -120,7 +120,7 @@ def current_period():
     global current_week_count
 
     #filter out old runs (older than monday)
-    for key in dictionary:
+    for key in master_dict:
         if key < get_time.LM(0):
             del dict_2[key]
 

@@ -409,7 +409,7 @@ def generate_fsubview(fsubview):
 
 ##### run on open
 generate_segmented_controls(view) #build segmented controls
-generate_csubview(csubview,build.current_peroid()) #build csubview
+generate_csubview(csubview,build.current_period()) #build csubview
 
 
 view.present(style='sheet', hide_title_bar=True)

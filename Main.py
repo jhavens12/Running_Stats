@@ -129,13 +129,13 @@ def vis(w,h):
 
     #box titles RIGHT
     vis['frbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
-    vis['frbox_titles_w'] = vis['psub_w']/4
+    vis['frbox_titles_w'] = (vis['psub_w']/2) * .75
     vis['frbox_titles_x'] = (vis['psub_w']/4) * 2
     vis['frbox_titles_y'] = 1 #this needs to be changed
 
     vis['frbox_values_h'] = vis['frbox_titles_h']
-    vis['frbox_values_w'] = vis['psub_w']/4
-    vis['frbox_values_x'] = (vis['psub_w']/4) * 3
+    vis['frbox_values_w'] = (vis['psub_w']/2) * .25
+    vis['frbox_values_x'] =  vis['frbox_titles_x'] + vis['frbox_titles_w'] #where titles start, plus width of titles
     vis['frbox_values_y'] = 1 #this needs to be changed
     return vis
 

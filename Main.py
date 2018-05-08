@@ -3,9 +3,6 @@ import ui
 from pprint import pprint
 import datetime
 
-#fix bottom line of pview - doesn't like up with end of labels
-
-
 w,h = ui.get_screen_size()
 view = ui.View(bg_color = 'white', frame = (0,0,w,h)) #main view
 
@@ -143,33 +140,46 @@ def vis(w,h):
 
 vis = vis(w,h)
 
-
-box_titles = ['Date','Distance','Pace','Duration','Elevation']
-box_values = ['Sun Apr 29','3.34','9:14','0:34:14','155.55']
-total_values = ['13.02','8:49','0:21:00','1000.89']
-
 #SUBVIEWS
 psubview = ui.View(frame=(vis['psub_x'], vis['psub_y'], vis['psub_w'], vis['psub_h']), background_color = 'black')
 csubview = ui.View(frame=(vis['csub_x'], vis['csub_y'], vis['csub_w'], vis['csub_h']), background_color = 'blue')
 fsubview = ui.View(frame=(vis['fsub_x'], vis['fsub_y'], vis['fsub_w'], vis['fsub_h']), background_color = 'red')
+
 view.add_subview(psubview)
 view.add_subview(csubview)
 view.add_subview(fsubview)
 
 
-#seg control top of page
-pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
-pseg_control.segments = ("Week 1","Week 2","Week 3","Week 4","Best Week")
-#SegmentedControl.action
-#SegmentedControl.selected_index
-view.add_subview(pseg_control)
+def generate_segmented_controls(view):
+    def pseg_select(sender):
+        if sender.selected_index == 0:
+            print("week 1")
+            #period(master_dict,0,1)
+        if sender.selected_index == 1:
+            print("week 2")
+            #period(master_dict,1,2)
+        if sender.selected_index == 2:
+            print("week 3")
+            #period(master_dict,2,3)
+        elif sender.selected_index == 3:
+            print("week 4")
+            #period(master_dict,3,4)
 
-#seg control bottom of page
-fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
-fseg_control.segments = ("Monthly","Yearly")
-#SegmentedControl.action
-#SegmentedControl.selected_index
-view.add_subview(fseg_control)
+    #seg control top of page
+    pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
+    pseg_control.segments = ("Week 1","Week 2","Week 3","Week 4","Best Week")
+    SegmentedControl.action = pseg_select
+    #SegmentedControl.selected_index
+    view.add_subview(pseg_control)
+
+    #seg control bottom of page
+    fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
+    fseg_control.segments = ("Monthly","Yearly")
+    #SegmentedControl.action
+    #SegmentedControl.selected_index
+    view.add_subview(fseg_control)
+
+
 
 def generate_psubview(psubview):
 
@@ -235,6 +245,9 @@ def generate_psubview(psubview):
         psubview.add_subview(label_title)
 
 def generate_csubview(csubview):
+    box_titles = ['Date','Distance','Pace','Duration','Elevation']
+    box_values = ['Sun Apr 29','3.34','9:14','0:34:14','155.55']
+    total_values = ['13.02','8:49','0:21:00','1000.89']
 
     #Title
     ctitle = ui.Label(name = 'ctitle', bg_color ='yellow', frame = (vis['ctitle_x'], vis['ctitle_y'], vis['ctitle_w'], vis['ctitle_h']))
@@ -370,15 +383,9 @@ def generate_fsubview(fsubview):
         label_title.border_width = 1
         fsubview.add_subview(label_title)
 
+
+
+#####
+generate_segmented_controls(view)
+
 view.present(style='sheet', hide_title_bar=True)
-
-
-# def button_action_1(sender):
-#     if button1.selected_index == 0:
-#         period(master_dict,0,1)
-#     if button1.selected_index == 1:
-#         period(master_dict,1,2)
-#     if button1.selected_index == 2:
-#         period(master_dict,2,3)
-#     elif button1.selected_index == 3:
-#         period(master_dict,3,4)

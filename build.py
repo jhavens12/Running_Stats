@@ -251,7 +251,7 @@ def monthly(runs_per_week):
     main_dict['frbox_values'].append(format_text(this_month-50))
     main_dict['frbox_values'].append(format_text((50-this_month)/runs_remain))
     main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append(max_miles)
+    main_dict['frbox_values'].append(str(max_miles))
     main_dict['frbox_values'].append(format_text((max_miles-this_month)/runs_remain))
     main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append("")

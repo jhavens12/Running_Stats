@@ -185,8 +185,10 @@ def generate_segmented_controls(view):
     fseg_control.action = fseg_select
     view.add_subview(fseg_control)
 
-pseg_info = {'title':'Title', 'subtitle_title':'Subtitle', 'subtitle_value':'Subtitle Value'}
+pseg_info = {'title':'Title', 'subtitle_title':'Subtitle', 'subtitle_value':'Subtitle Value', 'ptotals':'Total/AVG'}
 pseg_info['box_titles'] = ['Date','Distance','Pace','Duration','Elevation']
+pseg_info['box_values'] = ['Sun Apr 29','3.34','9:14','0:34:14','155.55']
+pseg_info['total_values'] = ['13.02','8:49','0:21:00','1000.89']
 
 
 def generate_psubview(psubview,pseg_info): #give the subview and list of information and this generates the rest, adds to subview given
@@ -225,8 +227,8 @@ def generate_psubview(psubview,pseg_info): #give the subview and list of informa
         label_title.border_width = 1
         psubview.add_subview(label_title)
 
-    for n,label in enumerate(box_values):
-        count = len(box_values)
+    for n,label in enumerate(pseg_info['box_values']):
+        count = len(pseg_info['box_values'])
         vis['box_values_w'] = vis['psub_w']/count #divide width by number of labels
         vis['box_values_x'] = vis['box_values_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
@@ -239,13 +241,13 @@ def generate_psubview(psubview,pseg_info): #give the subview and list of informa
 
     #total title/labels
     ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
-    ptotal_title.text = "ptotals"
+    ptotal_title.text = pseg_info['ptotals']
     ptotal_title.alignment = 1 #1 is center
     psubview.add_subview(ptotal_title)
 
-    for n,label in enumerate(total_values):
+    for n,label in enumerate(pseg_info['total_values']):
         n = n+1 #account for first box being the static label
-        count = len(total_values)
+        count = len(pseg_info['total_values'])
         vis['total_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
         vis['total_values_x'] = vis['total_values_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )

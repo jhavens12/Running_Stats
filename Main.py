@@ -347,7 +347,7 @@ def generate_csubview(csubview,cseg_info):
 def generate_fsubview(fsubview,fseg_info):
     #title
     ftitle = ui.Label(name = 'ftitle', bg_color ='yellow', frame = (vis['ftitle_x'], vis['ftitle_y'], vis['ftitle_w'], vis['ftitle_h']))
-    ftitle.text = cseg_info['title']
+    ftitle.text = fseg_info['title']
     ftitle.alignment = 1 #1 is center
     fsubview.add_subview(ftitle)
 

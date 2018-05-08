@@ -123,7 +123,7 @@ def current_period():
     mile_list = []
     for i in dict_2:
         mile_list.append(float(dict_2[i]['distance_miles']))
-    current_miles = "{0:.2f}".format(sum(mile_list))
+    current_miles = int("{0:.2f}".format(sum(mile_list)))
     main_dict['current_miles'] = current_miles #USED FOR CALCULATIONS
     current_run_title_label = []
     for i in list(sorted(dict_2)):

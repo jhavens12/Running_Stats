@@ -187,15 +187,11 @@ def generate_segmented_controls(view):
 
 pseg_info = {'title':'Title', 'subtitle_title':'Subtitle', 'subtitle_value':'Subtitle Value', 'ptotals':'Total/AVG'}
 pseg_info['box_titles'] = ['Date','Distance','Pace','Duration','Elevation']
-pseg_info['box_values'] = ['Sun Apr 29','3.34','9:14','0:34:14','155.55']
+pseg_info['box_values'] = ['Mon Apr 27\nSun Apr 29','3.34','9:14','0:34:14','155.55']
 pseg_info['total_values'] = ['13.02','8:49','0:21:00','1000.89']
 
 
 def generate_psubview(psubview,pseg_info): #give the subview and list of information and this generates the rest, adds to subview given
-
-    #box_titles = ['Date','Distance','Pace','Duration','Elevation']
-    box_values = ['Mon Apr 27\nSun Apr 29','3.34','9:14','0:34:14','155.55']
-    total_values = ['13.02','8:49','0:21:00','1000.89']
 
     #title
     ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['ptitle_x'], vis['ptitle_y'], vis['ptitle_w'], vis['ptitle_h']))

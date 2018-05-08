@@ -150,32 +150,25 @@ view.add_subview(psubview)
 view.add_subview(csubview)
 view.add_subview(fsubview)
 
-
 def generate_segmented_controls(view):
     def pseg_select(sender):
         if sender.selected_index == 0:
-            print("pseg week 1")
             pseg_info = build.period(0,1,current_info) #build pseg info, give current stats to find remaining_miles and MPR
             generate_psubview(psubview,csubview,pseg_info)
         if sender.selected_index == 1:
-            print("pseg week 2")
             pseg_info = build.period(1,2,current_info)
             generate_psubview(psubview,csubview,pseg_info)
         if sender.selected_index == 2:
-            print("pseg week 3")
             pseg_info = build.period(2,3,current_info)
             generate_psubview(psubview,csubview,pseg_info)
         elif sender.selected_index == 3:
-            print("pseg week 4")
             pseg_info = build.period(3,4,current_info)
             generate_psubview(psubview,csubview,pseg_info)
 
     def fseg_select(sender):
         if sender.selected_index == 0:
-            print("fseg monthly")
             generate_fsubview(fsubview,build.monthly(4))
         elif sender.selected_index == 1:
-            print("fseg yearly")
             generate_fsubview(fsubview,build.yearly(4))
 
     #seg control top of page
@@ -225,6 +218,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.border_width = 1
         psubview.add_subview(label_title)
 
+    #box values
     for n,label in enumerate(pseg_info['box_values']):
         count = len(pseg_info['box_values'])
         vis['box_values_w'] = vis['psub_w']/count #divide width by number of labels
@@ -238,13 +232,14 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.border_width = 1
         psubview.add_subview(label_title)
 
-    #total title/labels
+    #total title
     ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ptotal_title.text = pseg_info['total_title']
     ptotal_title.alignment = 1 #1 is center
     ptotal_title.font =  ('<system>',12)
     psubview.add_subview(ptotal_title)
 
+    #total value
     for n,label in enumerate(pseg_info['total_values']):
         n = n+1 #account for first box being the static label
         count = len(pseg_info['total_values'])
@@ -253,7 +248,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',12)
+        label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
         label_title.border_width = 1
         psubview.add_subview(label_title)
@@ -301,6 +296,7 @@ def generate_csubview(csubview,cseg_info):
         label_title.border_width = 1
         csubview.add_subview(label_title)
 
+    #box values
     for n,label in enumerate(cseg_info['box_values']):
         count = len(cseg_info['box_values'])
         vis['box_values_w'] = vis['csub_w']/count #divide width by number of labels
@@ -320,6 +316,7 @@ def generate_csubview(csubview,cseg_info):
     ctotal_title.font =  ('<system>',12)
     csubview.add_subview(ctotal_title)
 
+    #total values
     for n,label in enumerate(cseg_info['total_values']):
         n = n+1 #account for first box being the static label
         count = len(cseg_info['total_values'])
@@ -328,7 +325,7 @@ def generate_csubview(csubview,cseg_info):
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',10)
+        label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
         label_title.border_width = 1
         csubview.add_subview(label_title)

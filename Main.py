@@ -242,7 +242,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ptotal_title.text = pseg_info['total_title']
     ptotal_title.alignment = 1 #1 is center
-    ptotal_title.font =  ('<system>',10)
+    ptotal_title.font =  ('<system>',12)
     psubview.add_subview(ptotal_title)
 
     for n,label in enumerate(pseg_info['total_values']):
@@ -283,22 +283,10 @@ def generate_csubview(csubview,cseg_info):
     csubtitle1_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle1_title)
 
-    #moved to above
-    # csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='pink', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
-    # csubtitle1_value.text = cseg_info['subtitle1_value']
-    # csubtitle1_value.alignment = 1 #1 is center
-    # csubview.add_subview(csubtitle1_value)
-
     csubtitle2_title = ui.Label(name = 'csubtitle2_title', bg_color ='gray', frame = (vis['csubtitle2_title_x'], vis['csubtitle2_title_y'], vis['csubtitle2_title_w'], vis['csubtitle2_title_h']))
     csubtitle2_title.text = cseg_info['subtitle2_title']
     csubtitle2_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_title)
-
-    #moved to above
-    # csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='pink', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
-    # csubtitle2_value.text = cseg_info['subtitle2_value']
-    # csubtitle2_value.alignment = 1 #1 is center
-    # csubview.add_subview(csubtitle2_value)
 
     #box titles
     for n,label in enumerate(cseg_info['box_titles']):
@@ -329,6 +317,7 @@ def generate_csubview(csubview,cseg_info):
     ctotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ctotal_title.text = cseg_info['total_title']
     ctotal_title.alignment = 1 #1 is center
+    ctotal_title.font =  ('<system>',12)
     csubview.add_subview(ctotal_title)
 
     for n,label in enumerate(cseg_info['total_values']):

@@ -219,7 +219,7 @@ def generate_psubview(psubview,pseg_info): #give the subview and list of informa
         vis['box_titles_w'] = vis['psub_w']/count #divide width by number of labels
         vis['box_titles_x'] = vis['box_titles_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
-        label.number_of_lines = 0
+        label_title.number_of_lines = 0
         label_title.text = label #since list, label is the value
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
@@ -232,7 +232,7 @@ def generate_psubview(psubview,pseg_info): #give the subview and list of informa
         vis['box_values_w'] = vis['psub_w']/count #divide width by number of labels
         vis['box_values_x'] = vis['box_values_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
-        label.number_of_lines = 0
+        label_title.number_of_lines = 0
         label_title.text = label
         label_title.alignment = 1
         label_title.font =  ('<system>',10)

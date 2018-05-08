@@ -65,6 +65,7 @@ def period(Sunday,Monday): #given master dict copy, and then 0 and 1 for last we
     main_dict['subtitle_value'] = str(past_ten_percent)
 
     #label5= v['label5']
+    main_dict['box_titles'] = ['Date','Distance','Pace','Duration','Elevation']
     main_dict['box_values'] = []
     main_dict['box_values'].append("\n".join(past_run_title_label))
 

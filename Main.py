@@ -355,8 +355,8 @@ for n,label in enumerate(fbox_values):
 for n,label in enumerate(fbox_titles2):
     #count = len(fbox_titles)
     #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
-    vis['fbox_titles_y'] = (vis['fbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
-    label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['fbox_titles_x'], vis['fbox_titles_y'], vis['fbox_titles_w'], vis['fbox_titles_h']) )
+    vis['frbox_titles_y'] = (vis['frbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
+    label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['frbox_titles_x'], vis['frbox_titles_y'], vis['frbox_titles_w'], vis['frbox_titles_h']) )
     label_title.text = label
     label_title.alignment = 1
     label_title.font =  ('<system>',14)

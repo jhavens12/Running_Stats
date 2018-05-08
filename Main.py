@@ -283,7 +283,7 @@ for n,label in enumerate(total_values):
 
 #seg control
 fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
-fseg_control.segments = ("Monthly,"Yearly")
+fseg_control.segments = ("Monthly","Yearly")
 #SegmentedControl.action
 #SegmentedControl.selected_index
 view.add_subview(fseg_control)

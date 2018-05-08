@@ -247,7 +247,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ptotal_title.text = pseg_info['total_title']
     ptotal_title.alignment = 1 #1 is center
-    ptotal_title.font =  ('<system>',12)
+    ptotal_title.font =  ('<system>',14)
     psubview.add_subview(ptotal_title)
 
     #total value
@@ -255,7 +255,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         #n = n+1 #account for first box being the static label
         count = len(pseg_info['total_values'])
         vis['total_values_w'] = (vis['psub_w']-vis['total_title_w'])/(count)
-        vis['total_values_x'] = vis['total_values_w'] + (vis['total_values_w'] * n)
+        vis['total_values_x'] = vis['total_title_w'] + (vis['total_values_w'] * n)
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1
@@ -297,8 +297,16 @@ def generate_csubview(csubview,cseg_info):
     #box titles
     for n,label in enumerate(cseg_info['box_titles']):
         count = len(cseg_info['box_titles'])
-        vis['box_titles_w'] = vis['csub_w']/count #divide width by number of labels
-        vis['box_titles_x'] = vis['box_titles_w'] * n #first label at 0, second label at width*1
+        if n == 0:
+            first_box_w = 100
+            vis['box_titles_w'] = vis['first_box_width']
+            vis['box_titles_x'] = 0
+        else:
+            vis['box_titles_w'] = (vis['csub_w']-vis['first_box_width'])/(count-1) #divide width by number of labels
+            vis['box_titles_x'] = (vis['box_titles_w'] * (n-1)) + vis['first_box_width']#first label at 0, second label at width*1
+
+        #vis['box_titles_w'] = vis['csub_w']/count #divide width by number of labels
+        #vis['box_titles_x'] = vis['box_titles_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
         label_title.text = label
         label_title.alignment = 1
@@ -310,12 +318,19 @@ def generate_csubview(csubview,cseg_info):
     #box values
     for n,label in enumerate(cseg_info['box_values']):
         count = len(cseg_info['box_values'])
-        vis['box_values_w'] = vis['csub_w']/count #divide width by number of labels
-        vis['box_values_x'] = vis['box_values_w'] * n #first label at 0, second label at width*1
+        if n == 0:
+            first_box_w = 100
+            vis['box_values_w'] = vis['first_box_width']
+            vis['box_values_x'] = 0
+        else:
+            vis['box_values_w'] = (vis['csub_w']-vis['first_box_width'])/(count-1) #divide width by number of labels
+            vis['box_values_x'] = (vis['box_values_w'] * (n-1)) + vis['first_box_width']#first label at 0, second label at width*1
+        #vis['box_values_w'] = vis['csub_w']/count #divide width by number of labels
+        #vis['box_values_x'] = vis['box_values_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',10)
+        label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
         label_title.border_width = 1
         csubview.add_subview(label_title)
@@ -324,15 +339,17 @@ def generate_csubview(csubview,cseg_info):
     ctotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ctotal_title.text = cseg_info['total_title']
     ctotal_title.alignment = 1 #1 is center
-    ctotal_title.font =  ('<system>',12)
+    ctotal_title.font =  ('<system>',14)
     csubview.add_subview(ctotal_title)
 
     #total values
     for n,label in enumerate(cseg_info['total_values']):
         n = n+1 #account for first box being the static label
         count = len(cseg_info['total_values'])
-        vis['total_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
-        vis['total_values_x'] = vis['total_values_w'] * n #first label at 0, second label at width*1
+        vis['total_values_w'] = (vis['psub_w']-vis['total_title_w'])/(count)
+        vis['total_values_x'] = vis['total_title_w'] + (vis['total_values_w'] * n)
+        #vis['total_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
+        v#is['total_values_x'] = vis['total_values_w'] * n #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1

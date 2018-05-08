@@ -221,7 +221,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         psubview.add_subview(label_title)
 
     #box values
@@ -240,7 +240,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         psubview.add_subview(label_title)
 
     #total title
@@ -261,7 +261,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         psubview.add_subview(label_title)
 
     #remaining - MODIFY CSUBVIEW HERE
@@ -312,7 +312,7 @@ def generate_csubview(csubview,cseg_info):
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         csubview.add_subview(label_title)
 
     #box values
@@ -332,7 +332,7 @@ def generate_csubview(csubview,cseg_info):
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         csubview.add_subview(label_title)
 
     #total title/labels
@@ -355,7 +355,7 @@ def generate_csubview(csubview,cseg_info):
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         csubview.add_subview(label_title)
 
 def generate_fsubview(fsubview,fseg_info):
@@ -375,7 +375,7 @@ def generate_fsubview(fsubview,fseg_info):
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         fsubview.add_subview(label_title)
 
     for n,label in enumerate(fseg_info['flbox_values']):
@@ -387,7 +387,7 @@ def generate_fsubview(fsubview,fseg_info):
         label_title.alignment = 1
         label_title.font =  ('<system>',12)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         fsubview.add_subview(label_title)
 
     # #box titles RIGHT
@@ -400,7 +400,7 @@ def generate_fsubview(fsubview,fseg_info):
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         fsubview.add_subview(label_title)
 
     for n,label in enumerate(fseg_info['frbox_values']):
@@ -412,7 +412,7 @@ def generate_fsubview(fsubview,fseg_info):
         label_title.alignment = 1
         label_title.font =  ('<system>',12)
         label_title.border_color = 'black'
-        label_title.border_width = 1
+        label_title.border_width = 0
         fsubview.add_subview(label_title)
 
 ##### run on open

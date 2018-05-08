@@ -118,17 +118,27 @@ def vis(w,h):
     vis['ftitle_x'] = 0
     vis['ftitle_y'] = 0
 
-    #box titles
+    #box titles LEFT
     vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
     vis['fbox_titles_w'] = vis['psub_w']/4
     vis['fbox_titles_x'] = 0
     vis['fbox_titles_y'] = 1 #this needs to be changed
 
     vis['fbox_values_h'] = vis['fbox_titles_h']
-    vis['fbox_values_w'] = vis['psub_w']/4 #this is later changed dynamically
-    vis['fbox_values_x'] = (vis['psub_w']/4) #this is later changed dynamically
+    vis['fbox_values_w'] = vis['psub_w']/4
+    vis['fbox_values_x'] = vis['psub_w']/4
     vis['fbox_values_y'] = 1 #this needs to be changed
 
+    #box titles RIGHT
+    vis['frbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
+    vis['frbox_titles_w'] = vis['psub_w']/4
+    vis['frbox_titles_x'] = (vis['psub_w']/4) * 2
+    vis['frbox_titles_y'] = 1 #this needs to be changed
+
+    vis['frbox_values_h'] = vis['frbox_titles_h']
+    vis['frbox_values_w'] = vis['psub_w']/4
+    vis['frbox_values_x'] = (vis['psub_w']/4) * 3
+    vis['frbox_values_y'] = 1 #this needs to be changed
     return vis
 
 vis = vis(w,h)
@@ -313,7 +323,10 @@ fsubview.add_subview(ftitle)
 fbox_titles = ['1','2','3','4','5','6','7']
 fbox_values = ['A','B','C','D','E','F','G']
 
-#box titles
+fbox_titles2 = ['8','9','10','11','12','13','14']
+fbox_values2 = ['H','I','J','K','L','M','N']
+
+#box titles LEFT
 for n,label in enumerate(fbox_titles):
     #count = len(fbox_titles)
     #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
@@ -330,7 +343,7 @@ for n,label in enumerate(fbox_values):
     #count = len(fbox_values)
     #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
     vis['fbox_values_y'] = (vis['fbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
-    label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['fbox_values_x'], vis['fbox_values_y'], vis['fbox_values_w'], vis['fbox_values_h']) )
+    label_title = ui.Label(name = label, bg_color = 'pink', frame = (vis['fbox_values_x'], vis['fbox_values_y'], vis['fbox_values_w'], vis['fbox_values_h']) )
     label_title.text = label
     label_title.alignment = 1
     label_title.font =  ('<system>',10)
@@ -338,22 +351,30 @@ for n,label in enumerate(fbox_values):
     label_title.border_width = 1
     fsubview.add_subview(label_title)
 
+#box titles RIGHT
+for n,label in enumerate(fbox_titles2):
+    #count = len(fbox_titles)
+    #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
+    vis['fbox_titles_y'] = (vis['fbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
+    label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['fbox_titles_x'], vis['fbox_titles_y'], vis['fbox_titles_w'], vis['fbox_titles_h']) )
+    label_title.text = label
+    label_title.alignment = 1
+    label_title.font =  ('<system>',14)
+    label_title.border_color = 'black'
+    label_title.border_width = 1
+    fsubview.add_subview(label_title)
 
-
-
-    #box titles
-    # vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
-    # vis['fbox_titles_w'] = vis['psub_w']/4
-    # vis['fbox_titles_x'] = 0
-    # vis['fbox_titles_y'] = 1 #this needs to be changed
-    #
-    # vis['fbox_values_h'] = vis['fbox_titles_h']
-    # vis['fbox_values_w'] = vis['psub_w']/4 #this is later changed dynamically
-    # vis['fbox_values_x'] = (vis['psub_w']/4) #this is later changed dynamically
-    # vis['fbox_values_y'] = 1 #this needs to be changed
-
-
-
+for n,label in enumerate(fbox_values2):
+    #count = len(fbox_values)
+    #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
+    vis['frbox_values_y'] = (vis['frbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
+    label_title = ui.Label(name = label, bg_color = 'pink', frame = (vis['frbox_values_x'], vis['frbox_values_y'], vis['frbox_values_w'], vis['frbox_values_h']) )
+    label_title.text = label
+    label_title.alignment = 1
+    label_title.font =  ('<system>',10)
+    label_title.border_color = 'black'
+    label_title.border_width = 1
+    fsubview.add_subview(label_title)
 
 
 

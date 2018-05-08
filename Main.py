@@ -110,7 +110,7 @@ def vis(w,h):
     vis['fseg_control_h'] = 30
     vis['fseg_control_w'] = vis['psub_w']
     vis['fseg_control_x'] = vis['x_margin']
-    vis['fseg_control_y'] = vis['y_margin'] + vis['csub_h'] + vis['csub_y'] #margin plus the view above position and height
+    vis['fseg_control_y'] = (vis['y_margin']/2) + vis['csub_h'] + vis['csub_y'] #margin plus the view above position and height
 
 
     return vis

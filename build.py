@@ -231,6 +231,7 @@ def monthly(runs_per_week):
     main_dict['flbox_titles'].append("Difference")
     main_dict['flbox_titles'].append("Runs Remain")
     main_dict['flbox_titles'].append("MPR Last Month")
+    main_dict['flbox_titles'].append("TEST")
 
     #DATA
     main_dict['flbox_values'].append(format_text(this_month))

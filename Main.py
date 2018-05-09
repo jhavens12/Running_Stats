@@ -128,7 +128,7 @@ def vis(w,h):
     vis['ftitle_y'] = 0
 
     #box titles LEFT
-    vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
+    vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 8
     vis['fbox_titles_w'] = (vis['psub_w']/2) * .75
     vis['fbox_titles_x'] = 0
     vis['fbox_titles_y'] = 1 #this needs to be changed

@@ -197,12 +197,12 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     #subtitles
     psubtitle_title = ui.Label(name = 'psubtitle_title', bg_color ='gray', frame = (vis['psubtitle_title_x'], vis['psubtitle_title_y'], vis['psubtitle_title_w'], vis['psubtitle_title_h']))
     psubtitle_title.text = pseg_info['subtitle_title']
-    psubtitle_title.alignment = 2 #1 is center
+    psubtitle_title.alignment = 1 #1 is center, 2 is right, 3
     psubview.add_subview(psubtitle_title)
 
     psubtitle_value = ui.Label(name = 'psubtitle_value', bg_color ='pink', frame = (vis['psubtitle_value_x'], vis['psubtitle_value_y'], vis['psubtitle_value_w'], vis['psubtitle_value_h']))
     psubtitle_value.text = pseg_info['subtitle_value']
-    psubtitle_value.alignment = 2 #1 is center
+    psubtitle_value.alignment = 3 #1 is center
     psubview.add_subview(psubtitle_value)
 
     #box titles

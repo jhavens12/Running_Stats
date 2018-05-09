@@ -183,9 +183,11 @@ def generate_segmented_controls(view):
             generate_fsubview(fsubview,build.monthly(4))
         if sender.selected_index == 1:
             generate_fsubview(fsubview,build.yearly(4))
-        elif sender.selected_index == 2:
+        if sender.selected_index == 2:
             generate_yearly_graph()
-            #generate_fsubview(fsubview,build.yearly(4))
+        elif sender.selected_index == 3:
+            generate_fsubview(fsubview,build.weekly(4,current_info))
+
 
     #seg control top of page
     pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
@@ -196,7 +198,7 @@ def generate_segmented_controls(view):
 
     #seg control bottom of page
     fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
-    fseg_control.segments = ("Monthly","Yearly","YTD Graph")
+    fseg_control.segments = ("Monthly","Yearly","YTD Graph","Weekly")
     fseg_control.action = fseg_select
     fseg_control.selected_index = 0
     view.add_subview(fseg_control)

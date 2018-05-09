@@ -79,12 +79,12 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     main_dict['subtitle_title'] = 'Past Ten Percent:'
     main_dict['subtitle_value'] = str(past_ten_percent)
 
-    main_dict['box_titles'] = ['Date','Distance','Pace','Duration','Elevation']
+    main_dict['box_titles'] = ['Date','Distance','Duration','Pace','Elevation']
     main_dict['box_values'] = []
     main_dict['box_values'].append("\n".join(past_run_title_label))
     main_dict['box_values'].append("\n".join(past_run_mile_label))
-    main_dict['box_values'].append("\n".join(past_run_pace_label))
     main_dict['box_values'].append("\n".join(past_run_elapsed_label))
+    main_dict['box_values'].append("\n".join(past_run_pace_label))
     main_dict['box_values'].append("\n".join(past_run_treadmill_label))
 
     #BOTTOM VALUES
@@ -170,12 +170,12 @@ def current_period():
     main_dict['subtitle1_value'] = "0"
     main_dict['subtitle2_value'] = "0"
 
-    main_dict['box_titles'] = ['Date','Distance','Pace','Duration','Elevation']
+    main_dict['box_titles'] = ['Date','Distance','Duration','Pace','Elevation']
     main_dict['box_values'] = []
     main_dict['box_values'].append("\n".join(current_run_title_label))
     main_dict['box_values'].append("\n".join(current_run_mile_label))
-    main_dict['box_values'].append("\n".join(current_run_pace_label))
     main_dict['box_values'].append("\n".join(current_run_elapsed_label))
+    main_dict['box_values'].append("\n".join(current_run_pace_label))
     main_dict['box_values'].append("\n".join(current_run_treadmill_label))
 
     #totals at bottom

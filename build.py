@@ -285,6 +285,7 @@ def current_period():
     return main_dict
 
 def weekly(runs_per_week,current_info):
+    #Currently not used
     #pprint(current_info)
     current_miles = current_info['current_miles']
     current_week_count = current_info['current_week_count']
@@ -536,6 +537,76 @@ def yearly_graph():
         plt.plot(x, y, 'g', linestyle=':', linewidth=4)
 
     graph('x*(600/365)')
+
+    plt.style.use('dark_background')
+    plt.axis('off')
+    #plt.rcParams['lines.linewidth'] = 4
+    plt.tight_layout()
+    plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
+                wspace=None, hspace=None)
+    #plt.show()
+
+    b = BytesIO()
+    plt.savefig(b, transparent='True')
+    return b
+
+def weekly_graph():
+
+    diff = datetime.datetime.now() - datetime.datetime(2018, 1, 1)
+    weeks_back = int(diff.days/7)
+    weeks_to_calculate = list(range(0,weeks_back)) #calculate 0 to 17
+
+    week_dict = {}
+    for week in weeks_to_calculate:
+        week_dict[week] = master_dict.copy() #make a master dict for each week to calculate
+
+    for week in week_dict:
+        for key in list(week_dict[week]): #for each key in each master dictionary
+            if key < get_time.LM(week): #if older than last monday (0 is 1, 1 is 2,2 mondays ago)
+                del week_dict[week][key]
+        for key in list(week_dict[week]):
+           if key > get_time.LS(week-1): #if newer than last sunday (0 is 1)
+               del week_dict[week][key]
+
+    miles_dict = {}
+    for week in week_dict:
+        if week_dict[week]: #check to see if any activites exist in the given week
+            mile_list = []
+            for activity in week_dict[week]:
+                count_list.append(1)
+                mile_list.append(float(week_dict[week][activity]['distance_miles']))
+            miles_dict[get_time.LM(week)] = sum(mile_list)
+        else:
+            miles_dict[get_time.LM(week)] = 0
+
+    x_list = []
+    y_list = []
+    for month in miles_dict:
+        x_list.append(month)
+        y_list.append(miles_dict[month])
+
+    #######
+    myFmt = mdates.DateFormatter('%m/%d')
+    #pltdf = trend_line(x_list, y_list)
+    plt.bar(x_list, y_list, align='center', width=6)
+    #pltslope = format_number(float(pltdf['y_trend'].iloc[0]) - float(pltdf['y_trend'].iloc[-1]))
+    #plt.plot_date(pltdf.dates, pltdf.y_trend, 'red', ls='--', marker='None',label=pltslope)
+    #plt.set_ylabel('Miles Ran', color='b')
+    plt.set_yticks(range(int(max(y_list))+1),3)
+
+    plt.set_xticks(x_list)
+    plt.xaxis.set_major_formatter(myFmt)
+    #######
+
+    #plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()), 'blue', linewidth=4)#,label=('This Year'),color='green')
+    #plt.plot(list(yearly_dict2.keys()),list(yearly_dict2.values()), 'red', linewidth=4)#,label=('Last Year'))
+
+    #def graph(formula):
+        #x = np.array(range(0,366))
+        #y = eval(formula)
+        #plt.plot(x, y, 'g', linestyle=':', linewidth=4)
+
+    #graph('x*(600/365)')
 
     plt.style.use('dark_background')
     plt.axis('off')

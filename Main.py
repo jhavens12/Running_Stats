@@ -189,7 +189,7 @@ def generate_segmented_controls(view):
         if sender.selected_index == 2:
             generate_yearly_graph()
         elif sender.selected_index == 3:
-            generate_fsubview(fsubview,build.weekly(4,current_info))
+            generate_monthly_graph()
 
 
     #seg control top of page
@@ -201,7 +201,7 @@ def generate_segmented_controls(view):
 
     #seg control bottom of page
     fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
-    fseg_control.segments = ("Monthly","Yearly","YTD Graph","Weekly")
+    fseg_control.segments = ("Monthly","Yearly","YTD Graph","Mon. Graph")
     fseg_control.action = fseg_select
     fseg_control.selected_index = 0
     view.add_subview(fseg_control)
@@ -490,6 +490,19 @@ def generate_yearly_graph():
 
     #graph
     b = build.yearly_graph()
+    imageview1 = ui.ImageView(frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_w'], vis['imageview_h']))
+    imageview1.image = ui.Image.from_data(b.getvalue())
+    fsubview.add_subview(imageview1)
+
+def generate_monthly_graph():
+
+    #background
+    fbackground = ui.Label(name = 'fbackground', bg_color ='black', frame = (vis['fbackground_x'], vis['fbackground_y'], vis['fbackground_w'], vis['fbackground_h']))
+    fbackground.text = ''
+    fsubview.add_subview(fbackground)
+
+    #graph
+    b = build.monthly_graph()
     imageview1 = ui.ImageView(frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_w'], vis['imageview_h']))
     imageview1.image = ui.Image.from_data(b.getvalue())
     fsubview.add_subview(imageview1)

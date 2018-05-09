@@ -5,7 +5,7 @@ import datetime
 import build
 
 w,h = ui.get_screen_size()
-view = ui.View(bg_color = 'white', frame = (0,0,w,h)) #main view
+view = ui.View(bg_color = 'black', frame = (0,0,w,h)) #main view
 
 def vis(w,h):
     vis = {}
@@ -287,30 +287,34 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='pink', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
     csubtitle1_value.text = pseg_info['remaining_miles']
     csubtitle1_value.alignment = 1 #1 is center
+    csubtitle1_value.text_color = '#4286f4'
     csubview.add_subview(csubtitle1_value)
 
     csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='pink', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
     csubtitle2_value.text = pseg_info['remaining_per_run']
+    csubtitle2_value.text_color = '#4286f4'
     csubtitle2_value.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_value)
 
 def generate_csubview(csubview,cseg_info):
 
     #Title
-    ctitle = ui.Label(name = 'ctitle', bg_color ='yellow', frame = (vis['ctitle_x'], vis['ctitle_y'], vis['ctitle_w'], vis['ctitle_h']))
+    ctitle = ui.Label(name = 'ctitle', bg_color ='black', frame = (vis['ctitle_x'], vis['ctitle_y'], vis['ctitle_w'], vis['ctitle_h']))
     ctitle.text = cseg_info['title']
     ctitle.font =  ('<system-bold>',16)
     ctitle.alignment = 1 #1 is center
     csubview.add_subview(ctitle)
 
     #subtitles
-    csubtitle1_title = ui.Label(name = 'csubtitle1_title', bg_color ='gray', frame = (vis['csubtitle1_title_x'], vis['csubtitle1_title_y'], vis['csubtitle1_title_w'], vis['csubtitle1_title_h']))
+    csubtitle1_title = ui.Label(name = 'csubtitle1_title', bg_color ='black', frame = (vis['csubtitle1_title_x'], vis['csubtitle1_title_y'], vis['csubtitle1_title_w'], vis['csubtitle1_title_h']))
     csubtitle1_title.text = cseg_info['subtitle1_title']
+    csubtitle1_title.text_color = 'white'
     csubtitle1_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle1_title)
 
-    csubtitle2_title = ui.Label(name = 'csubtitle2_title', bg_color ='gray', frame = (vis['csubtitle2_title_x'], vis['csubtitle2_title_y'], vis['csubtitle2_title_w'], vis['csubtitle2_title_h']))
+    csubtitle2_title = ui.Label(name = 'csubtitle2_title', bg_color ='black', frame = (vis['csubtitle2_title_x'], vis['csubtitle2_title_y'], vis['csubtitle2_title_w'], vis['csubtitle2_title_h']))
     csubtitle2_title.text = cseg_info['subtitle2_title']
+    csubtitle2_title.text_color = 'white'
     csubtitle2_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_title)
 
@@ -327,10 +331,11 @@ def generate_csubview(csubview,cseg_info):
 
         #vis['box_titles_w'] = vis['csub_w']/count #divide width by number of labels
         #vis['box_titles_x'] = vis['box_titles_w'] * n #first label at 0, second label at width*1
-        label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
+        label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
         label_title.text = label
         label_title.alignment = 1
         label_title.font =  ('<system>',15)
+        label_title.text_color = 'white'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
         csubview.add_subview(label_title)
@@ -347,19 +352,21 @@ def generate_csubview(csubview,cseg_info):
             vis['box_values_x'] = (vis['box_values_w'] * (n-1)) + vis['first_box_width']#first label at 0, second label at width*1
         #vis['box_values_w'] = vis['csub_w']/count #divide width by number of labels
         #vis['box_values_x'] = vis['box_values_w'] * n #first label at 0, second label at width*1
-        label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
+        label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
         label_title.text = label
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
+        label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
         csubview.add_subview(label_title)
 
     #total title/labels
-    ctotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
+    ctotal_title = ui.Label(name = 'ptotal_title', bg_color ='black', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ctotal_title.text = cseg_info['total_title']
     ctotal_title.alignment = 1 #1 is center
     ctotal_title.font =  ('<system-bold>',16)
+    ctotal_title.text_color = 'red'
     csubview.add_subview(ctotal_title)
 
     #total values
@@ -370,10 +377,11 @@ def generate_csubview(csubview,cseg_info):
         vis['total_values_x'] = vis['total_title_w'] + (vis['total_values_w'] * n)
         #vis['total_values_w'] = vis['psub_w']/(count+1) #divide width by number of labels
         #vis['total_values_x'] = vis['total_values_w'] * n #first label at 0, second label at width*1
-        label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
+        label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1
         label_title.font =  ('<system>',16)
+        label_title.text_color = 'red'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
         csubview.add_subview(label_title)

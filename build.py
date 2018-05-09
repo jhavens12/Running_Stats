@@ -591,10 +591,10 @@ def weekly_graph():
     #pltslope = format_number(float(pltdf['y_trend'].iloc[0]) - float(pltdf['y_trend'].iloc[-1]))
     #plt.plot_date(pltdf.dates, pltdf.y_trend, 'red', ls='--', marker='None',label=pltslope)
     #plt.set_ylabel('Miles Ran', color='b')
-    plt.yticks(range(int(max(y_list))+1),3)
-    plt.xticks(x_list)
+    ##plt.yticks(range(int(max(y_list))+1),3)
+    ##plt.xticks(x_list)
 
-    plt.xaxis.set_major_formatter(myFmt)
+    ##plt.xaxis.set_major_formatter(myFmt)
     #######
 
     #plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()), 'blue', linewidth=4)#,label=('This Year'),color='green')

@@ -192,7 +192,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['ptitle_x'], vis['ptitle_y'], vis['ptitle_w'], vis['ptitle_h']))
     ptitle.text = pseg_info['title']
     ptitle.alignment = 1 #1 is center
-    ptitle.font =  ('<system-bold>',16)
+    ptitle.font =  ('<system-bold>',18)
     psubview.add_subview(ptitle)
 
     #subtitles

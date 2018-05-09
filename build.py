@@ -540,6 +540,7 @@ def yearly_graph():
 
     plt.style.use('dark_background')
     plt.axis('off')
+    fig.tight_layout()
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
                 wspace=None, hspace=None)
 
@@ -588,6 +589,7 @@ def weekly_graph():
 
     plt.style.use('dark_background')
     plt.axis('off')
+    fig.tight_layout()
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
                 wspace=None, hspace=None)
 

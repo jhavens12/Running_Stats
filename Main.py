@@ -221,7 +221,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.number_of_lines = 0
         label_title.text = label #since list, label is the value
         label_title.alignment = 1
-        label_title.font =  ('<system>',16)
+        label_title.font =  ('<system>',15)
         label_title.border_color = 'black'
         label_title.border_width = 0
         psubview.add_subview(label_title)
@@ -249,7 +249,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ptotal_title.text = pseg_info['total_title']
     ptotal_title.alignment = 1 #1 is center
-    ptotal_title.font =  ('<system>',14)
+    ptotal_title.font =  ('<system-bold>',16)
     psubview.add_subview(ptotal_title)
 
     #total value
@@ -261,7 +261,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',14)
+        label_title.font =  ('<system>',16)
         label_title.border_color = 'black'
         label_title.border_width = 0
         psubview.add_subview(label_title)
@@ -313,7 +313,7 @@ def generate_csubview(csubview,cseg_info):
         label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',14)
+        label_title.font =  ('<system>',15)
         label_title.border_color = 'black'
         label_title.border_width = 0
         csubview.add_subview(label_title)
@@ -342,7 +342,7 @@ def generate_csubview(csubview,cseg_info):
     ctotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ctotal_title.text = cseg_info['total_title']
     ctotal_title.alignment = 1 #1 is center
-    ctotal_title.font =  ('<system>',14)
+    ctotal_title.font =  ('<system-bold>',16)
     csubview.add_subview(ctotal_title)
 
     #total values
@@ -356,7 +356,7 @@ def generate_csubview(csubview,cseg_info):
         label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',14)
+        label_title.font =  ('<system>',16)
         label_title.border_color = 'black'
         label_title.border_width = 0
         csubview.add_subview(label_title)

@@ -302,6 +302,7 @@ def generate_csubview(csubview,cseg_info):
     ctitle = ui.Label(name = 'ctitle', bg_color ='black', frame = (vis['ctitle_x'], vis['ctitle_y'], vis['ctitle_w'], vis['ctitle_h']))
     ctitle.text = cseg_info['title']
     ctitle.font =  ('<system-bold>',16)
+    ctitle.text_color = 'white'
     ctitle.alignment = 1 #1 is center
     csubview.add_subview(ctitle)
 

@@ -231,7 +231,7 @@ def monthly(runs_per_week):
     main_dict['flbox_titles'].append("Difference")
     main_dict['flbox_titles'].append("Runs Remain")
     main_dict['flbox_titles'].append("MPR Last Month")
-    main_dict['flbox_titles'].append("TEST")
+    main_dict['flbox_titles'].append("")
 
     #DATA
     main_dict['flbox_values'].append(format_text(this_month))
@@ -241,6 +241,7 @@ def monthly(runs_per_week):
     main_dict['flbox_values'].append(format_text(month_difference))
     main_dict['flbox_values'].append(format_text(runs_remain))
     main_dict['flbox_values'].append(format_text(abs(month_difference/runs_remain)))
+    main_dict['flbox_values'].append("")
 
     # #
     main_dict['frbox_titles'].append("50 Miles Goal")
@@ -250,6 +251,7 @@ def monthly(runs_per_week):
     main_dict['frbox_titles'].append("MPR to Record")
     main_dict['frbox_titles'].append("")
     main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
 
     #
     main_dict['frbox_values'].append(format_text(this_month-50))
@@ -257,6 +259,7 @@ def monthly(runs_per_week):
     main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append(str(max_miles))
     main_dict['frbox_values'].append(format_text((max_miles-this_month)/runs_remain))
+    main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append("")
 

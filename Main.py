@@ -139,7 +139,7 @@ def vis(w,h):
     vis['fbox_values_y'] = 1 #this needs to be changed
 
     #box titles RIGHT
-    vis['frbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 7
+    vis['frbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 8
     vis['frbox_titles_w'] = (vis['psub_w']/2) * .75
     vis['frbox_titles_x'] = (vis['psub_w']/4) * 2
     vis['frbox_titles_y'] = 1 #this needs to be changed
@@ -154,8 +154,8 @@ vis = vis(w,h)
 
 #SUBVIEWS
 psubview = ui.View(frame=(vis['psub_x'], vis['psub_y'], vis['psub_w'], vis['psub_h']), background_color = 'black')
-csubview = ui.View(frame=(vis['csub_x'], vis['csub_y'], vis['csub_w'], vis['csub_h']), background_color = 'blue')
-fsubview = ui.View(frame=(vis['fsub_x'], vis['fsub_y'], vis['fsub_w'], vis['fsub_h']), background_color = 'red')
+csubview = ui.View(frame=(vis['csub_x'], vis['csub_y'], vis['csub_w'], vis['csub_h']), background_color = 'black')
+fsubview = ui.View(frame=(vis['fsub_x'], vis['fsub_y'], vis['fsub_w'], vis['fsub_h']), background_color = 'black')
 
 view.add_subview(psubview)
 view.add_subview(csubview)

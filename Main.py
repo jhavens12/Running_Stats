@@ -284,13 +284,13 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         psubview.add_subview(label_title)
 
     #remaining - MODIFY CSUBVIEW HERE
-    csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='pink', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
+    csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='black', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
     csubtitle1_value.text = pseg_info['remaining_miles']
     csubtitle1_value.alignment = 1 #1 is center
     csubtitle1_value.text_color = '#4286f4'
     csubview.add_subview(csubtitle1_value)
 
-    csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='pink', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
+    csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='black', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
     csubtitle2_value.text = pseg_info['remaining_per_run']
     csubtitle2_value.text_color = '#4286f4'
     csubtitle2_value.alignment = 1 #1 is center
@@ -366,7 +366,7 @@ def generate_csubview(csubview,cseg_info):
     ctotal_title.text = cseg_info['total_title']
     ctotal_title.alignment = 1 #1 is center
     ctotal_title.font =  ('<system-bold>',16)
-    ctotal_title.text_color = 'red'
+    ctotal_title.text_color = 'white'
     csubview.add_subview(ctotal_title)
 
     #total values
@@ -404,8 +404,8 @@ def generate_fsubview(fsubview,fseg_info):
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.text_color = 'white'
-        #label_title.border_color = 'black'
-        #label_title.border_width = 0
+        label_title.border_color = 'white'
+        label_title.border_width = 1
         fsubview.add_subview(label_title)
 
     for n,label in enumerate(fseg_info['flbox_values']):

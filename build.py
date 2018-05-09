@@ -573,7 +573,6 @@ def weekly_graph():
         if week_dict[week]: #check to see if any activites exist in the given week
             mile_list = []
             for activity in week_dict[week]:
-                count_list.append(1)
                 mile_list.append(float(week_dict[week][activity]['distance_miles']))
             miles_dict[get_time.LM(week)] = sum(mile_list)
         else:

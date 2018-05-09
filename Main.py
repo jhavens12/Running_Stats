@@ -56,34 +56,34 @@ def vis(w,h):
     vis['psubtitle_title_h'] = 20
     vis['psubtitle_title_w'] = vis['psub_w']/4
     vis['psubtitle_title_x'] = 0 #first
-    vis['psubtitle_title_y'] = 20
+    vis['psubtitle_title_y'] = vis['ptitle_h']
 
     vis['psubtitle_value_h'] = 20
     vis['psubtitle_value_w'] = vis['psub_w']/4
     vis['psubtitle_value_x'] = vis['psub_w']/4 #second
-    vis['psubtitle_value_y'] = 20
+    vis['psubtitle_value_y'] = vis['ptitle_h']
 
     #box titles
     vis['box_titles_h'] = 32
     vis['box_titles_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_titles_x'] = 1 #this is later changed dynamically
-    vis['box_titles_y'] = 40
+    vis['box_titles_y'] = vis['psubtitle_value_y'] + vis['psubtitle_value_h']
 
     vis['box_values_h'] = 80
     vis['box_values_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_values_x'] = 1 #this is later changed dynamically
-    vis['box_values_y'] = 70
+    vis['box_values_y'] = vis['box_titles_y'] + vis['box_titles_h']
 
     #Bottom Labels
     vis['total_title_h'] = 32
     vis['total_title_w'] = vis['first_box_width']
     vis['total_title_x'] = 0
-    vis['total_title_y'] = 150
+    vis['total_title_y'] = vis['box_values_y'] + vis['box_values_h']  #150
 
     vis['total_values_h'] = 32
     vis['total_values_w'] = vis['psub_w'] #this is later changed dynamically
     vis['total_values_x'] = 1 #this is later changed dynamically
-    vis['total_values_y'] = 150
+    vis['total_values_y'] = vis['total_title_y'] #150
 
     ########################################################cSUB########################################################
 

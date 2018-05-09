@@ -464,7 +464,7 @@ def generate_yearly_graph():
     fsubview.add_subview(ftitle)
 
     b = build.yearly_graph()
-    imageview1 = ui.ImaageView(frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_h'], vis['imageview_w']))
+    imageview1 = ui.ImageView(frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_h'], vis['imageview_w']))
     imageview1.image = ui.Image.from_data(b.getvalue())
     fsubview.add_subview(imageview1)
 

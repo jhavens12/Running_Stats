@@ -42,17 +42,6 @@ def vis(w,h):
     vis['ptitle_x'] = 0
     vis['ptitle_y'] = 0
 
-    #subtitles 10 percent
-    # vis['psubtitle_title_h'] = 20
-    # vis['psubtitle_title_w'] = vis['psub_w']/2
-    # vis['psubtitle_title_x'] = 0
-    # vis['psubtitle_title_y'] = 20
-    #
-    # vis['psubtitle_value_h'] = 20
-    # vis['psubtitle_value_w'] = vis['psub_w']/2
-    # vis['psubtitle_value_x'] = vis['psub_w']/2
-    # vis['psubtitle_value_y'] = 20
-
     vis['psubtitle_title_h'] = 20
     vis['psubtitle_title_w'] = vis['psub_w']/4
     vis['psubtitle_title_x'] = 0 #first
@@ -64,7 +53,7 @@ def vis(w,h):
     vis['psubtitle_value_y'] = vis['ptitle_h']
 
     #box titles
-    vis['box_titles_h'] = 32
+    vis['box_titles_h'] = 20
     vis['box_titles_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_titles_x'] = 1 #this is later changed dynamically
     vis['box_titles_y'] = vis['psubtitle_value_y'] + vis['psubtitle_value_h']
@@ -74,13 +63,13 @@ def vis(w,h):
     vis['box_values_x'] = 1 #this is later changed dynamically
     vis['box_values_y'] = vis['box_titles_y'] + vis['box_titles_h']
 
-    #Bottom Labels
-    vis['total_title_h'] = 32
+    #Bottom Labels - CSUB AND FSUB
+    vis['total_title_h'] = 20
     vis['total_title_w'] = vis['first_box_width']
     vis['total_title_x'] = 0
     vis['total_title_y'] = vis['box_values_y'] + vis['box_values_h']  #150
 
-    vis['total_values_h'] = 32
+    vis['total_values_h'] = 20
     vis['total_values_w'] = vis['psub_w'] #this is later changed dynamically
     vis['total_values_x'] = 1 #this is later changed dynamically
     vis['total_values_y'] = vis['total_title_y'] #150
@@ -97,22 +86,22 @@ def vis(w,h):
     vis['csubtitle1_title_h'] = 20
     vis['csubtitle1_title_w'] = vis['psub_w']/4
     vis['csubtitle1_title_x'] = 0 #first
-    vis['csubtitle1_title_y'] = 20
+    vis['csubtitle1_title_y'] = vis['ctitle_h']
 
     vis['csubtitle1_value_h'] = 20
     vis['csubtitle1_value_w'] = vis['psub_w']/4
     vis['csubtitle1_value_x'] = vis['psub_w']/4 #second
-    vis['csubtitle1_value_y'] = 20
+    vis['csubtitle1_value_y'] = vis['ctitle_h']
 
     vis['csubtitle2_title_h'] = 20
     vis['csubtitle2_title_w'] = vis['psub_w']/4
     vis['csubtitle2_title_x'] = (vis['psub_w']/4) * 2 #third
-    vis['csubtitle2_title_y'] = 20
+    vis['csubtitle2_title_y'] = vis['ctitle_h']
 
     vis['csubtitle2_value_h'] = 20
     vis['csubtitle2_value_w'] = vis['psub_w']/4
     vis['csubtitle2_value_x'] = (vis['psub_w']/4) * 3 #fourth
-    vis['csubtitle2_value_y'] = 20
+    vis['csubtitle2_value_y'] = vis['ctitle_h']
 
     ########################################################FSUB########################################################
     #SEGMENTED CONTROL
@@ -121,7 +110,7 @@ def vis(w,h):
     vis['fseg_control_x'] = vis['x_margin']
     vis['fseg_control_y'] = (vis['y_margin']/2) + vis['csub_h'] + vis['csub_y'] #margin plus the view above position and height
 
-    #LABELS
+    #FLABELS
     vis['ftitle_h'] = 20
     vis['ftitle_w'] = vis['psub_w']
     vis['ftitle_x'] = 0

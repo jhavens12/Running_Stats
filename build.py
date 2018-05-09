@@ -230,10 +230,10 @@ def weekly(runs_per_week,current_info):
     main_dict['flbox_titles'].append("")
 
     #DATA
-    main_dict['flbox_values'].append(format_text(int(current_miles)))
+    main_dict['flbox_values'].append(str(current_miles))
     main_dict['flbox_values'].append(str(weekly_dict[most_miles_week]['date_human']))
-    main_dict['flbox_values'].append(format_text(int(max_weekly_miles)))
-    main_dict['flbox_values'].append(format_text(float(max_weekly_miles)-float(current_miles)))
+    main_dict['flbox_values'].append(str(max_weekly_miles)))
+    main_dict['flbox_values'].append(str(float(max_weekly_miles)-float(current_miles)))
     main_dict['flbox_values'].append("")
     main_dict['flbox_values'].append("")
     main_dict['flbox_values'].append("")

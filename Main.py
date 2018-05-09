@@ -199,7 +199,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     psubtitle_title = ui.Label(name = 'psubtitle_title', bg_color ='black', frame = (vis['psubtitle_title_x'], vis['psubtitle_title_y'], vis['psubtitle_title_w'], vis['psubtitle_title_h']))
     psubtitle_title.text = pseg_info['subtitle_title']
     psubtitle_title.alignment = 1 #1 is center, 2 is right, 3
-    psubtitle_title.font = ('<system-bold>',14)
+    psubtitle_title.font = ('<system>',14)
     psubtitle_title.text_color = 'white'
     #psubtitle_title.font =  ('<system-bold>',14)
     psubview.add_subview(psubtitle_title)
@@ -208,6 +208,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     psubtitle_value.text = pseg_info['subtitle_value']
     psubtitle_value.text_color = '#4286f4'
     psubtitle_value.alignment = 1 #1 is center
+    psubtitle_value.font = ('<system>',14)
     psubview.add_subview(psubtitle_value)
 
     #box titles
@@ -276,12 +277,14 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     #remaining - MODIFY CSUBVIEW HERE
     csubtitle1_value = ui.Label(name = 'csubtitle1_value', bg_color ='black', frame = (vis['csubtitle1_value_x'], vis['csubtitle1_value_y'], vis['csubtitle1_value_w'], vis['csubtitle1_value_h']))
     csubtitle1_value.text = pseg_info['remaining_miles']
+    csubtitle1_value.font = ('<system>',14)
     csubtitle1_value.alignment = 1 #1 is center
     csubtitle1_value.text_color = '#4286f4'
     csubview.add_subview(csubtitle1_value)
 
     csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='black', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
     csubtitle2_value.text = pseg_info['remaining_per_run']
+    csubtitle2_value.font = ('<system>',14)
     csubtitle2_value.text_color = '#4286f4'
     csubtitle2_value.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_value)
@@ -299,13 +302,14 @@ def generate_csubview(csubview,cseg_info):
     #subtitles
     csubtitle1_title = ui.Label(name = 'csubtitle1_title', bg_color ='black', frame = (vis['csubtitle1_title_x'], vis['csubtitle1_title_y'], vis['csubtitle1_title_w'], vis['csubtitle1_title_h']))
     csubtitle1_title.text = cseg_info['subtitle1_title']
-    csubtitle1_title.font = ('<system-bold>',14)
+    csubtitle1_title.font = ('<system>',14)
     csubtitle1_title.text_color = 'white'
     csubtitle1_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle1_title)
 
     csubtitle2_title = ui.Label(name = 'csubtitle2_title', bg_color ='black', frame = (vis['csubtitle2_title_x'], vis['csubtitle2_title_y'], vis['csubtitle2_title_w'], vis['csubtitle2_title_h']))
     csubtitle2_title.text = cseg_info['subtitle2_title']
+    csubtitle2_title.font = ('<system>',14)
     csubtitle2_title.text_color = 'white'
     csubtitle2_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_title)

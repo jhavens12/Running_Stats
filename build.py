@@ -77,6 +77,7 @@ def top_period(runs_per_week,current_info):
         current_elevation_list.append(float(past_dict[i]['total_elevation_feet']))
     current_elevation_total = sum(current_elevation_list)
 
+    main_dict = {} #main dictionary to add values to and then return
     main_dict['title'] = "Date Title"#(get_time.convert_weekday_full(get_time.LM(Monday)) + " - " + get_time.convert_weekday_full(get_time.LS(Sunday)))
 
     main_dict['subtitle_title'] = 'Ten Percent:'

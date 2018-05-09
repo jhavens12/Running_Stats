@@ -463,8 +463,16 @@ def generate_yearly_graph():
     ftitle.alignment = 1 #1 is center
     fsubview.add_subview(ftitle)
 
+    #add label to cover subview
+    sublabel = ui.Label(name = 'ftitle', bg_color ='black', frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_w'], vis['imageview_h']))
+    sublabel.text = ''
+    #sublabel.text_color = 'white'
+    #sublabel.alignment = 1 #1 is center
+    fsubview.add_subview(sublabel)
+
+    #graph
     b = build.yearly_graph()
-    imageview1 = ui.ImageView(frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_h'], vis['imageview_w']))
+    imageview1 = ui.ImageView(frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_w'], vis['imageview_h']))
     imageview1.image = ui.Image.from_data(b.getvalue())
     fsubview.add_subview(imageview1)
 

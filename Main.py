@@ -401,7 +401,7 @@ def generate_fsubview(fsubview,fseg_info):
         label_title.text = label
         label_title.alignment = 1
         label_title.font =  ('<system>',12)
-        label_title.text_color = 'light-blue'
+        label_title.text_color = 'blue'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
         fsubview.add_subview(label_title)
@@ -428,7 +428,7 @@ def generate_fsubview(fsubview,fseg_info):
         label_title.text = label
         label_title.alignment = 1
         label_title.font =  ('<system>',12)
-        label_title.text_color = 'light-blue'
+        label_title.text_color = 'blue'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
         fsubview.add_subview(label_title)

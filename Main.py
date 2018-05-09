@@ -261,7 +261,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         psubview.add_subview(label_title)
 
     #total title
-    ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='black, frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
+    ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='black', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ptotal_title.text = pseg_info['total_title']
     ptotal_title.alignment = 1 #1 is center
     ptotal_title.font =  ('<system-bold>',16)

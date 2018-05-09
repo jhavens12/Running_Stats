@@ -43,15 +43,25 @@ def vis(w,h):
     vis['ptitle_y'] = 0
 
     #subtitles 10 percent
-    vis['psubtitle_title_h'] = 20
-    vis['psubtitle_title_w'] = vis['psub_w']/2
-    vis['psubtitle_title_x'] = 0
-    vis['psubtitle_title_y'] = 20
+    # vis['psubtitle_title_h'] = 20
+    # vis['psubtitle_title_w'] = vis['psub_w']/2
+    # vis['psubtitle_title_x'] = 0
+    # vis['psubtitle_title_y'] = 20
+    #
+    # vis['psubtitle_value_h'] = 20
+    # vis['psubtitle_value_w'] = vis['psub_w']/2
+    # vis['psubtitle_value_x'] = vis['psub_w']/2
+    # vis['psubtitle_value_y'] = 20
 
-    vis['psubtitle_value_h'] = 20
-    vis['psubtitle_value_w'] = vis['psub_w']/2
-    vis['psubtitle_value_x'] = vis['psub_w']/2
-    vis['psubtitle_value_y'] = 20
+    vis['psubtitle1_title_h'] = 20
+    vis['psubtitle1_title_w'] = vis['psub_w']/4
+    vis['psubtitle1_title_x'] = 0 #first
+    vis['psubtitle1_title_y'] = 20
+
+    vis['psubtitle1_value_h'] = 20
+    vis['psubtitle1_value_w'] = vis['psub_w']/4
+    vis['psubtitle1_value_x'] = vis['psub_w']/4 #second
+    vis['psubtitle1_value_y'] = 20
 
     #box titles
     vis['box_titles_h'] = 32

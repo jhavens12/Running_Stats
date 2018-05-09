@@ -141,9 +141,14 @@ def vis(w,h):
     ###### Imageview
 
     vis['imageview_x'] = 0
-    vis['imageview_y'] = vis['fbox_titles_h'] #start where title ends
-    vis['imageview_h'] = vis['fsub_h'] - vis['fbox_titles_h'] #tall as subview, minus title
+    vis['imageview_y'] = 0 #vis['fbox_titles_h'] #start where title ends
+    vis['imageview_h'] = vis['fsub_h'] #- vis['fbox_titles_h'] #tall as subview, minus title
     vis['imageview_w'] = vis['fsub_w'] #wide as subview
+
+    vis['fbackground_x'] = 0
+    vis['fbackground_y'] = 0 #vis['fbox_titles_h'] #start where title ends
+    vis['fbackground_h'] = vis['fsub_h'] #- vis['fbox_titles_h'] #tall as subview, minus title
+    vis['fbackground_w'] = vis['fsub_w'] #wide as subview
 
     return vis
 
@@ -394,6 +399,13 @@ def generate_csubview(csubview,cseg_info):
         csubview.add_subview(label_title)
 
 def generate_fsubview(fsubview,fseg_info):
+    #background
+    fbackground = ui.Label(name = 'fbackground', bg_color ='black', frame = (vis['fbackground_x'], vis['fbackground_y'], vis['fbackground_w'], vis['fbackground_h']))
+    fbackground.text = ''
+    #sublabel.text_color = 'white'
+    #sublabel.alignment = 1 #1 is center
+    fsubview.add_subview(fbackground)
+
     #title
     ftitle = ui.Label(name = 'ftitle', bg_color ='black', frame = (vis['ftitle_x'], vis['ftitle_y'], vis['ftitle_w'], vis['ftitle_h']))
     ftitle.text = fseg_info['title']
@@ -457,18 +469,18 @@ def generate_fsubview(fsubview,fseg_info):
 
 def generate_yearly_graph():
     #title
-    ftitle = ui.Label(name = 'ftitle', bg_color ='black', frame = (vis['ftitle_x'], vis['ftitle_y'], vis['ftitle_w'], vis['ftitle_h']))
-    ftitle.text = 'GRAPH'
-    ftitle.text_color = 'white'
-    ftitle.alignment = 1 #1 is center
-    fsubview.add_subview(ftitle)
+    # ftitle = ui.Label(name = 'ftitle', bg_color ='black', frame = (vis['ftitle_x'], vis['ftitle_y'], vis['ftitle_w'], vis['ftitle_h']))
+    # ftitle.text = 'GRAPH'
+    # ftitle.text_color = 'white'
+    # ftitle.alignment = 1 #1 is center
+    # fsubview.add_subview(ftitle)
 
-    #add label to cover subview
-    sublabel = ui.Label(name = 'ftitle', bg_color ='black', frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_w'], vis['imageview_h']))
-    sublabel.text = ''
+    #background
+    fbackground = ui.Label(name = 'fbackground', bg_color ='black', frame = (vis['fbackground_x'], vis['fbackground_y'], vis['fbackground_w'], vis['fbackground_h']))
+    fbackground.text = ''
     #sublabel.text_color = 'white'
     #sublabel.alignment = 1 #1 is center
-    fsubview.add_subview(sublabel)
+    fsubview.add_subview(fbackground)
 
     #graph
     b = build.yearly_graph()

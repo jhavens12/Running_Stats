@@ -192,14 +192,14 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['ptitle_x'], vis['ptitle_y'], vis['ptitle_w'], vis['ptitle_h']))
     ptitle.text = pseg_info['title']
     ptitle.alignment = 1 #1 is center
-    ptitle.font =  ('<system-bold>',14)
+    ptitle.font =  ('<system-bold>',16)
     psubview.add_subview(ptitle)
 
     #subtitles
     psubtitle_title = ui.Label(name = 'psubtitle_title', bg_color ='gray', frame = (vis['psubtitle_title_x'], vis['psubtitle_title_y'], vis['psubtitle_title_w'], vis['psubtitle_title_h']))
     psubtitle_title.text = pseg_info['subtitle_title']
     psubtitle_title.alignment = 1 #1 is center, 2 is right, 3
-    psubtitle_title.font =  ('<system-bold>',14)
+    #psubtitle_title.font =  ('<system-bold>',14)
     psubview.add_subview(psubtitle_title)
 
     psubtitle_value = ui.Label(name = 'psubtitle_value', bg_color ='pink', frame = (vis['psubtitle_value_x'], vis['psubtitle_value_y'], vis['psubtitle_value_w'], vis['psubtitle_value_h']))
@@ -221,7 +221,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.number_of_lines = 0
         label_title.text = label #since list, label is the value
         label_title.alignment = 1
-        label_title.font =  ('<system>',14)
+        label_title.font =  ('<system>',16)
         label_title.border_color = 'black'
         label_title.border_width = 0
         psubview.add_subview(label_title)
@@ -240,7 +240,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.number_of_lines = 0
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',16)
+        label_title.font =  ('<system>',14)
         label_title.border_color = 'black'
         label_title.border_width = 0
         psubview.add_subview(label_title)
@@ -282,7 +282,7 @@ def generate_csubview(csubview,cseg_info):
     #Title
     ctitle = ui.Label(name = 'ctitle', bg_color ='yellow', frame = (vis['ctitle_x'], vis['ctitle_y'], vis['ctitle_w'], vis['ctitle_h']))
     ctitle.text = cseg_info['title']
-    ctitle.font =  ('<system-bold>',14)
+    ctitle.font =  ('<system-bold>',16)
     ctitle.alignment = 1 #1 is center
     csubview.add_subview(ctitle)
 

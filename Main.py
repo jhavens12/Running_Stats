@@ -37,7 +37,7 @@ def vis(w,h):
     vis['pseg_control_y'] = vis['y_margin']
 
     #LABELS
-    vis['ptitle_h'] = 20
+    vis['ptitle_h'] = 30
     vis['ptitle_w'] = vis['psub_w']
     vis['ptitle_x'] = 0
     vis['ptitle_y'] = 0
@@ -88,7 +88,7 @@ def vis(w,h):
     ########################################################cSUB########################################################
 
     #LABELS
-    vis['ctitle_h'] = 20
+    vis['ctitle_h'] = 30
     vis['ctitle_w'] = vis['psub_w']
     vis['ctitle_x'] = 0
     vis['ctitle_y'] = 0

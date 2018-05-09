@@ -76,7 +76,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
 
     main_dict['title'] = (get_time.convert_weekday_full(get_time.LM(Monday)) + " - " + get_time.convert_weekday_full(get_time.LS(Sunday)))
 
-    main_dict['subtitle_title'] = 'Ten %:'
+    main_dict['subtitle_title'] = 'Ten %: '
     main_dict['subtitle_value'] = str(past_ten_percent)
 
     main_dict['box_titles'] = ['Date','Distance','Duration','Pace','Elevation']

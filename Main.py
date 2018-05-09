@@ -372,6 +372,7 @@ def generate_csubview(csubview,cseg_info):
         label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
         label_title.text = label
         label_title.alignment = 1
+        label_title.number_of_lines = 0
         label_title.font =  ('<system>',14)
         label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'

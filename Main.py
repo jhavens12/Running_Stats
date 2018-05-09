@@ -405,8 +405,8 @@ def generate_fsubview(fsubview,fseg_info):
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
         label_title.text_color = 'white'
-        label_title.border_color = 'white'
-        label_title.border_width = 1
+        #label_title.border_color = 'white'
+        #label_title.border_width = 1
         fsubview.add_subview(label_title)
 
     for n,label in enumerate(fseg_info['flbox_values']):

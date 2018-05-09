@@ -453,5 +453,3 @@ def yearly_graph():
     b = BytesIO()
     plt.savefig(b, transparent='True')
     return b
-
-weekly(4,"Test")

@@ -201,7 +201,7 @@ def generate_segmented_controls(view):
 
     #seg control bottom of page
     fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
-    fseg_control.segments = ("Monthly","Yearly","YTD Graph","Mon. Graph")
+    fseg_control.segments = ("Monthly","Yearly","YTD Graph","Week Graph")
     fseg_control.action = fseg_select
     fseg_control.selected_index = 0
     view.add_subview(fseg_control)

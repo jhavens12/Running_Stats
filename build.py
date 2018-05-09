@@ -190,6 +190,7 @@ def current_period():
     return main_dict
 
 def weekly(runs_per_week,current_info):
+    pprint(current_info)
     current_miles = current_info['current_miles']
     current_week_count = current_info['current_week_count']
 

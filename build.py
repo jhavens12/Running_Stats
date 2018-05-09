@@ -163,7 +163,8 @@ def current_period():
         current_elevation_list.append(float(dict_2[i]['total_elevation_feet']))
     current_elevation_total = sum(current_elevation_list)
 
-    main_dict['title'] = (get_time.weekday(get_time.LM(0)) + " " + str(get_time.LM(0).day) + " - " + get_time.weekday(get_time.now()) + " " + str(get_time.now().day))
+    #main_dict['title'] = (get_time.weekday(get_time.LM(0)) + " " + str(get_time.LM(0).day) + " - " + get_time.weekday(get_time.now()) + " " + str(get_time.now().day))
+    main_dict['title'] = (get_time.convert_weekday_full(get_time.LM(0)) + " - " + get_time.convert_weekday_full(datetime.datetime.now()))
     main_dict['subtitle1_title'] = "Remaining:"
     main_dict['subtitle2_title'] = "Per Run:"
     main_dict['subtitle1_value'] = "0"

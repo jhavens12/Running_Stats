@@ -174,8 +174,11 @@ def generate_segmented_controls(view):
         if sender.selected_index == 2:
             pseg_info = build.period(2,3,current_info)
             generate_psubview(psubview,csubview,pseg_info)
-        elif sender.selected_index == 3:
+        if sender.selected_index == 3:
             pseg_info = build.period(3,4,current_info)
+            generate_psubview(psubview,csubview,pseg_info)
+        elif sender.selected_index == 4:
+            pseg_info = build.top_period(4,current_info)
             generate_psubview(psubview,csubview,pseg_info)
 
     def fseg_select(sender):

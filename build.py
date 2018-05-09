@@ -19,6 +19,100 @@ master_dict = get_data.my_filtered_activities()
 def format_text(x):
     return str("{0:.2f}".format(x))
 
+def top_period(runs_per_week,current_info):
+
+    weekly_dict = calc.weekly_stats(master_dict.copy())
+
+    max_weekly_miles = 0
+    for week in weekly_dict:
+        if weekly_dict[week]['miles_ran'] > max_weekly_miles:
+            max_weekly_miles = int(weekly_dict[week]['miles_ran'])
+            most_miles_week = week
+
+    dict_1 = weekly_dict[most_miles_week]['run_dict'] #grab dictionary of runs from top week to display
+
+    #below is taken from the peroid function
+    ########################################
+
+    past_dict_rev = {k: dict_1[k] for k in list(reversed(sorted(dict_1.keys())))}
+    past_dict = {k: past_dict_rev[k] for k in list(sorted(past_dict_rev.keys()))}
+    past_run_count = calc.activity_count(past_dict)
+    past_mile_list = []
+    for i in past_dict:
+        past_mile_list.append(float(past_dict[i]['distance_miles']))
+    past_miles = ("{0:.2f}".format(sum(past_mile_list)))
+    past_ten_percent = ("{0:.2f}".format(float(past_miles) * .1))
+
+    #create lists of items to display
+    past_run_title_label = []
+    for i in list(sorted(past_dict)):
+        past_run_title_label.append(past_dict[i]['weekday_short_date'])
+    past_run_mile_label = []
+    for i in list(sorted(past_dict)):
+        past_run_mile_label.append(past_dict[i]['distance_miles'])
+    past_run_pace_label = []
+    for i in list(sorted(past_dict)):
+        past_run_pace_label.append(past_dict[i]['pace'])
+    past_run_elapsed_label = []
+    for i in list(sorted(past_dict)):
+        past_run_elapsed_label.append(str(past_dict[i]['elapsed']))
+    past_run_treadmill_label = []
+    for i in list(sorted(past_dict)):
+        past_run_treadmill_label.append(str(past_dict[i]['total_elevation_feet']))
+
+    #bottom values
+    dec_pace_list = []
+    for i in list(sorted(past_dict)):
+        dec_pace_list.append(past_dict[i]['pace_dec'])
+    current_pace_average = get_data.convert_dec_time(sum(dec_pace_list)/len(dec_pace_list))
+
+    seconds_elapsed_list = []
+    for i in list(sorted(past_dict)):
+        seconds_elapsed_list.append(past_dict[i]['elapsed_time'])
+    total_elapsed_seconds = sum(seconds_elapsed_list)
+    current_duration_total = get_data.convert_seconds_to_minutes(total_elapsed_seconds)
+
+    current_elevation_list = []
+    for i in list(sorted(past_dict)):
+        current_elevation_list.append(float(past_dict[i]['total_elevation_feet']))
+    current_elevation_total = sum(current_elevation_list)
+
+    main_dict['title'] = (get_time.convert_weekday_full(get_time.LM(Monday)) + " - " + get_time.convert_weekday_full(get_time.LS(Sunday)))
+
+    main_dict['subtitle_title'] = 'Ten Percent:'
+    main_dict['subtitle_value'] = str(past_ten_percent)
+
+    main_dict['box_titles'] = ['Date','Distance','Duration','Pace','Elevation']
+    main_dict['box_values'] = []
+    main_dict['box_values'].append("\n".join(past_run_title_label))
+    main_dict['box_values'].append("\n".join(past_run_mile_label))
+    main_dict['box_values'].append("\n".join(past_run_elapsed_label))
+    main_dict['box_values'].append("\n".join(past_run_pace_label))
+    main_dict['box_values'].append("\n".join(past_run_treadmill_label))
+
+    #BOTTOM VALUES
+    main_dict['total_title'] = 'Total/AVG'
+    main_dict['total_values'] = []
+    main_dict['total_values'].append(str(past_miles))
+    main_dict['total_values'].append(str(current_pace_average))
+    main_dict['total_values'].append(str(current_duration_total))
+    main_dict['total_values'].append(str(current_elevation_total))
+
+    #calculate remaining
+    current_miles = current_info['current_miles']
+    current_week_count = current_info['current_week_count']
+
+    remaining_miles = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles)))
+    main_dict['remaining_miles'] = remaining_miles
+    if float(runs_per_week)-float(current_week_count) != 0:
+        miles_per_run_remaining = float(remaining_miles)/(runs_per_week-float(current_week_count))
+        main_dict['remaining_per_run'] = format_text(miles_per_run_remaining)
+    else:
+        main_dict['remaining_per_run'] = "0"
+    #
+
+    return main_dict
+
 def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 1 for last week
 
     main_dict = {} #main dictionary to add values to and then return
@@ -190,7 +284,7 @@ def current_period():
     return main_dict
 
 def weekly(runs_per_week,current_info):
-    pprint(current_info)
+    #pprint(current_info)
     current_miles = current_info['current_miles']
     current_week_count = current_info['current_week_count']
 

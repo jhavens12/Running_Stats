@@ -104,3 +104,9 @@ def difference_minutes(time1,time2):
 
 def convert_weekday_full(i):
     return str(calendar.day_name[i.weekday()])+" "+str(calendar.month_name[i.month])+" "+str(i.day)
+
+def convert_month_name(i):
+    return str(calendar.month_name[i.month])
+
+def convert_year_name(i):
+    return str(i.year)

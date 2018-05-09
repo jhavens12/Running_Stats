@@ -222,7 +222,7 @@ def monthly(runs_per_week):
             most_miles_month = month
 
 
-    main_dict['title'] = "MONTH"
+    main_dict['title'] = get_time.convert_month_name(datetime.datetime.now()) #get name of this month
     #LABELS
     main_dict['flbox_titles'].append("This Month")
     main_dict['flbox_titles'].append("Run Count")
@@ -312,7 +312,7 @@ def yearly(runs_per_week):
     goal_miles_per_week_now = goal_miles_per_day_now*7
     goal_miles_per_run_now = goal_miles_per_week_now/runs_per_week
 
-    main_dict['title'] = "YEAR"
+    main_dict['title'] = get_time.convert_year_name(datetime.datetime.now())
 
     main_dict['flbox_titles'].append("YTD Miles")
     main_dict['flbox_titles'].append("")

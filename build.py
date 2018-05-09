@@ -9,6 +9,7 @@ from io import BytesIO
 from pprint import pprint
 import datetime #recently added
 import math #recently added
+import numpy as np #new
 
 
 runs_per_week = 4
@@ -351,3 +352,30 @@ def yearly(runs_per_week):
     main_dict['frbox_values'].append("")
 
     return main_dict
+
+def yearly_graph():
+    #modified from running_graphs to show YTD mileage
+    yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
+    yearly_dict2 = calc.yearly_totals(master_dict.copy(),1) #last year
+
+    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()),'blue')#,label=('This Year'),color='green')
+    plt.plot(list(yearly_dict2.keys()),list(yearly_dict2.values()),'red')#,label=('Last Year'))
+
+    def graph(formula):
+        x = np.array(range(0,366))
+        y = eval(formula)
+        plt.plot(x, y, 'g', linestyle=':')
+
+    graph('x*(600/365)')
+
+    plt.style.use('dark_background')
+    plt.axis('off')
+    plt.rcParams['lines.linewidth'] = 4
+    plt.tight_layout()
+    plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
+                wspace=None, hspace=None)
+    #plt.show()
+
+    b = BytesIO()
+    plt.savefig(b, transparent='True')
+    return b

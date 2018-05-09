@@ -137,6 +137,14 @@ def vis(w,h):
     vis['frbox_values_w'] = (vis['psub_w']/2) * .25
     vis['frbox_values_x'] =  vis['frbox_titles_x'] + vis['frbox_titles_w'] #where titles start, plus width of titles
     vis['frbox_values_y'] = 1 #this needs to be changed
+
+    ###### Imageview
+
+    vis['imageview_x'] = 0
+    vis['imageview_y'] = vis['fbox_titles_h'] #start where title ends
+    vis['imageview_h'] = vis['fsub_h'] - vis['fbox_titles_h'] #tall as subview, minus title
+    vis['imageview_w'] = vis['fsub_w'] #wide as subview
+
     return vis
 
 vis = vis(w,h)
@@ -168,8 +176,11 @@ def generate_segmented_controls(view):
     def fseg_select(sender):
         if sender.selected_index == 0:
             generate_fsubview(fsubview,build.monthly(4))
-        elif sender.selected_index == 1:
+        if sender.selected_index == 1:
             generate_fsubview(fsubview,build.yearly(4))
+        elif sender.selected_index == 2:
+            generate_yearly_graph()
+            #generate_fsubview(fsubview,build.yearly(4))
 
     #seg control top of page
     pseg_control = ui.SegmentedControl(name= 'pseg_control', frame = (vis['pseg_control_x'], vis['pseg_control_y'],vis['pseg_control_w'],vis['pseg_control_h']))
@@ -180,7 +191,7 @@ def generate_segmented_controls(view):
 
     #seg control bottom of page
     fseg_control = ui.SegmentedControl(name= 'fseg_control', frame = (vis['fseg_control_x'], vis['fseg_control_y'],vis['fseg_control_w'],vis['fseg_control_h']))
-    fseg_control.segments = ("Monthly","Yearly")
+    fseg_control.segments = ("Monthly","Yearly","YTD Graph")
     fseg_control.action = fseg_select
     fseg_control.selected_index = 0
     view.add_subview(fseg_control)
@@ -443,6 +454,19 @@ def generate_fsubview(fsubview,fseg_info):
         #label_title.border_color = 'black'
         #label_title.border_width = 0
         fsubview.add_subview(label_title)
+
+def generate_yearly_graph():
+    #title
+    ftitle = ui.Label(name = 'ftitle', bg_color ='black', frame = (vis['ftitle_x'], vis['ftitle_y'], vis['ftitle_w'], vis['ftitle_h']))
+    ftitle.text = 'GRAPH'
+    ftitle.text_color = 'white'
+    ftitle.alignment = 1 #1 is center
+    fsubview.add_subview(ftitle)
+
+    b = build.yearly_graph()
+    imageview1 = ui.ImaageView(frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_h'], vis['imageview_w']))
+    imageview1.image = ui.Image.from_data(b.getvalue())
+    fsubview.add_subview(imageview1)
 
 ##### run on open
 global current_info #so this doesn't need to be passed into functions everywhere

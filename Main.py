@@ -199,21 +199,24 @@ def generate_segmented_controls(view):
 def generate_psubview(psubview,csubview,pseg_info): #give the subview and list of information and this generates the rest, adds to subview given
 
     #title
-    ptitle = ui.Label(name = 'ptitle', bg_color ='yellow', frame = (vis['ptitle_x'], vis['ptitle_y'], vis['ptitle_w'], vis['ptitle_h']))
+    ptitle = ui.Label(name = 'ptitle', bg_color ='black', frame = (vis['ptitle_x'], vis['ptitle_y'], vis['ptitle_w'], vis['ptitle_h']))
     ptitle.text = pseg_info['title']
     ptitle.alignment = 1 #1 is center
     ptitle.font =  ('<system-bold>',18)
+    ptitle.text_color = 'white'
     psubview.add_subview(ptitle)
 
     #subtitles
-    psubtitle_title = ui.Label(name = 'psubtitle_title', bg_color ='gray', frame = (vis['psubtitle_title_x'], vis['psubtitle_title_y'], vis['psubtitle_title_w'], vis['psubtitle_title_h']))
+    psubtitle_title = ui.Label(name = 'psubtitle_title', bg_color ='black', frame = (vis['psubtitle_title_x'], vis['psubtitle_title_y'], vis['psubtitle_title_w'], vis['psubtitle_title_h']))
     psubtitle_title.text = pseg_info['subtitle_title']
     psubtitle_title.alignment = 1 #1 is center, 2 is right, 3
+    psubtitle_title.text_color = 'white'
     #psubtitle_title.font =  ('<system-bold>',14)
     psubview.add_subview(psubtitle_title)
 
-    psubtitle_value = ui.Label(name = 'psubtitle_value', bg_color ='pink', frame = (vis['psubtitle_value_x'], vis['psubtitle_value_y'], vis['psubtitle_value_w'], vis['psubtitle_value_h']))
+    psubtitle_value = ui.Label(name = 'psubtitle_value', bg_color ='black', frame = (vis['psubtitle_value_x'], vis['psubtitle_value_y'], vis['psubtitle_value_w'], vis['psubtitle_value_h']))
     psubtitle_value.text = pseg_info['subtitle_value']
+    psubtitle_value.text_color = '#4286f4'
     psubtitle_value.alignment = 1 #1 is center
     psubview.add_subview(psubtitle_value)
 
@@ -227,11 +230,12 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         else:
             vis['box_titles_w'] = (vis['psub_w']-vis['first_box_width'])/(count-1) #divide width by number of labels
             vis['box_titles_x'] = (vis['box_titles_w'] * (n-1)) + vis['first_box_width']#first label at 0, second label at width*1
-        label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
+        label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['box_titles_x'], vis['box_titles_y'], vis['box_titles_w'], vis['box_titles_h']) )
         label_title.number_of_lines = 0
         label_title.text = label #since list, label is the value
         label_title.alignment = 1
         label_title.font =  ('<system>',15)
+        label_title.text_color = 'white'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
         psubview.add_subview(label_title)
@@ -246,20 +250,22 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         else:
             vis['box_values_w'] = (vis['psub_w']-vis['first_box_width'])/(count-1) #divide width by number of labels
             vis['box_values_x'] = (vis['box_values_w'] * (n-1)) + vis['first_box_width']#first label at 0, second label at width*1
-        label_title = ui.Label(name = label, bg_color = 'yellow', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
+        label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['box_values_x'], vis['box_values_y'], vis['box_values_w'], vis['box_values_h']) )
         label_title.number_of_lines = 0
         label_title.text = label
         label_title.alignment = 1
         label_title.font =  ('<system>',14)
+        label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
         psubview.add_subview(label_title)
 
     #total title
-    ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='pink', frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
+    ptotal_title = ui.Label(name = 'ptotal_title', bg_color ='black, frame = (vis['total_title_x'], vis['total_title_y'], vis['total_title_w'], vis['total_title_h']))
     ptotal_title.text = pseg_info['total_title']
     ptotal_title.alignment = 1 #1 is center
     ptotal_title.font =  ('<system-bold>',16)
+    ptotal_title.text_color = 'white'
     psubview.add_subview(ptotal_title)
 
     #total value
@@ -268,10 +274,11 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         count = len(pseg_info['total_values'])
         vis['total_values_w'] = (vis['psub_w']-vis['total_title_w'])/(count)
         vis['total_values_x'] = vis['total_title_w'] + (vis['total_values_w'] * n)
-        label_title = ui.Label(name = label, bg_color = 'lightblue', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
+        label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['total_values_x'], vis['total_values_y'], vis['total_values_w'], vis['total_values_h']) )
         label_title.text = label
         label_title.alignment = 1
         label_title.font =  ('<system>',16)
+        label_title.text_color = 'red'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
         psubview.add_subview(label_title)

@@ -397,7 +397,7 @@ def generate_fsubview(fsubview,fseg_info):
         #count = len(fbox_values)
         #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
         vis['fbox_values_y'] = (vis['fbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
-        label_title = ui.Label(name = label, bg_color = 'black, frame = (vis['fbox_values_x'], vis['fbox_values_y'], vis['fbox_values_w'], vis['fbox_values_h']) )
+        label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['fbox_values_x'], vis['fbox_values_y'], vis['fbox_values_w'], vis['fbox_values_h']) )
         label_title.text = label
         label_title.alignment = 1
         label_title.font =  ('<system>',12)

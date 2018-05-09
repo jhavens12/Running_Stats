@@ -189,7 +189,7 @@ def generate_segmented_controls(view):
         if sender.selected_index == 2:
             generate_yearly_graph()
         elif sender.selected_index == 3:
-            generate_monthly_graph()
+            generate_weekly_graph()
 
 
     #seg control top of page
@@ -494,7 +494,7 @@ def generate_yearly_graph():
     imageview1.image = ui.Image.from_data(b.getvalue())
     fsubview.add_subview(imageview1)
 
-def generate_monthly_graph():
+def generate_weekly_graph():
 
     #background
     fbackground = ui.Label(name = 'fbackground', bg_color ='black', frame = (vis['fbackground_x'], vis['fbackground_y'], vis['fbackground_w'], vis['fbackground_h']))
@@ -502,7 +502,7 @@ def generate_monthly_graph():
     fsubview.add_subview(fbackground)
 
     #graph
-    b = build.monthly_graph()
+    b = build.weekly_graph()
     imageview1 = ui.ImageView(frame = (vis['imageview_x'], vis['imageview_y'], vis['imageview_w'], vis['imageview_h']))
     imageview1.image = ui.Image.from_data(b.getvalue())
     fsubview.add_subview(imageview1)

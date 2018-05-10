@@ -187,7 +187,7 @@ def generate_segmented_controls(view):
         if sender.selected_index == 1:
             generate_fsubview(fsubview,build.yearly(4))
         if sender.selected_index == 2:
-            generate_fsubview(fsubview,build.weekly(4,current_info))
+            generate_fsubview(fsubview,build.weekly(current_info))
         if sender.selected_index == 3:
             generate_yearly_graph()
         elif sender.selected_index == 4:

@@ -284,7 +284,7 @@ def current_period():
 
     return main_dict
 
-def weekly(runs_per_week,current_info):
+def weekly(current_info):
 
     def how_most_running_period(days):
         output_dict = {}
@@ -610,5 +610,3 @@ def weekly_graph():
     plt.savefig(b, transparent='True')
     plt.close('all')
     return b
-
-weekly(4,"runs")

@@ -308,6 +308,7 @@ def weekly(current_info):
         return output_dict
 
     run_period_7 = how_most_running_period(7)
+    run_period_30 = how_most_running_period(30)
 
     #older
     #Currently not used
@@ -351,20 +352,20 @@ def weekly(current_info):
     main_dict['flbox_values'].append(str(run_period_7['difference_time'].days))
 
     # #
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("30 Day")
+    main_dict['frbox_titles'].append("Best 30 Day")
+    main_dict['frbox_titles'].append("Difference")
+    main_dict['frbox_titles'].append("Days Since")
     main_dict['frbox_titles'].append("")
     main_dict['frbox_titles'].append("")
     main_dict['frbox_titles'].append("")
     main_dict['frbox_titles'].append("")
 
     #
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append(format_text(run_period_30['current_total']))
+    main_dict['frbox_values'].append(format_text(run_period_30['highest_total']))
+    main_dict['frbox_values'].append(format_text(run_period_30['difference_distance']))
+    main_dict['frbox_values'].append(str(run_period_30['difference_time'].days))
     main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append("")

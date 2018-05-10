@@ -303,7 +303,7 @@ def weekly(current_info):
         output_dict['current_total'] = current_total
         output_dict['current_total_date'] = current_total_date
         output_dict['difference_distance'] = output_dict['current_total'] - output_dict['highest_total']
-        output_dict['difference_time'] =  str(int(output_dict['current_total_date'] - output_dict['highest_total_date']))
+        output_dict['difference_time'] =  output_dict['current_total_date'] - output_dict['highest_total_date']
 
         return output_dict
 
@@ -348,7 +348,7 @@ def weekly(current_info):
     main_dict['flbox_values'].append(format_text(run_period_7['current_total']))
     main_dict['flbox_values'].append(format_text(run_period_7['highest_total']))
     main_dict['flbox_values'].append(format_text(run_period_7['difference_distance']))
-    main_dict['flbox_values'].append(str(run_period_7['difference_time']))
+    main_dict['flbox_values'].append(str(run_period_7['difference_time'].days))
 
     # #
     main_dict['frbox_titles'].append("")

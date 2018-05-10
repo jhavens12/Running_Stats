@@ -303,7 +303,7 @@ def weekly(current_info):
         output_dict['current_total'] = current_total
         output_dict['current_total_date'] = current_total_date
         output_dict['difference_distance'] = output_dict['current_total'] - output_dict['highest_total']
-        output_dict['difference_time'] = output_dict['highest_total_date'] - output_dict['current_total_date']
+        output_dict['difference_time'] =  output_dict['current_total_date'] - output_dict['highest_total_date']
 
         return output_dict
 
@@ -334,7 +334,7 @@ def weekly(current_info):
     main_dict['flbox_titles'].append("This Week")
     main_dict['flbox_titles'].append("Best Week")
     main_dict['flbox_titles'].append("Difference")
-    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("Since")
     main_dict['flbox_titles'].append("7 Day")
     main_dict['flbox_titles'].append("Best 7 Day")
     main_dict['flbox_titles'].append("Difference")
@@ -344,7 +344,7 @@ def weekly(current_info):
     main_dict['flbox_values'].append(str(current_miles))
     main_dict['flbox_values'].append(str(max_weekly_miles))
     main_dict['flbox_values'].append(str(float(max_weekly_miles)-float(current_miles)))
-    main_dict['flbox_values'].append()
+    main_dict['flbox_values'].append(str(most_miles_week))
     main_dict['flbox_values'].append(format_text(run_period_7['current_total']))
     main_dict['flbox_values'].append(format_text(run_period_7['highest_total']))
     main_dict['flbox_values'].append(format_text(run_period_7['difference_distance']))

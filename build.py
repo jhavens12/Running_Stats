@@ -302,7 +302,7 @@ def weekly(current_info):
         output_dict['highest_total_date'] = highest_total_date
         output_dict['current_total'] = current_total
         output_dict['current_total_date'] = current_total_date
-        output_dict['difference_distance'] = output_dict['highest_total'] - output_dict['current_total']
+        output_dict['difference_distance'] = output_dict['current_total'] - output_dict['highest_total']
         output_dict['difference_time'] = output_dict['highest_total_date'] - output_dict['current_total_date']
 
         return output_dict
@@ -320,7 +320,7 @@ def weekly(current_info):
     max_weekly_miles = 0
     for week in weekly_dict:
         if weekly_dict[week]['miles_ran'] > max_weekly_miles:
-            max_weekly_miles = int(weekly_dict[week]['miles_ran'])
+            max_weekly_miles = float(weekly_dict[week]['miles_ran'])
             most_miles_week = week
 
     main_dict = {}
@@ -332,42 +332,42 @@ def weekly(current_info):
     main_dict['title'] = "WEEKLY"
     #LABELS
     main_dict['flbox_titles'].append("This Week")
-    main_dict['flbox_titles'].append("")
     main_dict['flbox_titles'].append("Best Week")
     main_dict['flbox_titles'].append("Difference")
     main_dict['flbox_titles'].append("")
-    main_dict['flbox_titles'].append("7 Days Running")
-    main_dict['flbox_titles'].append("Best 7 Days")
-    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("7 Day")
+    main_dict['flbox_titles'].append("Best 7 Day")
+    main_dict['flbox_titles'].append("Difference")
+    main_dict['flbox_titles'].append("Days Since")
 
     #DATA
     main_dict['flbox_values'].append(str(current_miles))
-    main_dict['flbox_values'].append("")
     main_dict['flbox_values'].append(str(max_weekly_miles))
     main_dict['flbox_values'].append(str(float(max_weekly_miles)-float(current_miles)))
-    main_dict['flbox_values'].append("")
-    main_dict['flbox_values'].append("")
-    main_dict['flbox_values'].append("")
-    main_dict['flbox_values'].append("")
+    main_dict['flbox_values'].append()
+    main_dict['flbox_values'].append(format_text(run_period_7['current_total']))
+    main_dict['flbox_values'].append(format_text(run_period_7['highest_total']))
+    main_dict['flbox_values'].append(format_text(run_period_7['difference_distance']))
+    main_dict['flbox_values'].append(str(run_period_7['difference_time']))
 
     # #
-    main_dict['frbox_titles'].append("7 Day High")
-    main_dict['frbox_titles'].append("Date")
     main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("7 Day Cur.")
     main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("Difference")
-    main_dict['frbox_titles'].append("Days")
+    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
     main_dict['frbox_titles'].append("")
 
     #
-    main_dict['frbox_values'].append(format_text(run_period_7['highest_total']))
-    main_dict['frbox_values'].append(str(run_period_7['highest_total_date']))
     main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append(format_text(run_period_7['current_total']))
     main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append(format_text(run_period_7['difference_distance']))
-    main_dict['frbox_values'].append(str(run_period_7['difference_time']))
+    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append("")
 
     return main_dict

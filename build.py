@@ -289,7 +289,7 @@ def weekly(current_info):
     def how_most_running_period(days):
         output_dict = {}
         input_day = days
-        result_dict = calc.full_running_totals(master_dict,input_day,'distance_miles')
+        result_dict = calc.full_running_totals(master_dict.copy(),input_day,'distance_miles')
         current_total_date = sorted(result_dict.keys())[-1]
         current_total = result_dict[current_total_date]
         highest_total = 0
@@ -309,6 +309,7 @@ def weekly(current_info):
 
     run_period_7 = how_most_running_period(7)
     run_period_30 = how_most_running_period(30)
+    run_period_90 = how_most_running_period(90)
 
     #older
     #Currently not used
@@ -356,20 +357,20 @@ def weekly(current_info):
     main_dict['frbox_titles'].append("Best 30 Day")
     main_dict['frbox_titles'].append("Difference")
     main_dict['frbox_titles'].append("Days Since")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("90 Day")
+    main_dict['frbox_titles'].append("Best 90 Day")
+    main_dict['frbox_titles'].append("Difference")
+    main_dict['frbox_titles'].append("Days Since")
 
     #
     main_dict['frbox_values'].append(format_text(run_period_30['current_total']))
     main_dict['frbox_values'].append(format_text(run_period_30['highest_total']))
     main_dict['frbox_values'].append(format_text(run_period_30['difference_distance']))
     main_dict['frbox_values'].append(str(run_period_30['difference_time'].days))
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append(format_text(run_period_90['current_total']))
+    main_dict['frbox_values'].append(format_text(run_period_90['highest_total']))
+    main_dict['frbox_values'].append(format_text(run_period_90['difference_distance']))
+    main_dict['frbox_values'].append(str(run_period_90['difference_time'].days))
 
     return main_dict
 

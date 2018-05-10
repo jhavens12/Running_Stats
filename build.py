@@ -285,6 +285,32 @@ def current_period():
     return main_dict
 
 def weekly(runs_per_week,current_info):
+
+    def how_most_running_period(days):
+        output_dict = {}
+        input_day = days
+        result_dict = calc.full_running_totals(master_dict,input_day,'distance_miles')
+        current_total_date = sorted(result_dict.keys())[-1]
+        current_total = result_dict[current_total_date]
+        highest_total = 0
+        for run in result_dict:
+            if result_dict[run] > highest_total:
+                highest_total = result_dict[run]
+                highest_total_date = run
+        #result_dict has date as key, 7 day total as value
+        output_dict['highest_total'] = highest_total
+        output_dict['highest_total_date'] = highest_total_date
+        output_dict['current_total'] = current_total
+        output_dict['current_total_date'] = current_total_date
+        output_dict['difference_distance'] = output_dict['highest_total'] - output_dict['current_total']
+        output_dict['difference_time'] = output_dict['highest_total_date'] - output_dict['current_total_date']
+
+        return output_dict
+
+    run_period_7 = how_most_running_period(7)
+    pprint(run_period_7)
+
+    #older
     #Currently not used
     #pprint(current_info)
     current_miles = current_info['current_miles']
@@ -298,16 +324,6 @@ def weekly(runs_per_week,current_info):
             max_weekly_miles = int(weekly_dict[week]['miles_ran'])
             most_miles_week = week
 
-    #pprint(weekly_dict[most_miles_week]['run_dict'])
-
-    print()
-    print("WEEKLY")
-    print("********")
-    print("Miles This Week: "+str(current_miles))
-    print("Most Mile Week: "+str(weekly_dict[most_miles_week]['date_human']))
-    print("Most Miles Run in a Week: "+str(max_weekly_miles))
-    print("Miles to Match Highest Week: "+str(float(max_weekly_miles)-float(current_miles)))
-
     main_dict = {}
     main_dict['flbox_titles'] = []
     main_dict['flbox_values'] = []
@@ -317,17 +333,17 @@ def weekly(runs_per_week,current_info):
     main_dict['title'] = "WEEKLY"
     #LABELS
     main_dict['flbox_titles'].append("This Week")
-    main_dict['flbox_titles'].append("MMW")
-    main_dict['flbox_titles'].append("MMR")
+    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("Best Week")
     main_dict['flbox_titles'].append("Difference")
     main_dict['flbox_titles'].append("")
-    main_dict['flbox_titles'].append("")
-    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("7 Days Running")
+    main_dict['flbox_titles'].append("Best 7 Days")
     main_dict['flbox_titles'].append("")
 
     #DATA
     main_dict['flbox_values'].append(str(current_miles))
-    main_dict['flbox_values'].append(str(weekly_dict[most_miles_week]['date_human']))
+    main_dict['flbox_values'].append("")
     main_dict['flbox_values'].append(str(max_weekly_miles))
     main_dict['flbox_values'].append(str(float(max_weekly_miles)-float(current_miles)))
     main_dict['flbox_values'].append("")
@@ -336,23 +352,23 @@ def weekly(runs_per_week,current_info):
     main_dict['flbox_values'].append("")
 
     # #
+    main_dict['frbox_titles'].append("7 Day High")
+    main_dict['frbox_titles'].append("Date")
     main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("7 Day Cur.")
     main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("Difference")
+    main_dict['frbox_titles'].append("Days")
     main_dict['frbox_titles'].append("")
 
     #
+    main_dict['frbox_values'].append(format_text(output_dict['highest_total']))
+    main_dict['frbox_values'].append(str(output_dict['highest_total_date']))
     main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append(format_text(output_dict['current_total']))
     main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append(format_text(output_dict['difference_distance']))
+    main_dict['frbox_values'].append(str(output_dict['difference_time']))
     main_dict['frbox_values'].append("")
 
     return main_dict
@@ -534,7 +550,7 @@ def yearly_graph():
     def graph(formula):
         x = np.array(range(0,366))
         y = eval(formula)
-        plt.plot(x, y, 'g', linestyle=':', linewidth=4)
+        plt.plot(x, y, 'w', linestyle=':', linewidth=4)
 
     graph('x*(600/365)')
 
@@ -595,3 +611,5 @@ def weekly_graph():
     plt.savefig(b, transparent='True')
     plt.close('all')
     return b
+
+weekly(4,"runs")

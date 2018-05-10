@@ -308,7 +308,6 @@ def weekly(runs_per_week,current_info):
         return output_dict
 
     run_period_7 = how_most_running_period(7)
-    pprint(run_period_7)
 
     #older
     #Currently not used

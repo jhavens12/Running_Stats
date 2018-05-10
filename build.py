@@ -361,13 +361,13 @@ def weekly(current_info):
     main_dict['frbox_titles'].append("")
 
     #
-    main_dict['frbox_values'].append(format_text(output_dict['highest_total']))
-    main_dict['frbox_values'].append(str(output_dict['highest_total_date']))
+    main_dict['frbox_values'].append(format_text(run_period_7['highest_total']))
+    main_dict['frbox_values'].append(str(run_period_7['highest_total_date']))
     main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append(format_text(output_dict['current_total']))
+    main_dict['frbox_values'].append(format_text(run_period_7['current_total']))
     main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append(format_text(output_dict['difference_distance']))
-    main_dict['frbox_values'].append(str(output_dict['difference_time']))
+    main_dict['frbox_values'].append(format_text(run_period_7['difference_distance']))
+    main_dict['frbox_values'].append(str(run_period_7['difference_time']))
     main_dict['frbox_values'].append("")
 
     return main_dict

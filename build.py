@@ -512,7 +512,8 @@ def yearly(runs_per_week):
     month_ago_number = todays_number - 30 #number to filter entires out from since not datetime objects
 
     yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
-    x_list = y_list = []
+    x_list = []
+    y_list = []
     for event in yearly_dict:
         if event > month_ago_number:
             x_list.append(event)
@@ -527,7 +528,7 @@ def yearly(runs_per_week):
     extended_range_30, predicted_30 = extended_prediction(x_list, y_list, 365)
     the_list = []
     for x,y in zip(extended_range_30,predicted_30):
-        if y > goal_2018:
+        if y > 600:
             the_list.append(x)
     goal_day = the_list[0]
     timestamp = datetime.datetime.now()

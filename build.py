@@ -507,6 +507,10 @@ def yearly(runs_per_week):
     goal_miles_per_run_now = goal_miles_per_week_now/runs_per_week
 
     #new 5.16.18 - Goal predictions
+
+    todays_number = datetime.datetime.now().timetuple().tm_yday #finds number of year
+    month_ago_number = todays_number - 30 #number to filter entires out from since not datetime objects
+
     yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
     x_list = y_list = []
     for event in yearly_dict:

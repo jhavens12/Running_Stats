@@ -309,7 +309,7 @@ def weekly(current_info):
 
     run_period_7 = how_most_running_period(7)
     run_period_30 = how_most_running_period(30)
-    run_period_90 = how_most_running_period(90)
+    #run_period_90 = how_most_running_period(90)
 
     #older
     #Currently not used
@@ -357,20 +357,24 @@ def weekly(current_info):
     main_dict['frbox_titles'].append("Best 30 Day")
     main_dict['frbox_titles'].append("Difference")
     main_dict['frbox_titles'].append("Days Since")
-    main_dict['frbox_titles'].append("90 Day")
-    main_dict['frbox_titles'].append("Best 90 Day")
-    main_dict['frbox_titles'].append("Difference")
-    main_dict['frbox_titles'].append("Days Since")
+    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
 
     #
     main_dict['frbox_values'].append(format_text(run_period_30['current_total']))
     main_dict['frbox_values'].append(format_text(run_period_30['highest_total']))
     main_dict['frbox_values'].append(format_text(run_period_30['difference_distance']))
     main_dict['frbox_values'].append(str(run_period_30['difference_time'].days))
-    main_dict['frbox_values'].append(format_text(run_period_90['current_total']))
-    main_dict['frbox_values'].append(format_text(run_period_90['highest_total']))
-    main_dict['frbox_values'].append(format_text(run_period_90['difference_distance']))
-    main_dict['frbox_values'].append(str(run_period_90['difference_time'].days))
+    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("")
+    # main_dict['frbox_values'].append(format_text(run_period_90['current_total']))
+    # main_dict['frbox_values'].append(format_text(run_period_90['highest_total']))
+    # main_dict['frbox_values'].append(format_text(run_period_90['difference_distance']))
+    # main_dict['frbox_values'].append(str(run_period_90['difference_time'].days))
 
     return main_dict
 
@@ -502,6 +506,30 @@ def yearly(runs_per_week):
     goal_miles_per_week_now = goal_miles_per_day_now*7
     goal_miles_per_run_now = goal_miles_per_week_now/runs_per_week
 
+    #new 5.16.18 - Goal predictions
+    yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
+    x_list = y_list = []
+    for event in yearly_dict:
+        if event > month_ago_number:
+            x_list.append(event)
+            y_list.append(yearly_dict[event])
+
+    def extended_prediction(x_list,y_list,end_day):
+        extended_range = list(range(x_list[0],end_day))
+        model = np.polyfit(x_list, y_list, 1)
+        predicted = np.polyval(model, extended_range)
+        return extended_range, predicted
+
+    extended_range_30, predicted_30 = extended_prediction(x_list, y_list, 365)
+    the_list = []
+    for x,y in zip(extended_range_30,predicted_30):
+        if y > goal_2018:
+            the_list.append(x)
+    goal_day = the_list[0]
+    timestamp = datetime.datetime.now()
+    goal_day_nice = datetime.datetime(timestamp.year, 1, 1) + datetime.timedelta(goal_day - 1)
+    ###
+
     main_dict['title'] = get_time.convert_year_name(datetime.datetime.now())
 
     main_dict['flbox_titles'].append("YTD Miles")
@@ -509,15 +537,15 @@ def yearly(runs_per_week):
     main_dict['flbox_titles'].append("")
     main_dict['flbox_titles'].append("Difference")
     main_dict['flbox_titles'].append("YTD Remain")
-    main_dict['flbox_titles'].append("")
-    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("Goal (30)")
+    main_dict['flbox_titles'].append("Goal (2018)")
 
     main_dict['flbox_values'].append(format_text(miles_this_year))
     main_dict['flbox_values'].append(format_text(miles_last_year_this_time))
     main_dict['flbox_values'].append("")
     main_dict['flbox_values'].append(format_text(miles_this_year-miles_last_year_this_time))
     main_dict['flbox_values'].append(str(days_remaining_in_year))
-    main_dict['flbox_values'].append("")
+    main_dict['flbox_values'].append(str(goal_day_nice.month)+"-"+str(goal_day_nice.day))
     main_dict['flbox_values'].append("")
 
     main_dict['frbox_titles'].append("18 Goal by today")

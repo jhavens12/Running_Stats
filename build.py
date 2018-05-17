@@ -522,63 +522,65 @@ def yearly(runs_per_week):
             predicted = np.polyval(model, extended_range)
             return extended_range, predicted
 
-        extended_range_30, predicted_30 = extended_prediction(x_list, y_list, 365)
+        extended_range_30, predicted_30 = extended_prediction(x_list, y_list, 720)
         the_list = []
         for x,y in zip(extended_range_30,predicted_30):
             if y > 600:
                 the_list.append(x)
         if not the_list:
-            goal_day = datettime.datetime(1900, 1, 1)
+            goal_day = 0
         else:
             goal_day = the_list[0]
         timestamp = datetime.datetime.now()
         goal_day_nice = datetime.datetime(timestamp.year, 1, 1) + datetime.timedelta(goal_day - 1)
-        return str(goal_day_nice.month)+"-"+str(goal_day_nice.day)
+        return str(goal_day_nice.month)+"."+str(goal_day_nice.day+"."+str(g))
 
     todays_number = datetime.datetime.now().timetuple().tm_yday #finds number of year
     days_ago_30 = todays_number - 30 #number to filter entires out from since not datetime objects
+    days_ago_90 = todays_number - 90
 
     goal_30 = goal_hit_date(days_ago_30) #30 days ago
+    goal_90 = goal_hit_date(days_ago_90)
     goal_year = goal_hit_date(0) #0 is beginning of year
 
-    print(goal_30)
-    print(goal_year)
     ###
 
     main_dict['title'] = get_time.convert_year_name(datetime.datetime.now())
 
     main_dict['flbox_titles'].append("YTD Miles")
     main_dict['flbox_titles'].append("Last YTD by now")
-    main_dict['flbox_titles'].append("")
     main_dict['flbox_titles'].append("Difference")
-    main_dict['flbox_titles'].append("YTD Remain")
+    main_dict['flbox_titles'].append("Days Remain")
     main_dict['flbox_titles'].append("Goal (30)")
-    main_dict['flbox_titles'].append("Goal (2018)")
+    main_dict['flbox_titles'].append("Goal (90)")
+    main_dict['flbox_titles'].append("Goal (Year)")
 
     main_dict['flbox_values'].append(format_text(miles_this_year))
     main_dict['flbox_values'].append(format_text(miles_last_year_this_time))
-    main_dict['flbox_values'].append("")
     main_dict['flbox_values'].append(format_text(miles_this_year-miles_last_year_this_time))
     main_dict['flbox_values'].append(str(days_remaining_in_year))
     main_dict['flbox_values'].append(goal_30)
+    main_dict['flbox_values'].append(goal_90)
     main_dict['flbox_values'].append(goal_year)
 
     main_dict['frbox_titles'].append("18 Goal by today")
     main_dict['frbox_titles'].append("Difference")
     main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("")
     main_dict['frbox_titles'].append("Miles Per Day")
     main_dict['frbox_titles'].append("Miles Per Week")
     main_dict['frbox_titles'].append("Miles Per Run")
-    main_dict['frbox_titles'].append("")
+
 
 
     main_dict['frbox_values'].append(format_text(target_miles))
     main_dict['frbox_values'].append(format_text(remaining_ytd_miles))
     main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append(format_text(goal_miles_per_day_now))
     main_dict['frbox_values'].append(format_text(goal_miles_per_week_now))
     main_dict['frbox_values'].append(format_text(goal_miles_per_run_now))
-    main_dict['frbox_values'].append("")
+
 
 
     return main_dict
@@ -603,6 +605,55 @@ def yearly_graph():
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
                 wspace=None, hspace=None)
 
+    b = BytesIO()
+    plt.savefig(b, transparent='True')
+    plt.close('all')
+    return b
+
+def yearly_predictions_graph():
+    #modified from running_graphs to show YTD mileage
+
+    def graph(formula):
+        x = np.array(range(0,366))
+        y = eval(formula)
+        plt.plot(x, y, 'w', linestyle=':', linewidth=4)
+
+    yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
+    yearly_dict2 = calc.yearly_totals(master_dict.copy(),1) #last year
+
+    x_list = []
+    y_list = []
+    x2_list = []
+    y2_list = []
+
+    todays_number = datetime.datetime.now().timetuple().tm_yday #finds number of year
+    month_ago_number = todays_number - 30 #number to filter entires out from since not datetime objects
+
+    for event in yearly_dict:
+        x_list.append(event)
+        y_list.append(yearly_dict[event])
+        if event > month_ago_number:
+            x2_list.append(event)
+            y2_list.append(yearly_dict[event])
+
+    def extended_prediction(x_list,y_list,end_day):
+        extended_range = list(range(x_list[0],end_day))
+        model = np.polyfit(x_list, y_list, 1)
+        predicted = np.polyval(model, extended_range)
+        return extended_range, predicted
+
+    extended_range, predicted = extended_prediction(x_list, y_list, 365)
+    extended_range_30, predicted_30 = extended_prediction(x2_list, y2_list, 365)
+
+    graph('x*(600/365)')
+    plt.plot(extended_range, predicted, linestyle='--',color='orange')
+    plt.plot(extended_range_30, predicted_30, linestyle='--',color='red')
+    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()),label=('This Year'),color='blue',lw='4')
+
+    plt.style.use('dark_background')
+    plt.axis('off')
+    plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
+                wspace=None, hspace=None)
     b = BytesIO()
     plt.savefig(b, transparent='True')
     plt.close('all')

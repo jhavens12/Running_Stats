@@ -533,7 +533,7 @@ def yearly(runs_per_week):
             goal_day = the_list[0]
         timestamp = datetime.datetime.now()
         goal_day_nice = datetime.datetime(timestamp.year, 1, 1) + datetime.timedelta(goal_day - 1)
-        return str(goal_day_nice.month)+"."+str(goal_day_nice.day+"."+str(goal_day_nice.year))
+        return str(goal_day_nice.month)+"."+str(goal_day_nice.day)+"."+str(goal_day_nice.year)
 
     todays_number = datetime.datetime.now().timetuple().tm_yday #finds number of year
     days_ago_30 = todays_number - 30 #number to filter entires out from since not datetime objects

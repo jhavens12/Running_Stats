@@ -646,8 +646,8 @@ def yearly_prediction_graph():
     extended_range_30, predicted_30 = extended_prediction(x2_list, y2_list, 365)
 
     graph('x*(600/365)')
-    plt.plot(extended_range, predicted, linestyle='--',color='orange')
-    plt.plot(extended_range_30, predicted_30, linestyle='--',color='red')
+    plt.plot(extended_range, predicted, linestyle='--',color='orange',linewidth=4)
+    plt.plot(extended_range_30, predicted_30, linestyle='--',color='red',linewidth=4)
     plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()),label=('This Year'),color='blue',lw='4')
 
     plt.style.use('dark_background')

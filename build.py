@@ -507,32 +507,39 @@ def yearly(runs_per_week):
     goal_miles_per_run_now = goal_miles_per_week_now/runs_per_week
 
     #new 5.16.18 - Goal predictions
+    def goal_hit_date(filter_day):
+        yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
+        x_list = []
+        y_list = []
+        for event in yearly_dict:
+            if event > filter_day:
+                x_list.append(event)
+                y_list.append(yearly_dict[event])
+
+        def extended_prediction(x_list,y_list,end_day):
+            extended_range = list(range(x_list[0],end_day))
+            model = np.polyfit(x_list, y_list, 1)
+            predicted = np.polyval(model, extended_range)
+            return extended_range, predicted
+
+        extended_range_30, predicted_30 = extended_prediction(x_list, y_list, 365)
+        the_list = []
+        for x,y in zip(extended_range_30,predicted_30):
+            if y > 600:
+                the_list.append(x)
+        goal_day = the_list[0]
+        timestamp = datetime.datetime.now()
+        goal_day_nice = datetime.datetime(timestamp.year, 1, 1) + datetime.timedelta(goal_day - 1)
+        return str(goal_day_nice.month)+"-"+str(goal_day_nice.day)
 
     todays_number = datetime.datetime.now().timetuple().tm_yday #finds number of year
-    month_ago_number = todays_number - 30 #number to filter entires out from since not datetime objects
+    days_ago_30 = todays_number - 30 #number to filter entires out from since not datetime objects
 
-    yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
-    x_list = []
-    y_list = []
-    for event in yearly_dict:
-        if event > month_ago_number:
-            x_list.append(event)
-            y_list.append(yearly_dict[event])
+    goal_30 = goal_hit_date(days_ago_30) #30 days ago
+    goal_year = goal_hit_date(0) #0 is beginning of year
 
-    def extended_prediction(x_list,y_list,end_day):
-        extended_range = list(range(x_list[0],end_day))
-        model = np.polyfit(x_list, y_list, 1)
-        predicted = np.polyval(model, extended_range)
-        return extended_range, predicted
-
-    extended_range_30, predicted_30 = extended_prediction(x_list, y_list, 365)
-    the_list = []
-    for x,y in zip(extended_range_30,predicted_30):
-        if y > 600:
-            the_list.append(x)
-    goal_day = the_list[0]
-    timestamp = datetime.datetime.now()
-    goal_day_nice = datetime.datetime(timestamp.year, 1, 1) + datetime.timedelta(goal_day - 1)
+    print(goal_30)
+    print(goal_year)
     ###
 
     main_dict['title'] = get_time.convert_year_name(datetime.datetime.now())
@@ -550,8 +557,8 @@ def yearly(runs_per_week):
     main_dict['flbox_values'].append("")
     main_dict['flbox_values'].append(format_text(miles_this_year-miles_last_year_this_time))
     main_dict['flbox_values'].append(str(days_remaining_in_year))
-    main_dict['flbox_values'].append(str(goal_day_nice.month)+"-"+str(goal_day_nice.day))
-    main_dict['flbox_values'].append("")
+    main_dict['flbox_values'].append(goal_30)
+    main_dict['flbox_values'].append(goal_year)
 
     main_dict['frbox_titles'].append("18 Goal by today")
     main_dict['frbox_titles'].append("Difference")

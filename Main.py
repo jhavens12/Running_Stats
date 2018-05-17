@@ -118,23 +118,23 @@ def vis(w,h):
 
     #box titles LEFT
     vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 8
-    vis['fbox_titles_w'] = (vis['psub_w']/2) * .75
+    vis['fbox_titles_w'] = (vis['psub_w']/2) * .7
     vis['fbox_titles_x'] = 0
     vis['fbox_titles_y'] = 1 #this needs to be changed
 
     vis['fbox_values_h'] = vis['fbox_titles_h']
-    vis['fbox_values_w'] = (vis['psub_w']/2) * .25
+    vis['fbox_values_w'] = (vis['psub_w']/2) * .3
     vis['fbox_values_x'] = vis['fbox_titles_w']
     vis['fbox_values_y'] = 1 #this needs to be changed
 
     #box titles RIGHT
     vis['frbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 8
-    vis['frbox_titles_w'] = (vis['psub_w']/2) * .75
+    vis['frbox_titles_w'] = (vis['psub_w']/2) * .7
     vis['frbox_titles_x'] = (vis['psub_w']/4) * 2
     vis['frbox_titles_y'] = 1 #this needs to be changed
 
     vis['frbox_values_h'] = vis['frbox_titles_h']
-    vis['frbox_values_w'] = (vis['psub_w']/2) * .25
+    vis['frbox_values_w'] = (vis['psub_w']/2) * .3
     vis['frbox_values_x'] =  vis['frbox_titles_x'] + vis['frbox_titles_w'] #where titles start, plus width of titles
     vis['frbox_values_y'] = 1 #this needs to be changed
 
@@ -444,7 +444,7 @@ def generate_fsubview(fsubview,fseg_info):
         label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['fbox_values_x'], vis['fbox_values_y'], vis['fbox_values_w'], vis['fbox_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',10)
+        label_title.font =  ('<system>',11)
         label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
@@ -471,7 +471,7 @@ def generate_fsubview(fsubview,fseg_info):
         label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['frbox_values_x'], vis['frbox_values_y'], vis['frbox_values_w'], vis['frbox_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',10)
+        label_title.font =  ('<system>',11)
         label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'
         #label_title.border_width = 0

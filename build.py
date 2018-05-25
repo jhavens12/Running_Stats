@@ -236,7 +236,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     current_miles = current_info['current_miles']
     current_week_count = current_info['current_week_count']
 
-    #remaining_miles = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles))) #this uses just 1 week 
+    #remaining_miles = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles))) #this uses just 1 week
     remaining_miles = str("{0:.2f}".format((float(past_avg) + float(past_miles)) - float(current_miles))) #this uses past rolling 4 weeks
     main_dict['remaining_miles'] = remaining_miles
     if float(runs_per_week)-float(current_week_count) != 0:
@@ -387,7 +387,7 @@ def weekly(current_info):
     #DATA
     main_dict['flbox_values'].append(str(current_miles))
     main_dict['flbox_values'].append(str(max_weekly_miles))
-    main_dict['flbox_values'].append(str(float(max_weekly_miles)-float(current_miles)))
+    main_dict['flbox_values'].append(format_text(float(max_weekly_miles)-float(current_miles)))
     main_dict['flbox_values'].append("")
     main_dict['flbox_values'].append(format_text(run_period_7['current_total']))
     main_dict['flbox_values'].append(format_text(run_period_7['highest_total']))
@@ -632,7 +632,7 @@ def yearly_graph():
     yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
     yearly_dict2 = calc.yearly_totals(master_dict.copy(),1) #last year
 
-    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()), 'blue', linewidth=4)#,label=('This Year'),color='green')
+    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()), 'blue', linewidth=4, title="2018")#,label=('This Year'),color='green')
     plt.plot(list(yearly_dict2.keys()),list(yearly_dict2.values()), 'red', linewidth=4)#,label=('Last Year'))
 
     def graph(formula):
@@ -644,6 +644,7 @@ def yearly_graph():
 
     plt.style.use('dark_background')
     plt.axis('off')
+    plt.legend()
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
                 wspace=None, hspace=None)
 

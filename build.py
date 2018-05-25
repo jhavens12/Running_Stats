@@ -156,13 +156,15 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
         past_ten_percent = ("{0:.2f}".format(float(past_miles) * .1))
 
         return past_ten_percent
-    past_ten_1 = period_ten_percent(Sunday,Monday)
-    past_ten_2 = period_ten_percent(Sunday-1,Monday-1)
-    past_ten_3 = period_ten_percent(Sunday-2,Monday-2)
-    past_ten_4 = period_ten_percent(Sunday-3,Monday-3)
+    past_list = []
+    past_list.append(period_ten_percent(Sunday,Monday))
+    past_list.append(period_ten_percent(Sunday-1,Monday-1))
+    past_list.append(period_ten_percent(Sunday-2,Monday-2))
+    past_list.append(period_ten_percent(Sunday-3,Monday-3))
+    pprint(past_list)
 
-    past_four = past_ten_1 + past_ten_2 + past_ten_3 + past_ten_4
-    past_avg = float(past_four)/4
+    past_four = sum(past_list)
+    past_avg = past_four/4
 
 
     #create lists of items to display

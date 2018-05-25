@@ -140,6 +140,8 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     #calculate rolling 10 percent over the past 4 weeks
     def period_ten_percent(sun,mon):
         dict_1 = master_dict.copy()
+        print("Sunday: "+str(get_time.LS(sun)))
+        print("Monday: "+str(get_time.LM(mon)))
         for key in master_dict:
             if key > get_time.LS(sun):
                 del dict_1[key]
@@ -154,6 +156,9 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
             past_mile_list.append(float(past_dict[i]['distance_miles']))
         past_miles = ("{0:.2f}".format(sum(past_mile_list)))
         past_ten_percent = ("{0:.2f}".format(float(past_miles) * .1))
+        print("Past Miles: "+str(past_miles))
+        print("Past 10: "+str(past_ten_percent))
+        print()
 
         return past_ten_percent
     past_list = []

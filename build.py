@@ -136,6 +136,35 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     past_miles = ("{0:.2f}".format(sum(past_mile_list)))
     past_ten_percent = ("{0:.2f}".format(float(past_miles) * .1))
 
+
+    #calculate rolling 10 percent over the past 4 weeks
+    def period_ten_percent(sun,mon):
+        dict_1 = master_dict.copy()
+        for key in master_dict:
+            if key > get_time.LS(sun):
+                del dict_1[key]
+        for key in master_dict:
+            if key < get_time.LM(mon):
+                del dict_1[key]
+        past_dict_rev = {k: dict_1[k] for k in list(reversed(sorted(dict_1.keys())))}
+        past_dict = {k: past_dict_rev[k] for k in list(sorted(past_dict_rev.keys()))}
+        past_run_count = calc.activity_count(past_dict)
+        past_mile_list = []
+        for i in past_dict:
+            past_mile_list.append(float(past_dict[i]['distance_miles']))
+        past_miles = ("{0:.2f}".format(sum(past_mile_list)))
+        past_ten_percent = ("{0:.2f}".format(float(past_miles) * .1))
+
+        return past_ten_percent
+    past_ten_1 = period_ten_percent(Sunday,Monday)
+    past_ten_2 = period_ten_percent(Sunday-1,Monday-1)
+    past_ten_3 = period_ten_percent(Sunday-2,Monday-2)
+    past_ten_4 = period_ten_percent(Sunday-3,Monday-3)
+
+    past_four = past_ten_1 + past_ten_2 + past_ten_3 + past_ten_4
+    past_avg = past_four/4
+
+
     #create lists of items to display
     past_run_title_label = []
     for i in list(sorted(past_dict)):
@@ -170,10 +199,15 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
         current_elevation_list.append(float(past_dict[i]['total_elevation_feet']))
     current_elevation_total = sum(current_elevation_list)
 
+
+    #####
     main_dict['title'] = (get_time.convert_weekday_full(get_time.LM(Monday)) + " - " + get_time.convert_weekday_full(get_time.LS(Sunday)))
 
     main_dict['subtitle_title'] = 'Ten Percent:'
     main_dict['subtitle_value'] = str(past_ten_percent)
+
+    main_dict['subtitle2_title'] = '4 Weeks Roll:'
+    main_dict['subtitle2_value'] = format_text(past_avg)
 
     main_dict['box_titles'] = ['Date','Distance','Duration','Pace','Elevation']
     main_dict['box_values'] = []

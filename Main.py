@@ -52,13 +52,23 @@ def vis(w,h):
     vis['psubtitle_value_x'] = vis['psub_w']/4 #second
     vis['psubtitle_value_y'] = vis['ptitle_h']
 
+    vis['psubtitle2_title_h'] = 20
+    vis['psubtitle2_title_w'] = vis['psub_w']/4
+    vis['psubtitle2_title_x'] = vis['psub_w']/4 * 2 #third
+    vis['psubtitle2_title_y'] = vis['ptitle_h']
+
+    vis['psubtitle2_value_h'] = 20
+    vis['psubtitle2_value_w'] = vis['psub_w']/4
+    vis['psubtitle2_value_x'] = vis['psub_w']/4 * 3 #fourth
+    vis['psubtitle2_value_y'] = vis['ptitle_h']
+
     #box titles
     vis['box_titles_h'] = 20
     vis['box_titles_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_titles_x'] = 1 #this is later changed dynamically
     vis['box_titles_y'] = vis['psubtitle_value_y'] + vis['psubtitle_value_h']
 
-    vis['box_values_h'] = 80
+    vis['box_values_h'] = 90
     vis['box_values_w'] = vis['psub_w'] #this is later changed dynamically
     vis['box_values_x'] = 1 #this is later changed dynamically
     vis['box_values_y'] = vis['box_titles_y'] + vis['box_titles_h']
@@ -235,6 +245,22 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     psubtitle_value.alignment = 1 #1 is center
     psubtitle_value.font = ('<system>',14)
     psubview.add_subview(psubtitle_value)
+
+    #new
+    psubtitle2_title = ui.Label(name = 'psubtitle2_title', bg_color ='black', frame = (vis['psubtitle2_title_x'], vis['psubtitle2_title_y'], vis['psubtitle2_title_w'], vis['psubtitle2_title_h']))
+    psubtitle2_title.text = pseg_info['subtitle2_title']
+    psubtitle2_title.alignment = 1 #1 is center, 2 is right, 3
+    psubtitle2_title.font = ('<system>',14)
+    psubtitle2_title.text_color = 'white'
+    #psubtitle_title.font =  ('<system-bold>',14)
+    psubview.add_subview(psubtitle2_title)
+
+    psubtitle2_value = ui.Label(name = 'psubtitle2_value', bg_color ='black', frame = (vis['psubtitle2_value_x'], vis['psubtitle2_value_y'], vis['psubtitle2_value_w'], vis['psubtitle2_value_h']))
+    psubtitle2_value.text = pseg_info['subtitle2_value']
+    psubtitle2_value.text_color = '#4286f4'
+    psubtitle2_value.alignment = 1 #1 is center
+    psubtitle2_value.font = ('<system>',14)
+    psubview.add_subview(psubtitle2_value)
 
     #box titles
     for n,label in enumerate(pseg_info['box_titles']): #enumerate over list

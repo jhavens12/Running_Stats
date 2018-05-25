@@ -162,7 +162,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     past_ten_4 = period_ten_percent(Sunday-3,Monday-3)
 
     past_four = past_ten_1 + past_ten_2 + past_ten_3 + past_ten_4
-    past_avg = past_four/4
+    past_avg = float(past_four)/4
 
 
     #create lists of items to display

@@ -31,7 +31,7 @@ def top_period(runs_per_week,current_info):
 
     dict_1 = weekly_dict[most_miles_week]['run_dict'] #grab dictionary of runs from top week to display
 
-    #below is taken from the peroid function
+    #below is taken from the period function
     ########################################
 
     past_dict_rev = {k: dict_1[k] for k in list(reversed(sorted(dict_1.keys())))}
@@ -82,6 +82,9 @@ def top_period(runs_per_week,current_info):
 
     main_dict['subtitle_title'] = 'Ten Percent:'
     main_dict['subtitle_value'] = str(past_ten_percent)
+
+    main_dict['subtitle2_title'] = ''
+    main_dict['subtitle2_value'] = ''
 
     main_dict['box_titles'] = ['Date','Distance','Duration','Pace','Elevation']
     main_dict['box_values'] = []
@@ -138,39 +141,36 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
 
 
     #calculate rolling 10 percent over the past 4 weeks
-    def period_ten_percent(sun,mon):
-        dict_1 = master_dict.copy()
-        print("Sunday: "+str(get_time.LS(sun)))
-        print("Monday: "+str(get_time.LM(mon)))
-        for key in master_dict:
-            if key > get_time.LS(sun):
-                del dict_1[key]
-        for key in master_dict:
-            if key < get_time.LM(mon):
-                del dict_1[key]
-        past_dict_rev = {k: dict_1[k] for k in list(reversed(sorted(dict_1.keys())))}
-        past_dict = {k: past_dict_rev[k] for k in list(sorted(past_dict_rev.keys()))}
-        past_run_count = calc.activity_count(past_dict)
-        past_mile_list = []
-        for i in past_dict:
-            past_mile_list.append(float(past_dict[i]['distance_miles']))
-        past_miles = ("{0:.2f}".format(sum(past_mile_list)))
-        past_ten_percent = float(("{0:.2f}".format(float(past_miles) * .1)))
-        print("Past Miles: "+str(past_miles))
-        print("Past 10: "+str(past_ten_percent))
-        print()
+    def rolling_ten_percent(Sunday,Monday):
+        def period_ten_percent(sun,mon):
+            dict_1 = master_dict.copy()
+            for key in master_dict:
+                if key > get_time.LS(sun):
+                    del dict_1[key]
+            for key in master_dict:
+                if key < get_time.LM(mon):
+                    del dict_1[key]
+            past_dict_rev = {k: dict_1[k] for k in list(reversed(sorted(dict_1.keys())))}
+            past_dict = {k: past_dict_rev[k] for k in list(sorted(past_dict_rev.keys()))}
+            past_run_count = calc.activity_count(past_dict)
+            past_mile_list = []
+            for i in past_dict:
+                past_mile_list.append(float(past_dict[i]['distance_miles']))
+            past_miles = ("{0:.2f}".format(sum(past_mile_list)))
+            past_ten_percent = float(("{0:.2f}".format(float(past_miles) * .1)))
 
-        return past_ten_percent
-    past_list = []
-    past_list.append(period_ten_percent(Sunday,Monday))
-    past_list.append(period_ten_percent(Sunday+1,Monday+1))
-    past_list.append(period_ten_percent(Sunday+2,Monday+2))
-    past_list.append(period_ten_percent(Sunday+3,Monday+3))
-    pprint(past_list)
+            return past_ten_percent
+        past_list = []
+        past_list.append(period_ten_percent(Sunday,Monday))
+        past_list.append(period_ten_percent(Sunday+1,Monday+1))
+        past_list.append(period_ten_percent(Sunday+2,Monday+2))
+        past_list.append(period_ten_percent(Sunday+3,Monday+3))
 
-    past_four = sum(past_list)
-    past_avg = past_four/4
+        past_four = sum(past_list)
+        past_avg = past_four/4
+        return past_avg
 
+    past_avg = rolling_ten_percent(Sunday,Monday)
 
     #create lists of items to display
     past_run_title_label = []

@@ -155,7 +155,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
         for i in past_dict:
             past_mile_list.append(float(past_dict[i]['distance_miles']))
         past_miles = ("{0:.2f}".format(sum(past_mile_list)))
-        past_ten_percent = ("{0:.2f}".format(float(past_miles) * .1))
+        past_ten_percent = float(("{0:.2f}".format(float(past_miles) * .1)))
         print("Past Miles: "+str(past_miles))
         print("Past 10: "+str(past_ten_percent))
         print()

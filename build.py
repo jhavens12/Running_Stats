@@ -163,9 +163,9 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
         return past_ten_percent
     past_list = []
     past_list.append(period_ten_percent(Sunday,Monday))
-    past_list.append(period_ten_percent(Sunday-1,Monday-1))
-    past_list.append(period_ten_percent(Sunday-2,Monday-2))
-    past_list.append(period_ten_percent(Sunday-3,Monday-3))
+    past_list.append(period_ten_percent(Sunday+1,Monday+1))
+    past_list.append(period_ten_percent(Sunday+2,Monday+2))
+    past_list.append(period_ten_percent(Sunday+3,Monday+3))
     pprint(past_list)
 
     past_four = sum(past_list)

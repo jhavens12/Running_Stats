@@ -108,6 +108,7 @@ def top_period(runs_per_week,current_info):
 
     remaining_miles = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles)))
     main_dict['remaining_miles'] = remaining_miles
+    main_dict['remaining_miles_match'] = str("{0:.2f}".format(float(past_miles) - float(current_miles)))
     if float(runs_per_week)-float(current_week_count) != 0:
         miles_per_run_remaining = float(remaining_miles)/(runs_per_week-float(current_week_count))
         main_dict['remaining_per_run'] = format_text(miles_per_run_remaining)

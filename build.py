@@ -239,6 +239,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     #remaining_miles = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles))) #this uses just 1 week
     remaining_miles = str("{0:.2f}".format((float(past_avg) + float(past_miles)) - float(current_miles))) #this uses past rolling 4 weeks
     main_dict['remaining_miles'] = remaining_miles
+    main_dict['remaining_miles_match'] = str("{0:.2f}".format(float(past_miles) - float(current_miles)))
     if float(runs_per_week)-float(current_week_count) != 0:
         miles_per_run_remaining = float(remaining_miles)/(runs_per_week-float(current_week_count))
         main_dict['remaining_per_run'] = format_text(miles_per_run_remaining)
@@ -303,8 +304,10 @@ def current_period():
 
     #main_dict['title'] = (get_time.weekday(get_time.LM(0)) + " " + str(get_time.LM(0).day) + " - " + get_time.weekday(get_time.now()) + " " + str(get_time.now().day))
     main_dict['title'] = (get_time.convert_weekday_full(get_time.LM(0)) + " - " + get_time.convert_weekday_full(datetime.datetime.now()))
-    main_dict['subtitle1_title'] = "Remaining:"
-    main_dict['subtitle2_title'] = "Per Run:"
+    #main_dict['subtitle1_title'] = "Remaining:"
+    main_dict['subtitle1_title'] = "10% Up:"
+    main_dict['subtitle2_title'] = "Match:"
+    #main_dict['subtitle2_title'] = "Per Run:"
     main_dict['subtitle1_value'] = "0"
     main_dict['subtitle2_value'] = "0"
 
@@ -689,7 +692,7 @@ def yearly_prediction_graph():
     extended_range_30, predicted_30 = extended_prediction(x2_list, y2_list, 365)
 
     graph('x*(600/365)')
-    plt.plot(extended_range, predicted, linestyle='--',color='orange',linewidth=4,label='Year')
+    plt.plot(extended_range, predicted, linestyle='--',color='orange',linewidth=4,label='All Year')
     plt.plot(extended_range_30, predicted_30, linestyle='--',color='red',linewidth=4,label='30 Days')
     plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()),label=('This Year'),color='blue',lw='4')
 

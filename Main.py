@@ -334,7 +334,8 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     csubview.add_subview(csubtitle1_value)
 
     csubtitle2_value = ui.Label(name = 'csubtitle2_value', bg_color ='black', frame = (vis['csubtitle2_value_x'], vis['csubtitle2_value_y'], vis['csubtitle2_value_w'], vis['csubtitle2_value_h']))
-    csubtitle2_value.text = pseg_info['remaining_per_run']
+    csubtitle2_value.text = pseg_info['remaining_miles_match]
+    #csubtitle2_value.text = pseg_info['remaining_per_run']
     csubtitle2_value.font = ('<system>',14)
     csubtitle2_value.text_color = '#4286f4'
     csubtitle2_value.alignment = 1 #1 is center

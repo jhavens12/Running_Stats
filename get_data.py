@@ -1,4 +1,4 @@
-#v2.01 1/25/18
+#v3 06/08/18 - SUPPORT FOR PAGINATION
 import requests
 import time
 import datetime
@@ -14,7 +14,16 @@ def my_filtered_activities(): #combines my_activities and filter functions
     header = {'Authorization': 'Bearer '+credentials.api_key}
     param = {'per_page':200, 'page':1}
     dataset = requests.get(url, headers=header, params=param).json()
-    return {event_timestamp(i): clean_event(i) for i in dataset if wanted_event(i)}
+    count = len(dataset)
+    if count == 200: #if 200 results come back
+        loop_count = 1 #we've already done one loop
+        while count == 200: #while it keeps returning 200 results
+            loop_count = loop_count + 1 #increase loop_count or page number
+            param = {'per_page':200, 'page':loop_count} #reset params
+            sub_dataset = requests.get(url, headers=header, params=param).json() #pull new data with sub_dataset name
+            dataset = dataset + sub_dataset #combine (Json files, not dictionaries thank jesus)
+            count = len(sub_dataset) #count results to see if we need to loop again
+    return {event_timestamp(i): clean_event(i) for i in dataset if wanted_event(i)} #return as normal
 
 def my_activities():
     url = 'https://www.strava.com/api/v3/athlete/activities'

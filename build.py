@@ -26,7 +26,7 @@ def top_period(runs_per_week,current_info):
     max_weekly_miles = 0
     for week in weekly_dict:
         if weekly_dict[week]['miles_ran'] > max_weekly_miles:
-            max_weekly_miles = int(weekly_dict[week]['miles_ran'])
+            max_weekly_miles = float(weekly_dict[week]['miles_ran'])
             most_miles_week = week
 
     dict_1 = weekly_dict[most_miles_week]['run_dict'] #grab dictionary of runs from top week to display

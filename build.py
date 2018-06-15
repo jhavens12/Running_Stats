@@ -249,7 +249,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     else:
         main_dict['remaining_per_run'] = "0"
     remaining_miles_down = str("{0:.2f}".format((float(past_avg) - float(past_miles)) - float(current_miles))) #this uses past rolling 4 weeks
-    current_info['remaining_miles_down'] = remaining_miles_down
+    main_dict['remaining_miles_down'] = remaining_miles_down
 
     #
 
@@ -313,7 +313,7 @@ def current_period():
     #main_dict['subtitle1_title'] = "Remaining:"
     main_dict['subtitle1_title'] = "10% Up:"
     main_dict['subtitle2_title'] = "Match:"
-    main_dict['subtitle2_title'] = "10% Down:"
+    main_dict['subtitle3_title'] = "10% Down:"
     #main_dict['subtitle2_title'] = "Per Run:"
     main_dict['subtitle1_value'] = "0"
     main_dict['subtitle2_value'] = "0"

@@ -248,7 +248,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
         main_dict['remaining_per_run'] = format_text(miles_per_run_remaining)
     else:
         main_dict['remaining_per_run'] = "0"
-    remaining_miles_down = str("{0:.2f}".format(float(past_miles)) - float(current_miles) - (float(past_avg) - )) #this uses past rolling 4 weeks
+    remaining_miles_down = str("{0:.2f}".format(float(past_miles) - float(current_miles) - float(past_avg))) #this uses past rolling 4 weeks
     main_dict['remaining_miles_down'] = remaining_miles_down
 
     #

@@ -237,6 +237,8 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     current_miles = current_info['current_miles']
     current_week_count = current_info['current_week_count']
 
+
+    #THIS IS WHERE CSUBVIEW SUBTITLES HAPPEN
     #remaining_miles = str("{0:.2f}".format((float(past_ten_percent) + float(past_miles)) - float(current_miles))) #this uses just 1 week
     remaining_miles = str("{0:.2f}".format((float(past_avg) + float(past_miles)) - float(current_miles))) #this uses past rolling 4 weeks
     main_dict['remaining_miles'] = remaining_miles
@@ -246,6 +248,9 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
         main_dict['remaining_per_run'] = format_text(miles_per_run_remaining)
     else:
         main_dict['remaining_per_run'] = "0"
+    remaining_miles_down = str("{0:.2f}".format((float(past_avg) - float(past_miles)) - float(current_miles))) #this uses past rolling 4 weeks
+    remaining_miles_down = current_info['remaining_miles_down']
+
     #
 
     return main_dict
@@ -308,9 +313,12 @@ def current_period():
     #main_dict['subtitle1_title'] = "Remaining:"
     main_dict['subtitle1_title'] = "10% Up:"
     main_dict['subtitle2_title'] = "Match:"
+    main_dict['subtitle2_title'] = "10% Down:"
     #main_dict['subtitle2_title'] = "Per Run:"
     main_dict['subtitle1_value'] = "0"
     main_dict['subtitle2_value'] = "0"
+    main_dict['subtitle3_value'] = "0"
+
 
     main_dict['box_titles'] = ['Date','Distance','Duration','Pace','Elevation']
     main_dict['box_values'] = []

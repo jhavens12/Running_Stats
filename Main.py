@@ -94,24 +94,34 @@ def vis(w,h):
 
     #subtitles 10 percent
     vis['csubtitle1_title_h'] = 20
-    vis['csubtitle1_title_w'] = vis['psub_w']/4
+    vis['csubtitle1_title_w'] = vis['psub_w']/6
     vis['csubtitle1_title_x'] = 0 #first
     vis['csubtitle1_title_y'] = vis['ctitle_h']
 
     vis['csubtitle1_value_h'] = 20
-    vis['csubtitle1_value_w'] = vis['psub_w']/4
-    vis['csubtitle1_value_x'] = vis['psub_w']/4 #second
+    vis['csubtitle1_value_w'] = vis['psub_w']/6
+    vis['csubtitle1_value_x'] = vis['psub_w']/6 #second
     vis['csubtitle1_value_y'] = vis['ctitle_h']
 
     vis['csubtitle2_title_h'] = 20
-    vis['csubtitle2_title_w'] = vis['psub_w']/4
-    vis['csubtitle2_title_x'] = (vis['psub_w']/4) * 2 #third
+    vis['csubtitle2_title_w'] = vis['psub_w']/6
+    vis['csubtitle2_title_x'] = (vis['psub_w']/6) * 2 #third
     vis['csubtitle2_title_y'] = vis['ctitle_h']
 
     vis['csubtitle2_value_h'] = 20
-    vis['csubtitle2_value_w'] = vis['psub_w']/4
-    vis['csubtitle2_value_x'] = (vis['psub_w']/4) * 3 #fourth
+    vis['csubtitle2_value_w'] = vis['psub_w']/6
+    vis['csubtitle2_value_x'] = (vis['psub_w']/6) * 3 #fourth
     vis['csubtitle2_value_y'] = vis['ctitle_h']
+
+    vis['csubtitle3_title_h'] = 20
+    vis['csubtitle3_title_w'] = vis['psub_w']/6
+    vis['csubtitle3_title_x'] = (vis['psub_w']/6) * 4 #fifth
+    vis['csubtitle3_title_y'] = vis['ctitle_h']
+
+    vis['csubtitle3_value_h'] = 20
+    vis['csubtitle3_value_w'] = vis['psub_w']/6
+    vis['csubtitle3_value_x'] = (vis['psub_w']/6) * 5 #sixth
+    vis['csubtitle3_value_y'] = vis['ctitle_h']
 
     ########################################################FSUB########################################################
     #SEGMENTED CONTROL
@@ -341,6 +351,14 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     csubtitle2_value.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_value)
 
+    csubtitle3_value = ui.Label(name = 'csubtitle3_value', bg_color ='black', frame = (vis['csubtitle3_value_x'], vis['csubtitle3_value_y'], vis['csubtitle3_value_w'], vis['csubtitle3_value_h']))
+    csubtitle3_value.text = pseg_info['remaining_miles_down']
+    #csubtitle2_value.text = pseg_info['remaining_per_run']
+    csubtitle3_value.font = ('<system>',14)
+    csubtitle3_value.text_color = '#4286f4'
+    csubtitle3_value.alignment = 1 #1 is center
+    csubview.add_subview(csubtitle3_value)
+
 def generate_csubview(csubview,cseg_info):
 
     #Title
@@ -365,6 +383,13 @@ def generate_csubview(csubview,cseg_info):
     csubtitle2_title.text_color = 'white'
     csubtitle2_title.alignment = 1 #1 is center
     csubview.add_subview(csubtitle2_title)
+
+    csubtitle3_title = ui.Label(name = 'csubtitle3_title', bg_color ='black', frame = (vis['csubtitle3_title_x'], vis['csubtitle3_title_y'], vis['csubtitle3_title_w'], vis['csubtitle3_title_h']))
+    csubtitle3_title.text = cseg_info['subtitle3_title']
+    csubtitle3_title.font = ('<system>',14)
+    csubtitle3_title.text_color = 'white'
+    csubtitle3_title.alignment = 1 #1 is center
+    csubview.add_subview(csubtitle3_title)
 
     #box titles
     for n,label in enumerate(cseg_info['box_titles']):

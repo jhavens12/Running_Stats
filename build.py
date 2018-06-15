@@ -100,7 +100,7 @@ def top_period(runs_per_week,current_info):
     main_dict['total_values'].append(str(past_miles))
     main_dict['total_values'].append(str(current_duration_total))
     main_dict['total_values'].append(str(current_pace_average))
-    main_dict['total_values'].append(str(current_elevation_total))
+    main_dict['total_values'].append(current_elevation_total)
 
     #calculate remaining
     current_miles = current_info['current_miles']
@@ -233,7 +233,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     main_dict['total_values'].append(str(past_miles))
     main_dict['total_values'].append(str(current_duration_total))
     main_dict['total_values'].append(str(current_pace_average))
-    main_dict['total_values'].append("{0:.2f}".format(current_elevation_total))
+    main_dict['total_values'].append(current_elevation_total)
 
     #calculate remaining
     current_miles = current_info['current_miles']
@@ -336,7 +336,7 @@ def current_period():
     main_dict['total_values'].append(str(current_miles))
     main_dict['total_values'].append(str(current_duration_total))
     main_dict['total_values'].append(str(current_pace_average))
-    main_dict['total_values'].append(str("{0:.2f}".format(current_elevation_total)))
+    main_dict['total_values'].append(current_elevation_total)
 
     return main_dict
 

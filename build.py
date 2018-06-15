@@ -75,7 +75,7 @@ def top_period(runs_per_week,current_info):
     current_elevation_list = []
     for i in list(sorted(past_dict)):
         current_elevation_list.append(float(past_dict[i]['total_elevation_feet']))
-    current_elevation_total = sum(current_elevation_list)
+    current_elevation_total = "{0:.2f}".format(sum(current_elevation_list))
 
     main_dict = {} #main dictionary to add values to and then return
     main_dict['title'] = str(most_miles_week)#(get_time.convert_weekday_full(get_time.LM(Monday)) + " - " + get_time.convert_weekday_full(get_time.LS(Sunday)))
@@ -115,7 +115,7 @@ def top_period(runs_per_week,current_info):
     else:
         main_dict['remaining_per_run'] = "0"
 
-    remaining_miles_down = str("{0:.2f}".format(float(past_miles) - float(current_miles) - float(past_avg))) #this uses past rolling 4 weeks
+    remaining_miles_down = str("{0:.2f}".format(float(past_miles) - float(current_miles) - float(past_ten_percent))) #this uses past rolling 4 weeks
     main_dict['remaining_miles_down'] = remaining_miles_down
 
     return main_dict
@@ -207,7 +207,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     current_elevation_list = []
     for i in list(sorted(past_dict)):
         current_elevation_list.append(float(past_dict[i]['total_elevation_feet']))
-    current_elevation_total = sum(current_elevation_list)
+    current_elevation_total = "{0:.2f}".format(sum(current_elevation_list))
 
 
     #####
@@ -233,7 +233,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
     main_dict['total_values'].append(str(past_miles))
     main_dict['total_values'].append(str(current_duration_total))
     main_dict['total_values'].append(str(current_pace_average))
-    main_dict['total_values'].append(str(current_elevation_total))
+    main_dict['total_values'].append("{0:.2f}".format(current_elevation_total))
 
     #calculate remaining
     current_miles = current_info['current_miles']
@@ -308,7 +308,7 @@ def current_period():
     current_elevation_list = []
     for i in list(sorted(dict_2)):
         current_elevation_list.append(float(dict_2[i]['total_elevation_feet']))
-    current_elevation_total = sum(current_elevation_list)
+    current_elevation_total = "{0:.2f}".format(sum(current_elevation_list))
 
     #main_dict['title'] = (get_time.weekday(get_time.LM(0)) + " " + str(get_time.LM(0).day) + " - " + get_time.weekday(get_time.now()) + " " + str(get_time.now().day))
     main_dict['title'] = (get_time.convert_weekday_full(get_time.LM(0)) + " - " + get_time.convert_weekday_full(datetime.datetime.now()))

@@ -16,6 +16,7 @@ def FOM(x):
     #first of month
     #start of day
     if x == 1: #1/2/19 fixed for january coming up
+        now = datetime.datetime.now()
         return datetime.datetime(now.year, 1, 1)
     else:
         now = datetime.datetime.now()

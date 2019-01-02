@@ -12,7 +12,7 @@ import math #recently added
 import numpy as np #new
 
 
-runs_per_week = 4
+runs_per_week = 5
 
 master_dict = get_data.my_filtered_activities()
 
@@ -455,11 +455,16 @@ def monthly(runs_per_week):
     last_month = MTD(master_dict.copy(),1)
     month_difference = this_month - last_month
     now = datetime.datetime.now()
-    past = datetime.datetime(now.year, now.month - (0-1), 1) - (datetime.timedelta(days=1))
+    if now.month == 12:
+      past = datetime.datetime(now.year,12,31)
+    else:
+      past = datetime.datetime(now.year, now.month - (0-1), 1) - (datetime.timedelta(days=1))
     LOM = datetime.datetime(past.year, past.month, past.day, hour=23, minute=59, second=59)
     days_remaining = LOM.day - now.day
     #runs_per_week = 3
     runs_remain = math.ceil(days_remaining*(runs_per_week/7))
+    if runs_remain == 0:
+      runs_remain = 1
     monthly_dict = calc.monthly_stats(master_dict.copy())
     max_miles = 0
     for month in monthly_dict:
@@ -487,6 +492,8 @@ def monthly(runs_per_week):
     main_dict['flbox_values'].append(format_text(month_difference))
     main_dict['flbox_values'].append(format_text(runs_remain))
     main_dict['flbox_values'].append(format_text(abs(month_difference/runs_remain)))
+    #fix above line - divison by 0
+    
     main_dict['flbox_values'].append("")
 
     # #
@@ -502,6 +509,7 @@ def monthly(runs_per_week):
     #
     main_dict['frbox_values'].append(format_text(this_month-50))
     main_dict['frbox_values'].append(format_text((50-this_month)/runs_remain))
+    
     main_dict['frbox_values'].append("")
     main_dict['frbox_values'].append(str(max_miles))
     main_dict['frbox_values'].append(format_text((max_miles-this_month)/runs_remain))
@@ -519,7 +527,10 @@ def yearly(runs_per_week):
     main_dict['frbox_values'] = []
     #this year
     now = datetime.datetime.now()
-    past = datetime.datetime(now.year, now.month - (0-1), 1) - (datetime.timedelta(days=1))
+    if now.month == 12:
+      past = datetime.datetime(now.year,12,31)
+    else:
+      past = datetime.datetime(now.year, now.month - (0-1), 1) - (datetime.timedelta(days=1))
     LOM = datetime.datetime(past.year, past.month, past.day, hour=23, minute=59, second=59)
     end_of_year = datetime.datetime(now.year, 12, 31)
     days_remaining = LOM.day - now.day

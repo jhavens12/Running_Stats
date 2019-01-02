@@ -22,7 +22,10 @@ def LOM(x):
     #last of month
     #end of day
     now = datetime.datetime.now()
-    past = datetime.datetime(now.year, now.month - (x-1), 1) - (datetime.timedelta(days=1))
+    if now.month == 12:
+      past = datetime.datetime(now.year,12,31)
+    else:
+      past = datetime.datetime(now.year, now.month - (x-1), 1) - (datetime.timedelta(days=1))
     return datetime.datetime(past.year, past.month, past.day, hour=23, minute=59, second=59)
 
 def FOY():

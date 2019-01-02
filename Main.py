@@ -10,7 +10,7 @@ view = ui.View(bg_color = 'black', frame = (0,0,w,h)) #main view
 def vis(w,h):
     vis = {}
     vis['x_margin'] = 5
-    vis['y_margin'] = 20
+    vis['y_margin'] = 50 #fixed for notch
     vis['first_box_width'] = 100
 
     #SUBVIEWS

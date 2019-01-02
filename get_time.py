@@ -15,8 +15,11 @@ def forever():
 def FOM(x):
     #first of month
     #start of day
-    now = datetime.datetime.now()
-    return datetime.datetime(now.year, now.month - x, 1)
+    if x == 1: #1/2/19 fixed for january coming up
+        return datetime.datetime(now.year, 1, 1)
+    else:
+        now = datetime.datetime.now()
+        return datetime.datetime(now.year, now.month - x, 1)
 
 def LOM(x):
     #last of month

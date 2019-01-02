@@ -584,6 +584,10 @@ def yearly(runs_per_week):
                 y_list.append(yearly_dict[event])
 
         def extended_prediction(x_list,y_list,end_day):
+            if not y_list:
+                y_list = [0]
+            if not x_list:
+                x_list = [0]
             extended_range = list(range(x_list[0],end_day))
             model = np.polyfit(x_list, y_list, 1)
             predicted = np.polyval(model, extended_range)

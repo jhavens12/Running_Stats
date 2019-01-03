@@ -738,7 +738,7 @@ def yearly_prediction_graph():
     return b
 
 def weekly_graph():
-    ### current year
+
     now = datetime.datetime.now()
     diff = now - datetime.datetime(now.year, 1, 1)
     weeks_back = int(diff.days/7)
@@ -766,53 +766,15 @@ def weekly_graph():
         else:
             miles_dict[get_time.LM(week)] = 0
 
-    current_x_list = []
-    current_y_list = []
+    x_list = []
+    y_list = []
     for month in miles_dict:
-        current_x_list.append(int(month)+52)
-        current_y_list.append(miles_dict[month])
-
-
-
-    ##below is old
-    now = datetime.datetime.now()
-    diff = now - datetime.datetime(now.year - 1, 1, 1) #last year
-    diff = datetime.datetime.now() - datetime.datetime(2018, 1, 1)
-    weeks_back = int(diff.days/7)
-    weeks_to_calculate = list(range(0,weeks_back)) #calculate 0 to 17
-
-    week_dict = {}
-    for week in weeks_to_calculate:
-        week_dict[week] = master_dict.copy() #make a master dict for each week to calculate
-
-    for week in week_dict:
-        for key in list(week_dict[week]): #for each key in each master dictionary
-            if key < get_time.LM(week): #if older than last monday (0 is 1, 1 is 2,2 mondays ago)
-                del week_dict[week][key]
-        for key in list(week_dict[week]):
-           if key > get_time.LS(week-1): #if newer than last sunday (0 is 1)
-               del week_dict[week][key]
-
-    miles_dict = {}
-    for week in week_dict:
-        if week_dict[week]: #check to see if any activites exist in the given week
-            mile_list = []
-            for activity in week_dict[week]:
-                mile_list.append(float(week_dict[week][activity]['distance_miles']))
-            miles_dict[get_time.LM(week)] = sum(mile_list)
-        else:
-            miles_dict[get_time.LM(week)] = 0
-
-    prev_x_list = []
-    prev_y_list = []
-    for month in miles_dict:
-        prev_x_list.append(month)
-        prev_y_list.append(miles_dict[month])
+        x_list.append(month)
+        y_list.append(miles_dict[month])
 
     #######
     myFmt = mdates.DateFormatter('%m/%d')
-    #plt.bar(prev_x_list, prev_y_list, align='center', width=6, color='red')
-    plt.bar(current_x_list, current_y_list, align='center', width=6, color='blue')
+    plt.bar(x_list, y_list, align='center', width=6)
 
     plt.style.use('dark_background')
     #plt.axis('off')

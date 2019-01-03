@@ -811,7 +811,7 @@ def weekly_graph():
 
     #######
     myFmt = mdates.DateFormatter('%m/%d')
-    plt.bar(prev_x_list, prev_y_list, align='center', width=6, color='red')
+    #plt.bar(prev_x_list, prev_y_list, align='center', width=6, color='red')
     plt.bar(current_x_list, current_y_list, align='center', width=6, color='blue')
 
     plt.style.use('dark_background')

@@ -769,7 +769,7 @@ def weekly_graph():
     current_x_list = []
     current_y_list = []
     for month in miles_dict:
-        current_x_list.append(month)
+        current_x_list.append(int(month)+52)
         current_y_list.append(miles_dict[month])
 
 
@@ -777,7 +777,7 @@ def weekly_graph():
     ##below is old
     now = datetime.datetime.now()
     diff = now - datetime.datetime(now.year - 1, 1, 1) #last year
-    #diff = datetime.datetime.now() - datetime.datetime(2018, 1, 1)
+    diff = datetime.datetime.now() - datetime.datetime(2018, 1, 1)
     weeks_back = int(diff.days/7)
     weeks_to_calculate = list(range(0,weeks_back)) #calculate 0 to 17
 

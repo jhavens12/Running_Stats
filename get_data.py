@@ -10,15 +10,18 @@ import calendar
 import credentials
 
 def my_filtered_activities(): #combines my_activities and filter functions
+    print("Getting Data...")
     url = 'https://www.strava.com/api/v3/athlete/activities'
     header = {'Authorization': 'Bearer '+credentials.api_key}
     param = {'per_page':200, 'page':1}
     dataset = requests.get(url, headers=header, params=param).json()
     count = len(dataset)
+    print("Page: 1")
     if count == 200: #if 200 results come back
         loop_count = 1 #we've already done one loop
         while count == 200: #while it keeps returning 200 results
             loop_count = loop_count + 1 #increase loop_count or page number
+            print("Page: "+str(loop_count))
             param = {'per_page':200, 'page':loop_count} #reset params
             sub_dataset = requests.get(url, headers=header, params=param).json() #pull new data with sub_dataset name
             dataset = dataset + sub_dataset #combine (Json files, not dictionaries thank jesus)

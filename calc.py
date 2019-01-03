@@ -65,6 +65,8 @@ def monthly_daily_totals(dictionary,time_input,unit_input):
     x_list = []
     y_list = []
 
+    
+
     #filters out only dates needed
     for key in list(dictionary):
         if key < get_time.FOM(time_input): #if older than first of month

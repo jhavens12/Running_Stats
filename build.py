@@ -12,7 +12,8 @@ import math #recently added
 import numpy as np #new
 
 
-runs_per_week = 5
+runs_per_week = 4
+goal_mileage = 650
 
 master_dict = get_data.my_filtered_activities()
 
@@ -558,8 +559,8 @@ def yearly(runs_per_week):
         pytd_miles.append(float(past_ytd_dict[run]['distance_miles']))
     miles_last_year_this_time = sum(pytd_miles)
 
-    goal_2018 = 600
-    MPD = goal_2018/365 #miels per day starting 1/1
+    #goal_mileage = 650
+    MPD = goal_mileage/365 #miels per day starting 1/1
     day_of_year = now.timetuple().tm_yday #numerical value of day in the year
     #day_of_year = LOM.timetuple().tm_yday #found the day of the last of month for some reason, changed to above
     target_miles = MPD*day_of_year #what my current target_miles should be - NOT year long goal
@@ -568,7 +569,7 @@ def yearly(runs_per_week):
 
 
     #new 3.6.18
-    goal_miles_left_in_year = goal_2018 - miles_this_year #reverse of remaining_ytd_miles for some reason
+    goal_miles_left_in_year = goal_mileage - miles_this_year #reverse of remaining_ytd_miles for some reason
     goal_miles_per_day_now = goal_miles_left_in_year/days_remaining_in_year
     goal_miles_per_week_now = goal_miles_per_day_now*7
     goal_miles_per_run_now = goal_miles_per_week_now/runs_per_week
@@ -596,10 +597,10 @@ def yearly(runs_per_week):
         extended_range_30, predicted_30 = extended_prediction(x_list, y_list, 720)
         the_list = []
         for x,y in zip(extended_range_30,predicted_30):
-            if y > 600:
+            if y > goal_mileage:
                 the_list.append(x)
         if not the_list:
-            goal_day = 0
+            goal_day = 365 #changed from 0 as it showed last year when it could not predict
         else:
             goal_day = the_list[0]
         timestamp = datetime.datetime.now()
@@ -634,7 +635,7 @@ def yearly(runs_per_week):
     main_dict['flbox_values'].append(goal_90)
     main_dict['flbox_values'].append(goal_year)
 
-    main_dict['frbox_titles'].append("18 Goal by today")
+    main_dict['frbox_titles'].append("Yearly Goal")
     main_dict['frbox_titles'].append("Difference")
     main_dict['frbox_titles'].append("")
     main_dict['frbox_titles'].append("")
@@ -669,7 +670,7 @@ def yearly_graph():
         y = eval(formula)
         plt.plot(x, y, 'w', linestyle=':', linewidth=4)
 
-    graph('x*(600/365)')
+    graph('x*('+goal_mileage+'/365)')
 
     plt.style.use('dark_background')
     plt.axis('off')
@@ -721,7 +722,7 @@ def yearly_prediction_graph():
     extended_range, predicted = extended_prediction(x_list, y_list, 365)
     extended_range_30, predicted_30 = extended_prediction(x2_list, y2_list, 365)
 
-    graph('x*(600/365)')
+    graph('x*('+goal_mileage+'/365)')
     plt.plot(extended_range, predicted, linestyle='--',color='orange',linewidth=4,label='All Year')
     plt.plot(extended_range_30, predicted_30, linestyle='--',color='red',linewidth=4,label='30 Days')
     plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()),label=('This Year'),color='blue',lw='4')

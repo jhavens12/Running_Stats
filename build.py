@@ -13,7 +13,7 @@ import numpy as np #new
 
 
 runs_per_week = 4
-goal_mileage = 650
+goal_mileage = str(650)
 
 master_dict = get_data.my_filtered_activities()
 
@@ -401,7 +401,7 @@ def weekly(current_info):
 
     #DATA
     main_dict['flbox_values'].append(str(current_miles))
-    main_dict['flbox_values'].append(str(max_weekly_miles))
+    main_dict['flbox_values'].append(format_text(max_weekly_miles))
     main_dict['flbox_values'].append(format_text(float(max_weekly_miles)-float(current_miles)))
     main_dict['flbox_values'].append("")
     main_dict['flbox_values'].append(format_text(run_period_7['current_total']))

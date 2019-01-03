@@ -15,11 +15,14 @@ def forever():
 def FOM(x):
     #first of month
     #start of day
-    if x == 1: #1/2/19 fixed for january coming up
-        now = datetime.datetime.now()
-        return datetime.datetime(now.year, 1, 1)
-    else:
-        now = datetime.datetime.now()
+    #x is number of months ago
+    now = datetime.datetime.now()
+    if now.month == 1:
+        if x == 0: #if you want current month and its january
+            return datetime.datetime(now.year, now.month, 1)
+        else: #if you want x months ago and the month is 1, you need last year
+            return datetime.datetime(now.year - 1, 13 - x, 1)
+    else: #if it is not january
         return datetime.datetime(now.year, now.month - x, 1)
 
 def LOM(x):

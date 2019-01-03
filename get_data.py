@@ -9,6 +9,7 @@ import json
 import calendar
 import credentials
 
+
 def my_filtered_activities(): #combines my_activities and filter functions
     print("Getting Data...")
     url = 'https://www.strava.com/api/v3/athlete/activities'
@@ -26,6 +27,9 @@ def my_filtered_activities(): #combines my_activities and filter functions
             sub_dataset = requests.get(url, headers=header, params=param).json() #pull new data with sub_dataset name
             dataset = dataset + sub_dataset #combine (Json files, not dictionaries thank jesus)
             count = len(sub_dataset) #count results to see if we need to loop again
+    print(str(len(dataset))+" Total Activities")
+    wanted_events_dict = {event_timestamp(i): clean_event(i) for i in dataset if wanted_event(i)}
+    print(str(len(wanted_events_dictLL))+" Wanted Activities")
     return {event_timestamp(i): clean_event(i) for i in dataset if wanted_event(i)} #return as normal
 
 def my_activities():

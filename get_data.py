@@ -8,6 +8,7 @@ import collections
 import json
 import calendar
 import credentials
+import pprint
 
 
 def my_filtered_activities(): #combines my_activities and filter functions
@@ -29,7 +30,7 @@ def my_filtered_activities(): #combines my_activities and filter functions
             count = len(sub_dataset) #count results to see if we need to loop again
     print(str(len(dataset))+" Total Activities")
     wanted_events_dict = {event_timestamp(i): clean_event(i) for i in dataset if wanted_event(i)}
-    print(str(len(wanted_events_dictLL))+" Wanted Activities")
+    print(str(len(wanted_events_dict))+" Wanted Activities")
     return {event_timestamp(i): clean_event(i) for i in dataset if wanted_event(i)} #return as normal
 
 def my_activities():
@@ -107,3 +108,5 @@ def convert_meters_to_miles(meters):
 
 def convert_elevation(i):
     return float(("{0:.2f}".format(i*3.28)))
+
+pprint.pprint(my_filtered_activities())

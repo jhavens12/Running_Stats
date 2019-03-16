@@ -1,2 +1,4 @@
 credentials.py
 .git
+*__pycache__*
+.gitignore

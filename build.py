@@ -662,9 +662,12 @@ def yearly_graph():
     yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
     print(yearly_dict)
     yearly_dict2 = calc.yearly_totals(master_dict.copy(),1) #last year
+    yearly_dict3 = calc.yearly_totals(master_dict.copy(),2) #last year
 
-    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()), 'blue', linewidth=4, label="This Year")
-    plt.plot(list(yearly_dict2.keys()),list(yearly_dict2.values()), 'red', linewidth=4,label='Last Year')
+    plt.plot(list(yearly_dict3.keys()),list(yearly_dict3.values()), 'green', linewidth=4,label='2')
+    plt.plot(list(yearly_dict2.keys()),list(yearly_dict2.values()), 'blue', linewidth=4,label='Last')
+    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()), 'red', linewidth=4, label="This")
+
 
     def graph(formula):
         x = np.array(range(0,366))
@@ -675,7 +678,7 @@ def yearly_graph():
 
     plt.style.use('dark_background')
     plt.axis('off')
-    plt.legend(loc=0,fontsize=30)
+    plt.legend(loc=0,fontsize=10)
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
                 wspace=None, hspace=None)
 

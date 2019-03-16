@@ -664,21 +664,23 @@ def yearly_graph():
     yearly_dict2 = calc.yearly_totals(master_dict.copy(),1) #last year
     yearly_dict3 = calc.yearly_totals(master_dict.copy(),2) #last year
 
-    plt.plot(list(yearly_dict3.keys()),list(yearly_dict3.values()), 'green', linewidth=4,label='2')
-    plt.plot(list(yearly_dict2.keys()),list(yearly_dict2.values()), 'blue', linewidth=4,label='Last')
-    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()), 'red', linewidth=4, label="This")
-
-
     def graph(formula):
         x = np.array(range(0,366))
         y = eval(formula)
         plt.plot(x, y, 'w', linestyle=':', linewidth=4)
 
+    label1=int(datetime.datetime.now().year)
+    label2=label1-1
+    label3=label1-2
+
     graph('x*('+str(goal_mileage)+'/365)')
+    plt.plot(list(yearly_dict3.keys()),list(yearly_dict3.values()), 'green', linewidth=4,label=label3)
+    plt.plot(list(yearly_dict2.keys()),list(yearly_dict2.values()), 'blue', linewidth=4,label=label2)
+    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()), 'red', linewidth=4, label=label1)
 
     plt.style.use('dark_background')
     plt.axis('off')
-    plt.legend(loc=0,fontsize=10)
+    plt.legend(loc=0,fontsize=20)
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
                 wspace=None, hspace=None)
 

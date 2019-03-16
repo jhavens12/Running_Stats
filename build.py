@@ -659,7 +659,7 @@ def yearly(runs_per_week):
 def yearly_graph():
     #modified from running_graphs to show YTD mileage
     yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
-    print(yearly_dict)
+    #print(yearly_dict)
     yearly_dict2 = calc.yearly_totals(master_dict.copy(),1) #last year
     yearly_dict3 = calc.yearly_totals(master_dict.copy(),2) #last year
 

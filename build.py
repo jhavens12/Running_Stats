@@ -559,7 +559,6 @@ def yearly(runs_per_week):
         pytd_miles.append(float(past_ytd_dict[run]['distance_miles']))
     miles_last_year_this_time = sum(pytd_miles)
 
-    #goal_mileage = 650
     MPD = goal_mileage/365 #miels per day starting 1/1
     day_of_year = now.timetuple().tm_yday #numerical value of day in the year
     #day_of_year = LOM.timetuple().tm_yday #found the day of the last of month for some reason, changed to above
@@ -667,7 +666,7 @@ def yearly_graph():
     def graph(formula):
         x = np.array(range(0,366))
         y = eval(formula)
-        plt.plot(x, y, 'w', linestyle=':', linewidth=4)
+        plt.plot(x, y, 'w', linestyle=':', linewidth=4,label=goal_mileage)
 
     label1=int(datetime.datetime.now().year)
     label2=label1-1

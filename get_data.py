@@ -108,5 +108,3 @@ def convert_meters_to_miles(meters):
 
 def convert_elevation(i):
     return float(("{0:.2f}".format(i*3.28)))
-
-pprint.pprint(my_filtered_activities())

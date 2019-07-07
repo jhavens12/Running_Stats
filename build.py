@@ -472,10 +472,13 @@ def monthly(runs_per_week):
 
     main_dict['title'] = get_time.convert_month_name(datetime.datetime.now()) #get name of this month
     #LABELS
+    #14 values per side
     main_dict['flbox_titles'].append("This Month")
     main_dict['flbox_titles'].append("Run Count")
+    main_dict['frbox_titles'].append("---------------") #15
     main_dict['flbox_titles'].append("Last Month")
     main_dict['flbox_titles'].append("Run Count")
+    main_dict['flbox_titles'].append("---------------") #15
     main_dict['flbox_titles'].append("Difference")
     main_dict['flbox_titles'].append("Runs Remain")
     main_dict['flbox_titles'].append("MPR Last Month")
@@ -484,15 +487,15 @@ def monthly(runs_per_week):
     main_dict['flbox_titles'].append("Test3")
     main_dict['flbox_titles'].append("Test4")
     main_dict['flbox_titles'].append("Test5")
-    main_dict['flbox_titles'].append("Test6")
-    main_dict['flbox_titles'].append("Test7")
 
 
     #DATA
     main_dict['flbox_values'].append(format_text(this_month))
     main_dict['flbox_values'].append(format_text(len(this_month_full)))
+    main_dict['flbox_values'].append("------") #6
     main_dict['flbox_values'].append(format_text(last_month))
     main_dict['flbox_values'].append(format_text(len(last_month_full)))
+    main_dict['flbox_values'].append("------") #6
     main_dict['flbox_values'].append(format_text(month_difference))
     main_dict['flbox_values'].append(format_text(runs_remain))
     main_dict['flbox_values'].append(format_text(abs(month_difference/runs_remain)))
@@ -513,7 +516,7 @@ def monthly(runs_per_week):
     #
     main_dict['frbox_values'].append(format_text(this_month-50))
     main_dict['frbox_values'].append(format_text((50-this_month)/runs_remain))
-    main_dict['frbox_values'].append("----------") #10
+    main_dict['frbox_values'].append("------") #6
     main_dict['frbox_values'].append(str(max_miles))
     main_dict['frbox_values'].append(format_text((max_miles-this_month)/runs_remain))
     main_dict['frbox_values'].append("")

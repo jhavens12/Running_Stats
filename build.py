@@ -370,6 +370,7 @@ def weekly(current_info):
     current_miles = current_info['current_miles']
     current_week_count = current_info['current_week_count']
 
+    #taken from top peroid
     weekly_dict = calc.weekly_stats(master_dict.copy())
 
     max_weekly_miles = 0
@@ -377,6 +378,9 @@ def weekly(current_info):
         if weekly_dict[week]['miles_ran'] > max_weekly_miles:
             max_weekly_miles = float(weekly_dict[week]['miles_ran'])
             most_miles_week = week
+
+    print(most_miles_week)
+    dict_1 = weekly_dict[most_miles_week]['run_dict'] #grab dictionary of runs from top week to display
 
     main_dict = {}
     main_dict['flbox_titles'] = []

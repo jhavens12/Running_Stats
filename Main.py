@@ -24,7 +24,7 @@ def vis(w,h):
     vis['csub_x'] = vis['x_margin']
     vis['csub_y'] = vis['psub_y'] + vis['psub_h'] + (vis['y_margin']/2) #y margin, height of psub, y margin
 
-    vis['fsub_h'] = h*.33#h*.29
+    vis['fsub_h'] = h*.33 #h*.29 #updated for iphone x
     vis['fsub_w'] = vis['psub_w']
     vis['fsub_x'] = vis['x_margin']
     vis['fsub_y'] = vis['csub_y'] + vis['csub_h'] + (vis['y_margin']/2) +30 #y margin, height of psub, y margin #add segcontrol height
@@ -137,7 +137,7 @@ def vis(w,h):
     vis['ftitle_y'] = 0
 
     #box titles LEFT
-    subbox_count = 12
+    subbox_count = 14 #this is not an accurate way to do this
     vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / subbox_count
     vis['fbox_titles_w'] = (vis['psub_w']/2) * .7
     vis['fbox_titles_x'] = 0

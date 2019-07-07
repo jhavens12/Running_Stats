@@ -389,7 +389,7 @@ def weekly(current_info):
     main_dict['flbox_titles'].append("This Week")
     main_dict['flbox_titles'].append("Best Week")
     main_dict['flbox_titles'].append("Difference")
-    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("---------------") #15
     main_dict['flbox_titles'].append("7 Day")
     main_dict['flbox_titles'].append("Best 7 Day")
     main_dict['flbox_titles'].append("Difference")
@@ -399,7 +399,7 @@ def weekly(current_info):
     main_dict['flbox_values'].append(str(current_miles))
     main_dict['flbox_values'].append(format_text(max_weekly_miles))
     main_dict['flbox_values'].append(format_text(float(max_weekly_miles)-float(current_miles)))
-    main_dict['flbox_values'].append("")
+    main_dict['flbox_values'].append("------") #6
     main_dict['flbox_values'].append(format_text(run_period_7['current_total']))
     main_dict['flbox_values'].append(format_text(run_period_7['highest_total']))
     main_dict['flbox_values'].append(format_text(run_period_7['difference_distance']))
@@ -482,11 +482,11 @@ def monthly(runs_per_week):
     main_dict['flbox_titles'].append("Difference")
     main_dict['flbox_titles'].append("Runs Remain")
     main_dict['flbox_titles'].append("MPR Last Month")
-    main_dict['flbox_titles'].append("Test1")
-    main_dict['flbox_titles'].append("Test2")
-    main_dict['flbox_titles'].append("Test3")
-    main_dict['flbox_titles'].append("Test4")
-    main_dict['flbox_titles'].append("Test5")
+    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("")
+    main_dict['flbox_titles'].append("")
 
 
     #DATA
@@ -625,6 +625,7 @@ def yearly(runs_per_week):
     main_dict['flbox_titles'].append("YTD Miles")
     main_dict['flbox_titles'].append("Last YTD by now")
     main_dict['flbox_titles'].append("Difference")
+    main_dict['flbox_titles'].append("---------------") #15
     main_dict['flbox_titles'].append("Days Remain")
     main_dict['flbox_titles'].append("Goal (30)")
     main_dict['flbox_titles'].append("Goal (90)")
@@ -633,6 +634,7 @@ def yearly(runs_per_week):
     main_dict['flbox_values'].append(format_text(miles_this_year))
     main_dict['flbox_values'].append(format_text(miles_last_year_this_time))
     main_dict['flbox_values'].append(format_text(miles_this_year-miles_last_year_this_time))
+    main_dict['flbox_values'].append("------") #6
     main_dict['flbox_values'].append(str(days_remaining_in_year))
     main_dict['flbox_values'].append(goal_30)
     main_dict['flbox_values'].append(goal_90)
@@ -640,8 +642,7 @@ def yearly(runs_per_week):
 
     main_dict['frbox_titles'].append("Yearly Goal")
     main_dict['frbox_titles'].append("Difference")
-    main_dict['frbox_titles'].append("")
-    main_dict['frbox_titles'].append("")
+    main_dict['frbox_titles'].append("---------------") #15
     main_dict['frbox_titles'].append("Miles Per Day")
     main_dict['frbox_titles'].append("Miles Per Week")
     main_dict['frbox_titles'].append("Miles Per Run")
@@ -650,8 +651,7 @@ def yearly(runs_per_week):
 
     main_dict['frbox_values'].append(format_text(target_miles))
     main_dict['frbox_values'].append(format_text(remaining_ytd_miles))
-    main_dict['frbox_values'].append("")
-    main_dict['frbox_values'].append("")
+    main_dict['frbox_values'].append("------") #6
     main_dict['frbox_values'].append(format_text(goal_miles_per_day_now))
     main_dict['frbox_values'].append(format_text(goal_miles_per_week_now))
     main_dict['frbox_values'].append(format_text(goal_miles_per_run_now))

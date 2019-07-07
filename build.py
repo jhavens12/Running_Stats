@@ -379,7 +379,7 @@ def weekly(current_info):
             max_weekly_miles = float(weekly_dict[week]['miles_ran'])
             most_miles_week = week
 
-    print(most_miles_week)
+    print(most_miles_week['datetime'])
     dict_1 = weekly_dict[most_miles_week]['run_dict'] #grab dictionary of runs from top week to display
 
     main_dict = {}

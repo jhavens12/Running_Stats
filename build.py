@@ -475,7 +475,7 @@ def monthly(runs_per_week):
     #14 values per side
     main_dict['flbox_titles'].append("This Month")
     main_dict['flbox_titles'].append("Run Count")
-    main_dict['frbox_titles'].append("---------------") #15
+    main_dict['flbox_titles'].append("---------------") #15
     main_dict['flbox_titles'].append("Last Month")
     main_dict['flbox_titles'].append("Run Count")
     main_dict['flbox_titles'].append("---------------") #15
@@ -500,7 +500,6 @@ def monthly(runs_per_week):
     main_dict['flbox_values'].append(format_text(runs_remain))
     main_dict['flbox_values'].append(format_text(abs(month_difference/runs_remain)))
     #fix above line - divison by 0
-
     main_dict['flbox_values'].append("")
 
     # #

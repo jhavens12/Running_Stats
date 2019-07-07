@@ -378,8 +378,10 @@ def weekly(current_info):
         if weekly_dict[week]['miles_ran'] > max_weekly_miles:
             max_weekly_miles = float(weekly_dict[week]['miles_ran'])
             most_miles_week = week
+            #added
+            mmw_dt = weekly_dict[most_miles_week]['datetime']
+            mmw_ds = mmw_dt - datetime.datetime.now()
 
-    print(weekly_dict[most_miles_week]['datetime'])
     dict_1 = weekly_dict[most_miles_week]['run_dict'] #grab dictionary of runs from top week to display
 
     main_dict = {}
@@ -393,6 +395,7 @@ def weekly(current_info):
     main_dict['flbox_titles'].append("This Week")
     main_dict['flbox_titles'].append("Best Week")
     main_dict['flbox_titles'].append("Difference")
+    main_dict['flbox_titles'].append("Days Since") #15
     main_dict['flbox_titles'].append("---------------") #15
     main_dict['flbox_titles'].append("7 Day")
     main_dict['flbox_titles'].append("Best 7 Day")
@@ -403,6 +406,7 @@ def weekly(current_info):
     main_dict['flbox_values'].append(str(current_miles))
     main_dict['flbox_values'].append(format_text(max_weekly_miles))
     main_dict['flbox_values'].append(format_text(float(max_weekly_miles)-float(current_miles)))
+    main_dict['flbox_values'].append(format_text(mmw_ds.days)) #6    
     main_dict['flbox_values'].append("------") #6
     main_dict['flbox_values'].append(format_text(run_period_7['current_total']))
     main_dict['flbox_values'].append(format_text(run_period_7['highest_total']))

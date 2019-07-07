@@ -376,7 +376,7 @@ def weekly(current_info):
     weekly_dict = calc.weekly_stats(master_dict.copy())
 
     #find how well this week is going
-    top_week_in_weeks = 0
+    top_week_in_weeks = 0 #this may need to be changed
     for week in weekly_dict: #list iterates from current week backwards
         #find how well this week is going
         if float(weekly_dict[week]['miles_ran']) > float(current_miles): #this weeks miles
@@ -419,8 +419,8 @@ def weekly(current_info):
     main_dict['flbox_values'].append(str(current_miles))
     main_dict['flbox_values'].append(format_text(max_weekly_miles))
     main_dict['flbox_values'].append(format_text(float(max_weekly_miles)-float(current_miles)))
-    main_dict['flbox_values'].append(format_text(mmw_ds.days)) #6
-    main_dict['flbox_values'].append(format_text(top_week_in_weeks)) #6
+    main_dict['flbox_values'].append(str(mmw_ds.days))
+    main_dict['flbox_values'].append(str(top_week_in_weeks))
     main_dict['flbox_values'].append("------") #6
     main_dict['flbox_values'].append(format_text(run_period_7['current_total']))
     main_dict['flbox_values'].append(format_text(run_period_7['highest_total']))

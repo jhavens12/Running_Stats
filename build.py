@@ -29,7 +29,7 @@ def top_period(runs_per_week,current_info):
         if weekly_dict[week]['miles_ran'] > max_weekly_miles:
             max_weekly_miles = float(weekly_dict[week]['miles_ran'])
             most_miles_week = week
-            mmw_dt = weekly_dict[most_miles_week]['datetime'] #added 7/7/19
+            mmw_dh = weekly_dict[most_miles_week]['date_human'] #added 7/7/19
 
     dict_1 = weekly_dict[most_miles_week]['run_dict'] #grab dictionary of runs from top week to display
 
@@ -80,7 +80,7 @@ def top_period(runs_per_week,current_info):
     current_elevation_total = "{0:.2f}".format(sum(current_elevation_list))
 
     main_dict = {} #main dictionary to add values to and then return
-    main_dict['title'] = str(mmw_dt)
+    main_dict['title'] = str(mmw_dh)
     #main_dict['title'] = str(most_miles_week)#(get_time.convert_weekday_full(get_time.LM(Monday)) + " - " + get_time.convert_weekday_full(get_time.LS(Sunday)))
 
     main_dict['subtitle_title'] = 'Ten Percent:'

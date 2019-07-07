@@ -379,7 +379,7 @@ def weekly(current_info):
     top_week_in_weeks = 0
     for week in weekly_dict: #list iterates from current week backwards
         #find how well this week is going
-        if weekly_dict[week]['miles_ran'] > current_miles: #this weeks miles
+        if float(weekly_dict[week]['miles_ran']) > float(current_miles): #this weeks miles
             print("historic week is greater than current")
             break
         else:

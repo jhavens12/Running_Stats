@@ -395,8 +395,10 @@ def weekly(current_info):
             #added
             mmw_dt = weekly_dict[most_miles_week]['datetime']
             mmw_ds = datetime.datetime.now() - mmw_dt
-            if float(mmw_ds) < 0: #fix negative days if done within 24 hours
+            if mmw_ds.days < 0: #fix negative days if done within 24 hours
                 mmw_ds = 0
+            else:
+                mmw_ds = mmw_ds.days
 
     main_dict = {}
     main_dict['flbox_titles'] = []
@@ -421,7 +423,7 @@ def weekly(current_info):
     main_dict['flbox_values'].append(str(current_miles))
     main_dict['flbox_values'].append(format_text(max_weekly_miles))
     main_dict['flbox_values'].append(format_text(float(max_weekly_miles)-float(current_miles)))
-    main_dict['flbox_values'].append(str(mmw_ds.days))
+    main_dict['flbox_values'].append(str(mmw_ds))
     main_dict['flbox_values'].append(str(top_week_in_weeks))
     main_dict['flbox_values'].append("------") #6
     main_dict['flbox_values'].append(format_text(run_period_7['current_total']))

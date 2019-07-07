@@ -376,15 +376,18 @@ def weekly(current_info):
     weekly_dict = calc.weekly_stats(master_dict.copy())
 
     max_weekly_miles = 0
+    top_week_in_weeks = 0
     for week in weekly_dict:
+        #find how well this week is going
+        #current_miles #this weeks miles
+        print(weekly_dict[week]['miles_ran'])
+        #find top week
         if weekly_dict[week]['miles_ran'] > max_weekly_miles:
             max_weekly_miles = float(weekly_dict[week]['miles_ran'])
             most_miles_week = week
             #added
             mmw_dt = weekly_dict[most_miles_week]['datetime']
             mmw_ds = datetime.datetime.now() - mmw_dt
-
-    dict_1 = weekly_dict[most_miles_week]['run_dict'] #grab dictionary of runs from top week to display
 
     main_dict = {}
     main_dict['flbox_titles'] = []

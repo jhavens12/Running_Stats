@@ -343,7 +343,7 @@ def current_period():
 
 def weekly(current_info):
 
-    def how_most_running_period(days):
+    def how_most_running_period(days): #Used for "Days" as running consecutive days
         output_dict = {}
         input_day = days
         result_dict = calc.full_running_totals(master_dict.copy(),input_day,'distance_miles')
@@ -366,11 +366,7 @@ def weekly(current_info):
 
     run_period_7 = how_most_running_period(7)
     run_period_30 = how_most_running_period(30)
-    #run_period_90 = how_most_running_period(90)
 
-    #older
-    #Currently not used
-    #pprint(current_info)
     current_miles = current_info['current_miles']
     current_week_count = current_info['current_week_count']
 
@@ -688,7 +684,7 @@ def yearly_graph():
     plt.close('all')
     return b
 
-def yearly_prediction_graph():
+def yearly_prediction_graph(): #This is currently used
     #modified from running_graphs to show YTD mileage
 
     def graph(formula):

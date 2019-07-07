@@ -137,7 +137,8 @@ def vis(w,h):
     vis['ftitle_y'] = 0
 
     #box titles LEFT
-    vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 8
+    subbox_count = 12
+    vis['fbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / subbox_count
     vis['fbox_titles_w'] = (vis['psub_w']/2) * .7
     vis['fbox_titles_x'] = 0
     vis['fbox_titles_y'] = 1 #this needs to be changed
@@ -148,7 +149,7 @@ def vis(w,h):
     vis['fbox_values_y'] = 1 #this needs to be changed
 
     #box titles RIGHT
-    vis['frbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / 8
+    vis['frbox_titles_h'] = (vis['fsub_h'] - vis['ftitle_h']) / subbox_count
     vis['frbox_titles_w'] = (vis['psub_w']/2) * .7
     vis['frbox_titles_x'] = (vis['psub_w']/4) * 2
     vis['frbox_titles_y'] = 1 #this needs to be changed
@@ -479,6 +480,7 @@ def generate_fsubview(fsubview,fseg_info):
     for n,label in enumerate(fseg_info['flbox_titles']):
         #count = len(fbox_titles)
         #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
+        ####vis['fbox_titles_h']
         vis['fbox_titles_y'] = (vis['fbox_titles_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1 #account for title
         label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['fbox_titles_x'], vis['fbox_titles_y'], vis['fbox_titles_w'], vis['fbox_titles_h']) )
         label_title.text = label

@@ -395,7 +395,7 @@ def weekly(current_info):
             #added
             mmw_dt = weekly_dict[most_miles_week]['datetime']
             mmw_ds = datetime.datetime.now() - mmw_dt
-            if mmw_ds < 0: #fix negative days if done within 24 hours
+            if int(mmw_ds) < 0: #fix negative days if done within 24 hours
                 mmw_ds = 0
 
     main_dict = {}

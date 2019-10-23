@@ -13,9 +13,17 @@ import renew
 
 
 def my_filtered_activities(): #combines my_activities and filter functions
+    #import from api key file
+    try:
+        with open ("./api_key.txt", "r") as myfile:
+        data=myfile.readlines()
+        api_key = data[0]
+    else:
+        api_key = "nokey"
+
     print("Getting Data...")
     url = 'https://www.strava.com/api/v3/athlete/activities'
-    header = {'Authorization': 'Bearer '+credentials.api_key}
+    header = {'Authorization': 'Bearer '+api_key}
     param = {'per_page':200, 'page':1}
     print("Page: 1")
     dataset = requests.get(url, headers=header, params=param).json()

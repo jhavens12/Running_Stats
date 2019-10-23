@@ -16,11 +16,11 @@ def my_filtered_activities(): #combines my_activities and filter functions
     #import from api key file
     try:
         with open ("./api_key.txt", "r") as myfile:
-        data=myfile.readlines()
-        api_key = data[0]
-    else:
+            data = file.read().replace('\n', '')
+            api_key = str(data[0])
+    except Exception():
         api_key = "nokey"
-
+    print(api_key)
     print("Getting Data...")
     url = 'https://www.strava.com/api/v3/athlete/activities'
     header = {'Authorization': 'Bearer '+api_key}

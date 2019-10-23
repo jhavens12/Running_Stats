@@ -9,6 +9,7 @@ import json
 import calendar
 import credentials
 import pprint
+import renew
 
 
 def my_filtered_activities(): #combines my_activities and filter functions
@@ -19,6 +20,17 @@ def my_filtered_activities(): #combines my_activities and filter functions
     print("Page: 1")
     dataset = requests.get(url, headers=header, params=param).json()
     count = len(dataset)
+    print("COUNT:"+str(count))
+    if count == 2: #if there is an error
+        api_key = renew.main()
+        print("Getting Data Again...")
+        url = 'https://www.strava.com/api/v3/athlete/activities'
+        header = {'Authorization': 'Bearer '+api_key}
+        param = {'per_page':200, 'page':1}
+        print("Page: 1")
+        dataset = requests.get(url, headers=header, params=param).json()
+        count = len(dataset)
+        print("COUNT:"+str(count))
     if count == 200: #if 200 results come back
         loop_count = 1 #we've already done one loop
         while count == 200: #while it keeps returning 200 results

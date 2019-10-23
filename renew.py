@@ -6,7 +6,7 @@ import credentials
 
 def main():
     # STEP 1:
-    auth_url = 'http://www.strava.com/oauth/authorize?client_id='+credentials.client_id+'&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=activity:read_all'
+    auth_url = 'www.strava.com/oauth/authorize?client_id='+credentials.client_id+'&response_type=code&redirect_uri=http://localhost/exchange_token&approval_prompt=force&scope=activity:read_all'
     webbrowser.open('googlechrome://'+auth_url)  # Go to example.com
     print()
     full_url = input("What is the full URL? ")
@@ -29,6 +29,7 @@ def main():
     response = requests.post(url, data=data).json()
     print()
     print(response['access_token'])
+    print(response['access_token'],  file=open('./api_key.txt', 'w'))
 
     print()
     print("DONE")

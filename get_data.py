@@ -15,23 +15,28 @@ import renew
 def my_filtered_activities(): #combines my_activities and filter functions
     #import from api key file
     try:
-        with open ("./api_key.txt", "r") as myfile:
-            data = file.read().replace('\n', '')
-            api_key = str(data[0])
-    except Exception():
+        with open('./api_key.txt', 'w+') as f:
+            api_key = f.read()
+            print(api_key)
+    except Exception:
+        print("No key found in file")
         api_key = "nokey"
-    print(api_key)
-    print("Getting Data...")
-    url = 'https://www.strava.com/api/v3/athlete/activities'
-    header = {'Authorization': 'Bearer '+api_key}
-    param = {'per_page':200, 'page':1}
-    print("Page: 1")
-    dataset = requests.get(url, headers=header, params=param).json()
-    count = len(dataset)
-    print("COUNT:"+str(count))
-    if count == 2: #if there is an error
+
+    if api_key not "nokey":
+
+        print("Getting Data...")
+        url = 'https://www.strava.com/api/v3/athlete/activities'
+        header = {'Authorization': 'Bearer '+api_key}
+        param = {'per_page':200, 'page':1}
+        print("Page: 1")
+        dataset = requests.get(url, headers=header, params=param).json()
+        #count = len(dataset)
+        #print("COUNT:"+str(count))
+
+    else:
+    #if count == 2: #if there is an error
         api_key = renew.main()
-        print("Getting Data Again...")
+        print("Getting Data with new key...")
         url = 'https://www.strava.com/api/v3/athlete/activities'
         header = {'Authorization': 'Bearer '+api_key}
         param = {'per_page':200, 'page':1}
@@ -39,6 +44,7 @@ def my_filtered_activities(): #combines my_activities and filter functions
         dataset = requests.get(url, headers=header, params=param).json()
         count = len(dataset)
         print("COUNT:"+str(count))
+
     if count == 200: #if 200 results come back
         loop_count = 1 #we've already done one loop
         while count == 200: #while it keeps returning 200 results

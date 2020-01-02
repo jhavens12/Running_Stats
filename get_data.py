@@ -22,7 +22,7 @@ def my_filtered_activities(): #combines my_activities and filter functions
         print("No key found in file")
         api_key = "nokey"
 
-    if api_key != "nokey":
+    if "nokey" not in api_key:
 
         print("Getting Data...")
         url = 'https://www.strava.com/api/v3/athlete/activities'

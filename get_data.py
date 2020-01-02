@@ -15,8 +15,8 @@ import renew
 def my_filtered_activities(): #combines my_activities and filter functions
     #import from api key file
     try:
-        with open('./api_key.txt', 'w+') as f:
-            api_key = f.read()
+        with open('./api_key.txt') as f:
+            api_key = f.read().splitlines()[0] #only grab first line, remove /n from string
             print(api_key)
     except Exception:
         print("No key found in file")
@@ -31,7 +31,6 @@ def my_filtered_activities(): #combines my_activities and filter functions
         print("Page: 1")
         dataset = requests.get(url, headers=header, params=param).json()
         count = len(dataset)
-        print(dataset)
         #print("COUNT:"+str(count))
 
     else:

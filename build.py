@@ -12,8 +12,8 @@ import math #recently added
 import numpy as np #new
 
 
-runs_per_week = 4
-goal_mileage = 650
+runs_per_week = 5
+goal_mileage = 1256
 
 master_dict = get_data.my_filtered_activities()
 
@@ -565,7 +565,6 @@ def yearly(runs_per_week):
     LOM = datetime.datetime(past.year, past.month, past.day, hour=23, minute=59, second=59)
     end_of_year = datetime.datetime(now.year, 12, 31)
     days_remaining = LOM.day - now.day
-    #runs_per_week = 3
 
     ytd_dict = master_dict.copy()
     for key in list(ytd_dict):
@@ -758,7 +757,7 @@ def yearly_prediction_graph(): #This is currently used
     extended_range_30, predicted_30 = extended_prediction(x2_list, y2_list, 365)
 
     graph('x*('+str(goal_mileage)+'/365)')
-    plt.plot(extended_range, predicted, linestyle='--',color='orange',linewidth=4,label='All Year')
+    plt.plot(extended_range, predicted, linestyle='--',color='orange',linewidth=4,label='All Year: '+str(predicted))
     plt.plot(extended_range_30, predicted_30, linestyle='--',color='red',linewidth=4,label='30 Days')
     plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()),label=('This Year'),color='blue',lw='4')
 

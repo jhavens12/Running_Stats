@@ -254,7 +254,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     psubtitle_value.text = pseg_info['subtitle_value']
     psubtitle_value.text_color = '#4286f4'
     psubtitle_value.alignment = 1 #1 is center
-    psubtitle_value.font = ('<system>',14)
+    psubtitle_value.font = ('<system>',10)
     psubview.add_subview(psubtitle_value)
 
     #new
@@ -270,7 +270,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     psubtitle2_value.text = pseg_info['subtitle2_value']
     psubtitle2_value.text_color = '#4286f4'
     psubtitle2_value.alignment = 1 #1 is center
-    psubtitle2_value.font = ('<system>',14)
+    psubtitle2_value.font = ('<system>',10)
     psubview.add_subview(psubtitle2_value)
 
     #box titles
@@ -307,7 +307,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.number_of_lines = 0
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',14)
+        label_title.font =  ('<system>',14) #this is the top box values for previous peroids
         label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
@@ -491,14 +491,14 @@ def generate_fsubview(fsubview,fseg_info):
         #label_title.border_width = 1
         fsubview.add_subview(label_title)
 
-    for n,label in enumerate(fseg_info['flbox_values']):
+    for n,label in enumerate(fseg_info['flbox_values']): #very bottom, right hand values
         #count = len(fbox_values)
         #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
         vis['fbox_values_y'] = (vis['fbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['fbox_values_x'], vis['fbox_values_y'], vis['fbox_values_w'], vis['fbox_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',14)
+        label_title.font =  ('<system>',12)
         label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
@@ -518,14 +518,14 @@ def generate_fsubview(fsubview,fseg_info):
         #label_title.border_width = 0
         fsubview.add_subview(label_title)
 
-    for n,label in enumerate(fseg_info['frbox_values']):
+    for n,label in enumerate(fseg_info['frbox_values']): #very bottom, right hand values
         #count = len(fbox_values)
         #vis['fbox_values_w'] = vis['fsub_w']/count #divide width by number of labels
         vis['frbox_values_y'] = (vis['frbox_values_h'] * n) + vis['ftitle_h'] #first label at 0, second label at width*1
         label_title = ui.Label(name = label, bg_color = 'black', frame = (vis['frbox_values_x'], vis['frbox_values_y'], vis['frbox_values_w'], vis['frbox_values_h']) )
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',14)
+        label_title.font =  ('<system>',12)
         label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'
         #label_title.border_width = 0

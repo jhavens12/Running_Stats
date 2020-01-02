@@ -757,7 +757,7 @@ def yearly_prediction_graph(): #This is currently used
     extended_range_30, predicted_30 = extended_prediction(x2_list, y2_list, 365)
 
     graph('x*('+str(goal_mileage)+'/365)')
-    plt.plot(extended_range, predicted, linestyle='--',color='orange',linewidth=4,label='All Year: '+str(predicted))
+    plt.plot(extended_range, predicted, linestyle='--',color='orange',linewidth=4,label='All Year')
     plt.plot(extended_range_30, predicted_30, linestyle='--',color='red',linewidth=4,label='30 Days')
     plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()),label=('This Year'),color='blue',lw='4')
 

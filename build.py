@@ -690,7 +690,8 @@ def yearly_graph():
     yearly_dict = calc.yearly_totals(master_dict.copy(),0) #current year
     #print(yearly_dict)
     yearly_dict2 = calc.yearly_totals(master_dict.copy(),1) #last year
-    yearly_dict3 = calc.yearly_totals(master_dict.copy(),2) #last year
+    yearly_dict3 = calc.yearly_totals(master_dict.copy(),2) #2 years
+    yearly_dict4 = calc.yearly_totals(master_dict.copy(),3) #3 years
 
     def graph(formula):
         x = np.array(range(0,366))
@@ -700,11 +701,15 @@ def yearly_graph():
     label1=int(datetime.datetime.now().year)
     label2=label1-1
     label3=label1-2
+    label4=label1-3 #3 years ago
 
     graph('x*('+str(goal_mileage)+'/365)')
+    #in order of appearance
+    plt.plot(list(yearly_dict4.keys()),list(yearly_dict4.values()), 'orange', linewidth=4, label=label4)
     plt.plot(list(yearly_dict3.keys()),list(yearly_dict3.values()), 'green', linewidth=4,label=label3)
     plt.plot(list(yearly_dict2.keys()),list(yearly_dict2.values()), 'blue', linewidth=4,label=label2)
     plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()), 'red', linewidth=4, label=label1)
+
 
     plt.style.use('dark_background')
     plt.axis('off')
@@ -757,13 +762,13 @@ def yearly_prediction_graph(): #This is currently used
     extended_range_30, predicted_30 = extended_prediction(x2_list, y2_list, 365)
 
     graph('x*('+str(goal_mileage)+'/365)')
-    plt.plot(extended_range, predicted, linestyle='--',color='orange',linewidth=4,label='Year: '+format_text(predicted[-1]))
-    plt.plot(extended_range_30, predicted_30, linestyle='--',color='red',linewidth=4,label='30 Days')
-    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()),label=('This Year'),color='blue',lw='4')
+    plt.plot(extended_range, predicted, linestyle='--',color='green',linewidth=4,label='Year: '+format_text(predicted[-1]))
+    plt.plot(extended_range_30, predicted_30, linestyle='--',color='blue',linewidth=4,label='30 Days: '+format_text(predicted_30[-1]))
+    plt.plot(list(yearly_dict.keys()),list(yearly_dict.values()),label=('This Year'),color='red',lw='4')
 
     plt.style.use('dark_background')
     plt.axis('off')
-    plt.legend(loc=0,fontsize=30)
+    plt.legend(loc=0,fontsize=20)
     plt.subplots_adjust(left=0, bottom=0, right=1, top=1,
                 wspace=None, hspace=None)
     b = BytesIO()

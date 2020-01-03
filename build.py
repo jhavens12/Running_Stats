@@ -594,12 +594,15 @@ def yearly(runs_per_week):
     target_miles = MPD*day_of_year #what my current target_miles should be - NOT year long goal
     remaining_ytd_miles = miles_this_year - target_miles #why is this named like this?
     days_remaining_in_year = (end_of_year - now).days
+    weeks_remaining_in_year = (end_of_year -now).weeks
 
 
     #new 3.6.18
     goal_miles_left_in_year = goal_mileage - miles_this_year #reverse of remaining_ytd_miles for some reason
     goal_miles_per_day_now = goal_miles_left_in_year/days_remaining_in_year
-    goal_miles_per_week_now = goal_miles_per_day_now*7
+
+    #goal_miles_per_week_now = goal_miles_per_day_now*7
+    goal_miles_per_week_now = goal_miles_per_day_now/weeks_remaining_in_year
     goal_miles_per_run_now = goal_miles_per_week_now/runs_per_week
 
     #new 5.16.18 - Goal predictions

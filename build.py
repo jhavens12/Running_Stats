@@ -214,7 +214,7 @@ def period(Sunday,Monday,current_info): #given master dict copy, and then 0 and 
 
 
     #####
-    main_dict['title'] = (get_time.convert_weekday_full(get_time.LM(Monday)) + " - " + get_time.convert_weekday_full(get_time.LS(Sunday)))
+    main_dict['title'] = (get_time.convert_weekday_short(get_time.LM(Monday)) + " - " + get_time.convert_weekday_short(get_time.LS(Sunday)))
 
     main_dict['subtitle_title'] = 'Ten Percent:'
     main_dict['subtitle_value'] = str(past_ten_percent)
@@ -314,7 +314,7 @@ def current_period():
     current_elevation_total = "{0:.2f}".format(sum(current_elevation_list))
 
     #main_dict['title'] = (get_time.weekday(get_time.LM(0)) + " " + str(get_time.LM(0).day) + " - " + get_time.weekday(get_time.now()) + " " + str(get_time.now().day))
-    main_dict['title'] = (get_time.convert_weekday_full(get_time.LM(0)) + " - " + get_time.convert_weekday_full(datetime.datetime.now()))
+    main_dict['title'] = (get_time.convert_weekday_short(get_time.LM(0)) + " - " + get_time.convert_weekday_short(datetime.datetime.now()))
     #main_dict['subtitle1_title'] = "Remaining:"
     main_dict['subtitle1_title'] = "UP:"
     main_dict['subtitle2_title'] = "Match:"

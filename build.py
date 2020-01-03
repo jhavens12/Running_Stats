@@ -596,6 +596,7 @@ def yearly(runs_per_week):
     days_remaining_in_year = (end_of_year - now).days
     weeks_remaining_in_year = days_remaining_in_year/7
     print("weeks remaining in year: "+str(weeks_remaining_in_year))
+    print("runs per week: "+str(runs_per_week))
 
 
     #new 3.6.18

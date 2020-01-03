@@ -23,7 +23,7 @@ def my_filtered_activities(): #combines my_activities and filter functions
         api_key = "nokey"
 
     if "nokey" not in api_key:
-
+        #pulling key from file
         print("Getting Data...")
         url = 'https://www.strava.com/api/v3/athlete/activities'
         header = {'Authorization': 'Bearer '+api_key}
@@ -31,10 +31,21 @@ def my_filtered_activities(): #combines my_activities and filter functions
         print("Page: 1")
         dataset = requests.get(url, headers=header, params=param).json()
         count = len(dataset)
-        #print("COUNT:"+str(count))
+        if count == 2: #if there is an error
+            #this runs if there is a key found in the text file, but it is expired
+            print("Old key is bad")
+            api_key = renew.main()
+            print("Getting Data with new key...")
+            url = 'https://www.strava.com/api/v3/athlete/activities'
+            header = {'Authorization': 'Bearer '+api_key}
+            param = {'per_page':200, 'page':1}
+            print("Page: 1")
+            dataset = requests.get(url, headers=header, params=param).json()
+            count = len(dataset)
 
     else:
-    #if count == 2: #if there is an error
+
+        #this runs if there is no key at all and one needs to be created
         api_key = renew.main()
         print("Getting Data with new key...")
         url = 'https://www.strava.com/api/v3/athlete/activities'

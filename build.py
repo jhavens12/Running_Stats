@@ -80,7 +80,8 @@ def top_period(runs_per_week,current_info):
     current_elevation_total = "{0:.2f}".format(sum(current_elevation_list))
 
     main_dict = {} #main dictionary to add values to and then return
-    main_dict['title'] = str(mmw_dh)
+    #main_dict['title'] = str(mmw_dh) #this shows the monday following the best week for some reason
+    main_dict['title'] = " "
     #main_dict['title'] = str(most_miles_week)#(get_time.convert_weekday_full(get_time.LM(Monday)) + " - " + get_time.convert_weekday_full(get_time.LS(Sunday)))
 
     main_dict['subtitle_title'] = 'Ten Percent:'
@@ -595,8 +596,8 @@ def yearly(runs_per_week):
     remaining_ytd_miles = miles_this_year - target_miles #why is this named like this?
     days_remaining_in_year = (end_of_year - now).days
     weeks_remaining_in_year = days_remaining_in_year/7
-    print("weeks remaining in year: "+str(weeks_remaining_in_year))
-    print("runs per week: "+str(runs_per_week))
+    #print("weeks remaining in year: "+str(weeks_remaining_in_year))
+    #print("runs per week: "+str(runs_per_week))
 
 
     #new 3.6.18

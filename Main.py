@@ -256,7 +256,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     psubtitle_value.text = pseg_info['subtitle_value']
     psubtitle_value.text_color = '#4286f4'
     psubtitle_value.alignment = 1 #1 is center
-    psubtitle_value.font = ('<system>',10)
+    psubtitle_value.font = ('<system>',14)
     psubview.add_subview(psubtitle_value)
 
     #new
@@ -272,7 +272,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     psubtitle2_value.text = pseg_info['subtitle2_value']
     psubtitle2_value.text_color = '#4286f4'
     psubtitle2_value.alignment = 1 #1 is center
-    psubtitle2_value.font = ('<system>',10)
+    psubtitle2_value.font = ('<system>',14)
     psubview.add_subview(psubtitle2_value)
 
     #box titles

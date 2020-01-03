@@ -650,7 +650,7 @@ def yearly(runs_per_week):
 
     ###
 
-    main_dict['title'] = get_time.convert_year_name(datetime.datetime.now())
+    main_dict['title'] = get_time.convert_year_name(datetime.datetime.now())+" Goal: "+str(goal_mileage)+" Miles"
 
     main_dict['flbox_titles'].append("YTD Miles")
     main_dict['flbox_titles'].append("Last YTD by now")

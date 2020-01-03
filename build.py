@@ -594,7 +594,7 @@ def yearly(runs_per_week):
     target_miles = MPD*day_of_year #what my current target_miles should be - NOT year long goal
     remaining_ytd_miles = miles_this_year - target_miles #why is this named like this?
     days_remaining_in_year = (end_of_year - now).days
-    weeks_remaining_in_year = (end_of_year -now).weeks
+    weeks_remaining_in_year = days_remaining_in_year/7
 
 
     #new 3.6.18

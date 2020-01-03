@@ -658,6 +658,7 @@ def yearly(runs_per_week):
     main_dict['flbox_titles'].append("Difference")
     main_dict['flbox_titles'].append("---------------") #15
     main_dict['flbox_titles'].append("Days Remain")
+    main_dict['flbox_titles'].append("Weeks Remain")
     main_dict['flbox_titles'].append("Goal (30)")
     main_dict['flbox_titles'].append("Goal (90)")
     main_dict['flbox_titles'].append("Goal (Year)")
@@ -667,6 +668,7 @@ def yearly(runs_per_week):
     main_dict['flbox_values'].append(format_text(miles_this_year-miles_last_year_this_time))
     main_dict['flbox_values'].append("------") #6
     main_dict['flbox_values'].append(str(days_remaining_in_year))
+    main_dict['flbox_values'].append(format_text(weeks_remaining_in_year))
     main_dict['flbox_values'].append(goal_30)
     main_dict['flbox_values'].append(goal_90)
     main_dict['flbox_values'].append(goal_year)

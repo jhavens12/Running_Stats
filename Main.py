@@ -7,6 +7,8 @@ import build
 w,h = ui.get_screen_size()
 view = ui.View(bg_color = 'black', frame = (0,0,w,h)) #main view
 
+runs_per_week = 5
+
 def vis(w,h):
     vis = {}
     vis['x_margin'] = 5
@@ -204,9 +206,9 @@ def generate_segmented_controls(view):
 
     def fseg_select(sender):
         if sender.selected_index == 0:
-            generate_fsubview(fsubview,build.monthly(4))
+            generate_fsubview(fsubview,build.monthly(runs_per_week))
         if sender.selected_index == 1:
-            generate_fsubview(fsubview,build.yearly(4))
+            generate_fsubview(fsubview,build.yearly(runs_per_week))
         if sender.selected_index == 2:
             generate_fsubview(fsubview,build.weekly(current_info))
         if sender.selected_index == 3:

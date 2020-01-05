@@ -417,8 +417,10 @@ def generate_csubview(csubview,cseg_info): #current subview? The one with this w
         csubview.add_subview(label_title)
 
     #box values
-    print(len(cseg_info['box_values']))
+    #5 values?
     for n,label in enumerate(cseg_info['box_values']):
+        length = len(label.split('\n'))
+        print(length)
         count = len(cseg_info['box_values'])
         if n == 0:
             first_box_w = 100

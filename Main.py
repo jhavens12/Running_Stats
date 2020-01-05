@@ -417,6 +417,7 @@ def generate_csubview(csubview,cseg_info):
         csubview.add_subview(label_title)
 
     #box values
+    print(len(cseg_info['box_values']))
     for n,label in enumerate(cseg_info['box_values']):
         count = len(cseg_info['box_values'])
         if n == 0:

@@ -310,7 +310,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.number_of_lines = 0
         label_title.text = label
         label_title.alignment = 1
-        if activity_count > 6:
+        if activity_count > 5:
             label_title.font =  ('<system>',10)
         else:
             label_title.font =  ('<system>',14)
@@ -424,7 +424,6 @@ def generate_csubview(csubview,cseg_info): #current subview? The one with this w
     #actual run information
     for n,label in enumerate(cseg_info['box_values']):
         activity_count = len(label.split('\n')) #this is becuase var label is ONE string with 1-6 line returns
-        print(length)
         count = len(cseg_info['box_values'])
         if n == 0:
             first_box_w = 100
@@ -439,7 +438,7 @@ def generate_csubview(csubview,cseg_info): #current subview? The one with this w
         label_title.text = label
         label_title.alignment = 1
         label_title.number_of_lines = 0
-        if activity_count > 6:
+        if activity_count > 5:
             label_title.font =  ('<system>',10)
         else:
             label_title.font =  ('<system>',14)

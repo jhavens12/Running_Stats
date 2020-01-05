@@ -297,6 +297,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
 
     #box values
     for n,label in enumerate(pseg_info['box_values']):
+        activity_count = len(label.split('\n')) #this is becuase var label is ONE string with 1-6 line returns
         count = len(pseg_info['box_values'])
         if n == 0:
             first_box_w = 100
@@ -309,7 +310,10 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
         label_title.number_of_lines = 0
         label_title.text = label
         label_title.alignment = 1
-        label_title.font =  ('<system>',14) #this is the top box values for previous peroids
+        if activity_count > 6:
+            label_title.font =  ('<system>',10)
+        else:
+            label_title.font =  ('<system>',14)
         label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'
         #label_title.border_width = 0
@@ -417,9 +421,9 @@ def generate_csubview(csubview,cseg_info): #current subview? The one with this w
         csubview.add_subview(label_title)
 
     #box values
-    #5 values?
+    #actual run information
     for n,label in enumerate(cseg_info['box_values']):
-        length = len(label.split('\n'))
+        activity_count = len(label.split('\n')) #this is becuase var label is ONE string with 1-6 line returns
         print(length)
         count = len(cseg_info['box_values'])
         if n == 0:
@@ -435,7 +439,10 @@ def generate_csubview(csubview,cseg_info): #current subview? The one with this w
         label_title.text = label
         label_title.alignment = 1
         label_title.number_of_lines = 0
-        label_title.font =  ('<system>',14)
+        if activity_count > 6:
+            label_title.font =  ('<system>',10)
+        else:
+            label_title.font =  ('<system>',14)
         label_title.text_color = '#4286f4'
         #label_title.border_color = 'black'
         #label_title.border_width = 0

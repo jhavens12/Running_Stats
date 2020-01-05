@@ -417,7 +417,6 @@ def generate_csubview(csubview,cseg_info):
         csubview.add_subview(label_title)
 
     #box values
-    print(len(cseg_info['box_values']))
     for n,label in enumerate(cseg_info['box_values']):
         count = len(cseg_info['box_values'])
         if n == 0:
@@ -480,6 +479,7 @@ def generate_fsubview(fsubview,fseg_info):
     fsubview.add_subview(ftitle)
 
     #box titles LEFT
+    print(len(seg_info['flboxtitles']))
     for n,label in enumerate(fseg_info['flbox_titles']):
         #count = len(fbox_titles)
         #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels

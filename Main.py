@@ -362,7 +362,7 @@ def generate_psubview(psubview,csubview,pseg_info): #give the subview and list o
     csubtitle3_value.alignment = 1 #1 is center
     csubview.add_subview(csubtitle3_value)
 
-def generate_csubview(csubview,cseg_info):
+def generate_csubview(csubview,cseg_info): #current subview? The one with this week i think
 
     #Title
     ctitle = ui.Label(name = 'ctitle', bg_color ='black', frame = (vis['ctitle_x'], vis['ctitle_y'], vis['ctitle_w'], vis['ctitle_h']))
@@ -417,6 +417,7 @@ def generate_csubview(csubview,cseg_info):
         csubview.add_subview(label_title)
 
     #box values
+    print(len(cseg_info['box_values']))
     for n,label in enumerate(cseg_info['box_values']):
         count = len(cseg_info['box_values'])
         if n == 0:
@@ -479,7 +480,6 @@ def generate_fsubview(fsubview,fseg_info):
     fsubview.add_subview(ftitle)
 
     #box titles LEFT
-    print(len(seg_info['flboxtitles']))
     for n,label in enumerate(fseg_info['flbox_titles']):
         #count = len(fbox_titles)
         #vis['fbox_titles_w'] = vis['fsub_w']/count #divide width by number of labels
@@ -592,6 +592,6 @@ generate_segmented_controls(view) #build segmented controls
 
 generate_csubview(csubview,current_info) #build csubview
 generate_psubview(psubview,csubview,pseg_info) #generate first pview
-generate_fsubview(fsubview,build.monthly(4))
+generate_fsubview(fsubview,build.monthly(runs_per_week))
 
 view.present(style='sheet', hide_title_bar=True)

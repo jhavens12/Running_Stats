@@ -1,5 +1,7 @@
 import get_data
 import calc
+import credentials
+from requests import post
 
 
 my_dict = get_data.my_filtered_activities() #get master dictionary
@@ -9,6 +11,12 @@ this_week = sorted(weekly_dict.keys())[-1] #find key for latest week
 
 
 
-output= str(weekly_dict[this_week]['run_count'])+": "+str(weekly_dict[this_week]['miles_ran'])
+output = str(weekly_dict[this_week]['run_count'])+"R "+str(weekly_dict[this_week]['miles_ran'])+"M"
 
-print(output,  file=open('/var/www/html/test/result.txt', 'w'))
+
+headers = {"Authorization": "Bearer "+credentials.api_token,
+           'content-type': 'application/json'}
+
+url = credentials.api_url+"/api/states/sensor.garmin_display"
+data = '{"state": "'+str(output)+'", "attributes": {"unit_of_measurement": "Miles"}}'
+response = post(url, headers=headers, data=data)

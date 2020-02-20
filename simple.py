@@ -8,7 +8,7 @@ from requests import post
 import datetime
 
 def ft(x):
-    return str("{0:.2f}".format(x))
+    return str("{0:.1f}".format(x))
 
 my_dict = get_data.my_filtered_activities() #get master dictionary
 #Week

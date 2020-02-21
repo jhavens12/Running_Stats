@@ -41,7 +41,7 @@ for run in my_dict:
     at_miles.append(float(my_dict[run]['distance_miles']))
 all_time = sum(at_miles)
 
-output = ft(weekly_dict[this_week]['miles_ran'])+" * "+ft(this_month)+" * "+ft(this_year)#+" * "+ft(all_time)
+output = ft(weekly_dict[this_week]['miles_ran'])+" - "+ft(this_month)+" - "+ft(this_year)#+" * "+ft(all_time)
 print (datetime.datetime.now())
 print(output)
 

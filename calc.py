@@ -124,6 +124,7 @@ def weekly_stats(dictionary):
     weekly_runs = {} #dictionary to hold the actual runs
     for date in dictionary:
         week_number = date.isocalendar()[1]
+        #print(str(date)+" - "+str(week_number)) #this seems to be accurate
         count_dict[str(date.year)+"-"+str(week_number)] = [] #create list
         weekly_runs[str(date.year)+"-"+str(week_number)] = {} #create dict
     for date in dictionary:

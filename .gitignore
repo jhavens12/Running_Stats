@@ -2,3 +2,8 @@ credentials.py
 .git
 *__pycache__*
 .gitignore
+access_token.txt
+refresh_token.txt
+strava_testing.py
+smash.py
+.gitignore

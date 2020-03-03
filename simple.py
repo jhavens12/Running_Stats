@@ -6,14 +6,29 @@ import get_time
 import credentials
 from requests import post
 import datetime
+import pprint
 
 def ft(x):
     return str("{0:.1f}".format(x))
 
 my_dict = get_data.my_filtered_activities() #get master dictionary
 #Week
-weekly_dict = calc.weekly_stats(my_dict) #use weekly_stats to calculate weekly dictionary (monday first)
-this_week = sorted(weekly_dict.keys())[-1] #find key for latest week
+
+# weekly_dict = calc.weekly_stats(my_dict) #use weekly_stats to calculate weekly dictionary (monday first)
+# this_week = sorted(weekly_dict.keys())[-1] #find key for latest week DOES NOT WORK
+week_dict = my_dict.copy()
+for key in my_dict:
+    if key < get_time.LM(0):
+        del week_dict[key] #need to iterate through different dictionary than the one you delete keys from
+
+mile_list = []
+for i in week_dict:
+    mile_list.append(float(week_dict[i]['distance_miles']))
+this_week = sum(mile_list)
+
+print("*******")
+#print(this_week)
+#pprint.pprint(weekly_dict)
 #month
 def MTD(dictionary,months_ago): #month to date
     month_total_dict = calc.monthly_daily_totals(dictionary,months_ago,'distance_miles')
@@ -41,7 +56,7 @@ for run in my_dict:
     at_miles.append(float(my_dict[run]['distance_miles']))
 all_time = sum(at_miles)
 
-output = ft(weekly_dict[this_week]['miles_ran'])+" - "+ft(this_month)+" - "+ft(this_year)#+" * "+ft(all_time)
+output = ft(this_week)+" - "+ft(this_month)+" - "+ft(this_year)#+" * "+ft(all_time)
 print (datetime.datetime.now())
 print(output)
 

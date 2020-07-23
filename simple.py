@@ -14,8 +14,6 @@ def ft(x):
 my_dict = get_data.my_filtered_activities() #get master dictionary
 #Week
 
-# weekly_dict = calc.weekly_stats(my_dict) #use weekly_stats to calculate weekly dictionary (monday first)
-# this_week = sorted(weekly_dict.keys())[-1] #find key for latest week DOES NOT WORK
 week_dict = my_dict.copy()
 for key in my_dict:
     if key < get_time.LM(0):

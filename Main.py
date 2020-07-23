@@ -224,6 +224,7 @@ def generate_segmented_controls(view):
     pseg_control.segments = ("Week 1","Week 2","Week 3","Week 4","Best Week")
     pseg_control.action = pseg_select
     pseg_control.selected_index = 0
+    pseg_control.tintColor = UIColor.whiteColor()
     view.add_subview(pseg_control)
 
     #seg control bottom of page
@@ -606,4 +607,4 @@ generate_csubview(csubview,current_info) #build csubview
 generate_psubview(psubview,csubview,pseg_info) #generate first pview
 generate_fsubview(fsubview,build.monthly(runs_per_week))
 
-view.present(style='sheet', hide_title_bar=True)
+view.present(style='fullscreen', hide_title_bar=True)
